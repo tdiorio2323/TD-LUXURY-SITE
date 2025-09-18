@@ -82,7 +82,7 @@ export function Nav() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-32 bg-black/95 backdrop-blur-md z-40">
+        <div className="md:hidden fixed inset-0 top-32 bg-black z-40">
           <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8">
             {navItems.map((item) => (
               <Link

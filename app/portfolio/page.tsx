@@ -146,9 +146,6 @@ export default function PortfolioPage() {
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 inline-block mb-6">
-            <span className="text-sm font-medium tracking-wider">PORTFOLIO</span>
-          </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance text-white">Client Success Stories</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Discover how we've transformed brands and businesses through strategic design and development.

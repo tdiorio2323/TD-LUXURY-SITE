@@ -77,9 +77,6 @@ export default function ContactPage() {
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 inline-block mb-6">
-            <span className="text-sm font-medium tracking-wider">CONTACT</span>
-          </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance text-white">Let's Create Something Extraordinary</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Ready to elevate your brand with premium design solutions? Let's discuss your project and bring your vision to life.

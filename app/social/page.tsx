@@ -55,7 +55,7 @@ export default function SocialPage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with reduced overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-pink-800 to-blue-900">
           <div className="absolute inset-0 hero-overlay-light"></div>
         </div>
 

@@ -19,18 +19,18 @@ export function Nav() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <Logo className="h-8" />
+            <Logo className="h-16" />
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium tracking-wider transition-colors hover:text-white ${
+                className={`text-lg font-medium tracking-wider transition-colors hover:text-white ${
                   pathname === item.href ? "text-white border-b border-white" : "text-gray-400"
                 }`}
               >
@@ -39,22 +39,22 @@ export function Nav() {
             ))}
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4">
             <a
               href="https://instagram.com/tdstudiosco"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 group"
+              className="p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 group"
             >
-              <Instagram className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+              <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </a>
             <a
               href="https://t.me/tdstudioscorp"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 group"
+              className="p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 group"
             >
-              <Send className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+              <Send className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </a>
           </div>
         </div>

@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-black text-white antialiased`}>
         <Nav />
-        <main className="pt-20">
+        <main className="pt-32">
           <Suspense fallback={<div className="text-white p-8">Loading...</div>}>{children}</Suspense>
         </main>
         <Footer />

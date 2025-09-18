@@ -64,7 +64,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-32">
         {/* Background Image with reduced overlay */}
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover grayscale">
           <source
@@ -72,7 +72,6 @@ export default function HomePage() {
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-black/40"></div>
 
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -82,8 +81,9 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-20 px-6">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
             <p className="text-gray-400 text-lg">Premium design solutions tailored for high-growth brands</p>
@@ -97,9 +97,9 @@ export default function HomePage() {
                     <service.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                    <p className="text-gray-400 text-sm mb-4">{service.description}</p>
-                    <a href="#" className="text-white text-sm hover:underline">
+                    <h3 className="text-lg font-semibold mb-2 text-white">{service.title}</h3>
+                    <p className="text-gray-200 text-sm mb-4">{service.description}</p>
+                    <a href="#" className="text-blue-300 text-sm hover:underline hover:text-blue-200">
                       {service.link}
                     </a>
                   </div>
@@ -111,8 +111,9 @@ export default function HomePage() {
       </section>
 
       {/* Featured Capabilities */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-20 px-6">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Capabilities</h2>
             <p className="text-gray-400 text-lg">A quick peek at what we build</p>
@@ -129,8 +130,8 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="p-2">
-                  <h3 className="text-lg font-semibold mb-1">{capability.title}</h3>
-                  <p className="text-gray-400 text-sm">{capability.subtitle}</p>
+                  <h3 className="text-lg font-semibold mb-1 text-white">{capability.title}</h3>
+                  <p className="text-gray-200 text-sm">{capability.subtitle}</p>
                 </div>
               </GlassCard>
             ))}
@@ -139,8 +140,9 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-20 px-6">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <GlassCard className="p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Brand?</h2>
             <p className="text-gray-400 text-lg mb-8">

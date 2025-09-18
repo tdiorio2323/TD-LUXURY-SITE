@@ -60,12 +60,7 @@ export default function DevPage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with reduced overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/tropical-beach-development-workspace.jpg')`,
-          }}
-        >
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-green-900">
           <div className="absolute inset-0 hero-overlay-light"></div>
         </div>
 
@@ -74,9 +69,9 @@ export default function DevPage() {
           <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 inline-block mb-6">
             <span className="text-sm font-medium tracking-wider">DEVELOPMENT</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Application & Platform Engineering</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Full-Stack Development</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-            Strategy, engineering, and design collaborating to deliver performant digital products.
+            Custom web applications, APIs, databases, and scalable solutions built with modern tech stacks.
           </p>
           <FrostedButton href="/contact">Book a build sprint</FrostedButton>
         </div>

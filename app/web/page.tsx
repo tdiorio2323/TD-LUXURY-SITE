@@ -55,12 +55,7 @@ export default function WebPage() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with reduced overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/modern-architecture-building-with-glass-facade-and.jpg')`,
-          }}
-        >
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
           <div className="absolute inset-0 hero-overlay-light"></div>
         </div>
 
@@ -69,9 +64,9 @@ export default function WebPage() {
           <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 inline-block mb-6">
             <span className="text-sm font-medium tracking-wider">WEB</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Web Experiences That Convert</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Website Design That Converts</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl">
-            Strategy, performance, and story-first content engineered for clarity and velocity.
+            Premium website design with luxury aesthetics, conversion-focused UX, and stunning visual storytelling.
           </p>
           <FrostedButton href="/contact">Start your project</FrostedButton>
         </div>

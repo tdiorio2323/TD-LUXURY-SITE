@@ -69,16 +69,27 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to elevate your brand with premium design solutions? Let's discuss your project and bring your vision
-            to life.
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden -mt-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-gray-900 to-blue-900">
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 inline-block mb-6">
+            <span className="text-sm font-medium tracking-wider">CONTACT</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance text-white">Let's Create Something Extraordinary</h1>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Ready to elevate your brand with premium design solutions? Let's discuss your project and bring your vision to life.
           </p>
         </div>
+      </section>
+
+      <section className="relative py-20 px-6">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto">
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Info */}
@@ -303,7 +314,9 @@ export default function ContactPage() {
         </div>
 
         {/* FAQ Section */}
-        <section className="mt-20">
+        <section className="relative mt-20">
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="relative z-10">
           <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
           <p className="text-center text-gray-400 mb-12">Quick answers to common questions about our services</p>
 
@@ -315,8 +328,10 @@ export default function ContactPage() {
               </GlassCard>
             ))}
           </div>
+          </div>
         </section>
-      </div>
+        </div>
+      </section>
     </div>
   )
 }

@@ -13,7 +13,7 @@ interface FrostedButtonProps {
 
 export function FrostedButton({ href, children, className = "", onClick, type = "button" }: FrostedButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium hover:bg-white/20 transition-colors"
+    "inline-flex items-center justify-center px-6 py-3 bg-neutral-900/70 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium hover:bg-neutral-900/80 transition-colors"
 
   if (href) {
     return (

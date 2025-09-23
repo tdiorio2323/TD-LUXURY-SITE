@@ -147,7 +147,7 @@ export default function PortfolioPage() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance text-white">Client Success Stories</h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
             Discover how we've transformed brands and businesses through strategic design and development.
           </p>
         </div>
@@ -159,17 +159,17 @@ export default function PortfolioPage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Featured Clients</h2>
-            <p className="text-gray-200 text-lg">Click any logo to explore the project details and results</p>
+            <p className="text-white text-lg">Click any logo to explore the project details and results</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {clientProjects.map((project) => (
               <GlassCard
                 key={project.id}
-                className="group cursor-pointer hover:bg-white/15 transition-all duration-300 p-8 text-center"
+                className="group cursor-pointer hover:bg-neutral-900/80 transition-all duration-300 p-8 text-center"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="w-24 h-24 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                <div className="w-24 h-24 mx-auto mb-6 bg-neutral-900/80 border border-white/20 rounded-full flex items-center justify-center group-hover:bg-neutral-900/90 transition-colors">
                   <img
                     src={project.logo}
                     alt={project.clientName}
@@ -177,23 +177,23 @@ export default function PortfolioPage() {
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-white">{project.clientName}</h3>
-                <p className="text-gray-200 text-sm mb-4">{project.industry} • {project.year}</p>
+                <p className="text-white text-sm mb-4">{project.industry} • {project.year}</p>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {project.services.slice(0, 2).map((service) => (
                     <span
                       key={service}
-                      className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-200"
+                      className="px-3 py-1 bg-neutral-900/80 border border-white/20 rounded-full text-xs text-white"
                     >
                       {service}
                     </span>
                   ))}
                   {project.services.length > 2 && (
-                    <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-200">
+                    <span className="px-3 py-1 bg-neutral-900/80 border border-white/20 rounded-full text-xs text-white">
                       +{project.services.length - 2} more
                     </span>
                   )}
                 </div>
-                <div className="mt-4 flex items-center justify-center text-blue-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-4 flex items-center justify-center text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                   View Case Study <ArrowRight className="w-4 h-4 ml-2" />
                 </div>
               </GlassCard>
@@ -209,19 +209,19 @@ export default function PortfolioPage() {
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold mb-2 text-white">25+</div>
-              <div className="text-gray-200 text-sm">Clients Served</div>
+              <div className="text-white text-sm">Clients Served</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2 text-white">50+</div>
-              <div className="text-gray-200 text-sm">Projects Completed</div>
+              <div className="text-white text-sm">Projects Completed</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2 text-white">300%</div>
-              <div className="text-gray-200 text-sm">Avg. Conversion Increase</div>
+              <div className="text-white text-sm">Avg. Conversion Increase</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2 text-white">100%</div>
-              <div className="text-gray-200 text-sm">Client Satisfaction</div>
+              <div className="text-white text-sm">Client Satisfaction</div>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@ export default function PortfolioPage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <GlassCard className="p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Join Our Success Stories?</h2>
-            <p className="text-gray-200 text-lg mb-8">
+            <p className="text-white text-lg mb-8">
               Let's create something extraordinary together. Contact us to discuss your vision and bring it to life.
             </p>
             <FrostedButton href="/contact">Start Your Project</FrostedButton>
@@ -256,12 +256,12 @@ export default function PortfolioPage() {
                   />
                   <div>
                     <h2 className="text-2xl font-bold text-white">{selectedProject.clientName}</h2>
-                    <p className="text-gray-300">{selectedProject.industry} • {selectedProject.year}</p>
+                    <p className="text-white">{selectedProject.industry} • {selectedProject.year}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-2 bg-neutral-900/70 hover:bg-neutral-900/80 rounded-lg transition-colors"
                 >
                   <X className="w-6 h-6 text-white" />
                 </button>
@@ -274,7 +274,7 @@ export default function PortfolioPage() {
                   {selectedProject.services.map((service) => (
                     <span
                       key={service}
-                      className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm text-gray-200"
+                      className="px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-full text-sm text-white"
                     >
                       {service}
                     </span>
@@ -285,7 +285,7 @@ export default function PortfolioPage() {
               {/* Description */}
               <div className="mb-8">
                 <h3 className="text-lg font-semibold mb-4 text-white">Project Overview</h3>
-                <p className="text-gray-300 leading-relaxed">{selectedProject.description}</p>
+                <p className="text-white leading-relaxed">{selectedProject.description}</p>
               </div>
 
               {/* Results */}
@@ -293,7 +293,7 @@ export default function PortfolioPage() {
                 <h3 className="text-lg font-semibold mb-4 text-white">Key Results</h3>
                 <ul className="space-y-2">
                   {selectedProject.results.map((result, index) => (
-                    <li key={index} className="flex items-center text-gray-300">
+                    <li key={index} className="flex items-center text-white">
                       <span className="text-green-400 mr-3">✓</span>
                       {result}
                     </li>
@@ -306,7 +306,7 @@ export default function PortfolioPage() {
                 <h3 className="text-lg font-semibold mb-4 text-white">Project Gallery</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                   {selectedProject.images.map((image, index) => (
-                    <div key={index} className="aspect-video bg-white/5 rounded-lg overflow-hidden">
+                    <div key={index} className="aspect-video bg-neutral-900/70 rounded-lg overflow-hidden">
                       <img
                         src={image}
                         alt={`${selectedProject.clientName} project ${index + 1}`}
@@ -325,7 +325,7 @@ export default function PortfolioPage() {
                 </FrostedButton>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-6 py-3 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-colors"
+                  className="px-6 py-3 bg-neutral-900/70 border border-white/20 rounded-lg text-white hover:bg-neutral-900/80 transition-colors"
                 >
                   Close
                 </button>

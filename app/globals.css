@@ -46,12 +46,14 @@ html {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Fixed global background using NYC image */
 body {
+  background-color: #000;
+}
+
+.global-hero {
   background-image: url("/images/nyc-background.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
 }
 
@@ -74,14 +76,15 @@ body {
 
 /* Enhanced luxury glass effects */
 .luxury-glass {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(12, 12, 16, 0.75);
+  color: #fff;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .luxury-glass:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(12, 12, 16, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }

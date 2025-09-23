@@ -78,7 +78,7 @@ export default function ContactPage() {
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance text-white">Let's Create Something Extraordinary</h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
             Ready to elevate your brand with premium design solutions? Let's discuss your project and bring your vision to life.
           </p>
         </div>
@@ -93,56 +93,56 @@ export default function ContactPage() {
           <div className="space-y-8">
             {/* Email */}
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5" />
+              <div className="w-12 h-12 bg-neutral-900/70 border border-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Mail className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Email</h3>
-                <p className="text-gray-400 text-sm mb-2">tyler@tdstudiosny.com</p>
-                <p className="text-gray-400 text-sm">347-485-9935</p>
+                <p className="text-white text-sm mb-2">tyler@tdstudiosny.com</p>
+                <p className="text-white text-sm">347-485-9935</p>
               </div>
             </div>
 
             {/* Response Time */}
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Clock className="w-5 h-5" />
+              <div className="w-12 h-12 bg-neutral-900/70 border border-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Clock className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Response Time</h3>
-                <p className="text-gray-400 text-sm mb-2">Within 24 hours</p>
-                <p className="text-gray-400 text-sm">Monday - Friday, 9AM - 6PM PST</p>
+                <p className="text-white text-sm mb-2">Within 24 hours</p>
+                <p className="text-white text-sm">Monday - Friday, 9AM - 6PM PST</p>
               </div>
             </div>
 
             {/* Location */}
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5" />
+              <div className="w-12 h-12 bg-neutral-900/70 border border-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Location</h3>
-                <p className="text-gray-400 text-sm mb-2">New York City, NY</p>
-                <p className="text-gray-400 text-sm">Serving clients worldwide</p>
+                <p className="text-white text-sm mb-2">New York City, NY</p>
+                <p className="text-white text-sm">Serving clients worldwide</p>
               </div>
             </div>
 
             {/* Services */}
             <div className="mt-12">
               <h3 className="font-semibold mb-6">Web Experience</h3>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-white text-sm mb-6">
                 Strategy, UX architecture, and high-converting marketing sites. Landing pages, CMS builds, and
                 measurement setup.
               </p>
 
               <h3 className="font-semibold mb-6">Product & Platform Development</h3>
-              <p className="text-gray-400 text-sm mb-6">
+              <p className="text-white text-sm mb-6">
                 Full-stack engineering, integrations, analytics, and ongoing iteration for apps, SaaS dashboards, and
                 commerce experiences.
               </p>
 
               <h3 className="font-semibold mb-6">Social & Content Systems</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Editorial programming, asset engines, and campaign management that keep community and growth teams
                 shipping.
               </p>
@@ -167,7 +167,7 @@ export default function ContactPage() {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
                       placeholder="Your full name"
                     />
                   </div>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
                       placeholder="Your company name"
                     />
                   </div>
@@ -215,7 +215,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -232,7 +232,7 @@ export default function ContactPage() {
                       value={formData.service}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white"
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white"
                     >
                       <option value="">Select a service</option>
                       {services.map((service) => (
@@ -252,7 +252,7 @@ export default function ContactPage() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white"
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white"
                     >
                       <option value="">Select budget range</option>
                       {budgetRanges.map((range) => (
@@ -273,7 +273,7 @@ export default function ContactPage() {
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white"
+                    className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white"
                   >
                     <option value="">Select timeline</option>
                     {timelines.map((timeline) => (
@@ -295,7 +295,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20 text-white placeholder-gray-400 resize-none"
+                    className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60 resize-none"
                     placeholder="Tell us about your project, goals, and any specific requirements..."
                   />
                 </div>
@@ -315,13 +315,13 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-black/40"></div>
           <div className="relative z-10">
           <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-          <p className="text-center text-gray-400 mb-12">Quick answers to common questions about our services</p>
+          <p className="text-center text-white mb-12">Quick answers to common questions about our services</p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {faqs.map((faq, index) => (
               <GlassCard key={index}>
                 <h3 className="font-semibold mb-3">{faq.question}</h3>
-                <p className="text-gray-400 text-sm">{faq.answer}</p>
+                <p className="text-white text-sm">{faq.answer}</p>
               </GlassCard>
             ))}
           </div>

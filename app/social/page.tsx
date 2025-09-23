@@ -62,7 +62,7 @@ export default function SocialPage() {
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Social Media Marketing</h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+          <p className="text-xl text-white mb-8 max-w-2xl">
             Story-driven content, community programming, and campaigns that keep your brand in the feed.
           </p>
           <FrostedButton href="/contact">Schedule a content sprint</FrostedButton>
@@ -75,17 +75,17 @@ export default function SocialPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Campaign Kits</h3>
-              <p className="text-gray-400 text-sm">{campaignKits[0]}</p>
+              <p className="text-white text-sm">{campaignKits[0]}</p>
             </GlassCard>
 
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Always-on Presence</h3>
-              <p className="text-gray-400 text-sm">{alwaysOnPresence[0]}</p>
+              <p className="text-white text-sm">{alwaysOnPresence[0]}</p>
             </GlassCard>
 
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Creator Collaborations</h3>
-              <p className="text-gray-400 text-sm">{creatorCollaborations[0]}</p>
+              <p className="text-white text-sm">{creatorCollaborations[0]}</p>
             </GlassCard>
           </div>
 
@@ -100,12 +100,12 @@ export default function SocialPage() {
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div>
               <h3 className="text-xl font-semibold mb-6">Channel expertise</h3>
-              <p className="text-gray-400 mb-8">{channelExpertise[0]}</p>
+              <p className="text-white mb-8">{channelExpertise[0]}</p>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-6">Signal reporting</h3>
-              <p className="text-gray-400 mb-8">{signalReporting[0]}</p>
+              <p className="text-white mb-8">{signalReporting[0]}</p>
             </div>
           </div>
 
@@ -117,7 +117,7 @@ export default function SocialPage() {
                 {programBlueprint.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -129,7 +129,7 @@ export default function SocialPage() {
                 {contentEngines.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -141,7 +141,7 @@ export default function SocialPage() {
                 {reportingCadence.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -152,7 +152,7 @@ export default function SocialPage() {
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div>
               <h3 className="text-xl font-semibold mb-6">Campaign highlight placeholder</h3>
-              <p className="text-gray-400 mb-8">
+              <p className="text-white mb-8">
                 Use this block for a social case study—include reach, engagement lift, follower growth, or sales impact
                 once results are ready.
               </p>
@@ -164,7 +164,7 @@ export default function SocialPage() {
                 {suggestedContent.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>

@@ -62,7 +62,7 @@ export default function WebPage() {
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Website Design That Converts</h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+          <p className="text-xl text-white mb-8 max-w-2xl">
             Premium website design with luxury aesthetics, conversion-focused UX, and stunning visual storytelling.
           </p>
           <FrostedButton href="/contact">Start your project</FrostedButton>
@@ -75,21 +75,21 @@ export default function WebPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Conversion-Ready Landers</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Story-driven sections, SEO-focused architecture, and instrumented funnels built for measurable wins.
               </p>
             </GlassCard>
 
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Scalable Marketing Sites</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Modular content models, CMS-ready components, and asset optimization that keeps teams shipping fast.
               </p>
             </GlassCard>
 
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Product Ecosystems</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Unified brand, docs, and support surfaces powered by design systems and enterprise-grade hosting.
               </p>
             </GlassCard>
@@ -105,7 +105,7 @@ export default function WebPage() {
           {/* Everything tied to outcomes */}
           <GlassCard className="mb-20 luxury-glass">
             <h3 className="text-xl font-semibold mb-8">Everything tied to outcomes</h3>
-            <p className="text-gray-300 mb-8">
+            <p className="text-white mb-8">
               We lead discovery, prototype reviews, and performance calibration alongside your marketing and product
               leads. Expect dependable handoff, documentation, and a roadmap for optimization.
             </p>
@@ -114,7 +114,7 @@ export default function WebPage() {
           {/* Stack & operations */}
           <GlassCard className="mb-20 luxury-glass">
             <h3 className="text-xl font-semibold mb-8">Stack & operations</h3>
-            <p className="text-gray-300 mb-8">
+            <p className="text-white mb-8">
               React, Next.js, Vite, Sanity, Contentful, Supabase, and bespoke integrations paired with analytics, QA,
               and experiment support.
             </p>
@@ -128,7 +128,7 @@ export default function WebPage() {
                 {discoveryCheckpoints.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-300 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -140,7 +140,7 @@ export default function WebPage() {
                 {launchPlaybook.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-300 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -152,7 +152,7 @@ export default function WebPage() {
                 {postLaunchSupport.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-300 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -163,7 +163,7 @@ export default function WebPage() {
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <GlassCard className="luxury-glass">
               <h3 className="text-xl font-semibold mb-6">Featured case study placeholder</h3>
-              <p className="text-gray-300 mb-8">
+              <p className="text-white mb-8">
                 Drop in results, screenshots, and narrative once your next flagship web engagement is ready to share.
                 Use this block for ROI numbers, testimonial quotes, or before/after visuals.
               </p>
@@ -175,7 +175,7 @@ export default function WebPage() {
                 {suggestedContent.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-300 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>

@@ -38,7 +38,7 @@ export function Nav() {
                 key={item.name}
                 href={item.href}
                 className={`text-lg font-medium tracking-wider transition-colors hover:text-white ${
-                  pathname === item.href ? "text-white border-b border-white" : "text-gray-400"
+                  pathname === item.href ? "text-white border-b border-white" : "text-white/70"
                 }`}
               >
                 {item.name}
@@ -52,7 +52,7 @@ export function Nav() {
               href="https://instagram.com/tdstudiosco"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 group"
+              className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group"
             >
               <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </a>
@@ -60,7 +60,7 @@ export function Nav() {
               href="https://t.me/tdstudioscorp"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 group"
+              className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group"
             >
               <Send className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
             </a>
@@ -68,7 +68,7 @@ export function Nav() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden p-4 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300"
+              className="md:hidden p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300"
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -90,7 +90,7 @@ export function Nav() {
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`text-2xl font-medium tracking-wider transition-colors hover:text-white ${
-                  pathname === item.href ? "text-white border-b-2 border-white pb-2" : "text-gray-400"
+                  pathname === item.href ? "text-white border-b-2 border-white pb-2" : "text-white/70"
                 }`}
               >
                 {item.name}

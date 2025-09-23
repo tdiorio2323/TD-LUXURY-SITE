@@ -67,7 +67,7 @@ export default function DevPage() {
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Full-Stack Development</h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+          <p className="text-xl text-white mb-8 max-w-2xl">
             Custom web applications, APIs, databases, and scalable solutions built with modern tech stacks.
           </p>
           <FrostedButton href="/contact">Book a build sprint</FrostedButton>
@@ -80,7 +80,7 @@ export default function DevPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Product Discovery</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Rapid architecture mapping, user flows, and proof-of-concept builds to de-risk your roadmap and align
                 teams quickly.
               </p>
@@ -88,7 +88,7 @@ export default function DevPage() {
 
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Full-stack Delivery</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 TypeScript-first stacks, API design, data modeling, automated QA, and CI/CD across web and mobile
                 surfaces.
               </p>
@@ -96,7 +96,7 @@ export default function DevPage() {
 
             <GlassCard>
               <h3 className="text-xl font-semibold mb-4">Growth & Iteration</h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-white text-sm">
                 Analytics instrumentation, experiment support, and performance tuning to sustain shipping velocity
                 post-launch.
               </p>
@@ -113,7 +113,7 @@ export default function DevPage() {
           {/* Tech Stack */}
           <div className="mb-20">
             <h3 className="text-xl font-semibold mb-8">Modern stack expertise</h3>
-            <p className="text-gray-400 mb-8">
+            <p className="text-white mb-8">
               React 18, Vite, Expo, Supabase, PostgreSQL, serverless edge, plus observability and error budgets by
               default.
             </p>
@@ -121,10 +121,10 @@ export default function DevPage() {
             <div className="grid grid-cols-3 md:grid-cols-9 gap-6">
               {techStack.map((tech, index) => (
                 <div key={index} className="flex flex-col items-center">
-                  <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center mb-2">
+                  <div className="w-16 h-16 bg-neutral-900/70 border border-white/20 rounded-lg flex items-center justify-center mb-2">
                     <tech.icon className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-xs text-gray-400 text-center">{tech.name}</span>
+                  <span className="text-xs text-white text-center">{tech.name}</span>
                 </div>
               ))}
             </div>
@@ -137,7 +137,7 @@ export default function DevPage() {
               {teamEnablement.map((item, index) => (
                 <div key={index} className="flex items-start">
                   <span className="text-white mr-3">•</span>
-                  <span className="text-gray-400 text-sm">{item}</span>
+                  <span className="text-white text-sm">{item}</span>
                 </div>
               ))}
             </div>
@@ -151,7 +151,7 @@ export default function DevPage() {
                 {deliveryRhythm.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -163,7 +163,7 @@ export default function DevPage() {
                 {qualitySecurity.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -175,7 +175,7 @@ export default function DevPage() {
                 {documentationBundle.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -186,7 +186,7 @@ export default function DevPage() {
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div>
               <h3 className="text-xl font-semibold mb-6">Engineering case study placeholder</h3>
-              <p className="text-gray-400 mb-8">
+              <p className="text-white mb-8">
                 Swap in client logos, throughput metrics, or screenshots. Highlight latency improvements, revenue
                 impact, or feature velocity gains from a recent engagement.
               </p>
@@ -198,7 +198,7 @@ export default function DevPage() {
                 {suggestedContent.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <span className="text-white mr-3">•</span>
-                    <span className="text-gray-400 text-sm">{item}</span>
+                    <span className="text-white text-sm">{item}</span>
                   </li>
                 ))}
               </ul>

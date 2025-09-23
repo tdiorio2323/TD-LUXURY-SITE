@@ -65,18 +65,13 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-32">
-        {/* Background Image with reduced overlay */}
-        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover grayscale">
-          <source
-            src="/placeholder.mp4?query=aerial helicopter view of new york city skyline black and white cinematic"
-            type="video/mp4"
-          />
-        </video>
+        <div className="absolute inset-0 global-hero" aria-hidden="true"></div>
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
 
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance text-white">LUXURY STRATEGY CREATIVITY</h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8">All in one place</p>
+          <p className="text-xl md:text-2xl text-white mb-8">All in one place</p>
         </div>
       </section>
 
@@ -86,20 +81,23 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-            <p className="text-gray-400 text-lg">Premium design solutions tailored for high-growth brands</p>
+            <p className="text-white text-lg">Premium design solutions tailored for high-growth brands</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <GlassCard key={index} className="hover:bg-white/10 transition-all duration-300">
+              <GlassCard key={index} className="hover:bg-neutral-900/80 transition-all duration-300">
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-white/10 rounded-lg">
+                  <div className="p-3 bg-neutral-900/80 border border-white/20 rounded-lg">
                     <service.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold mb-2 text-white">{service.title}</h3>
-                    <p className="text-gray-200 text-sm mb-4">{service.description}</p>
-                    <a href="#" className="text-blue-300 text-sm hover:underline hover:text-blue-200">
+                    <p className="text-white text-sm mb-4">{service.description}</p>
+                    <a
+                      href="#"
+                      className="text-white text-sm underline-offset-4 hover:underline transition-opacity hover:opacity-80"
+                    >
                       {service.link}
                     </a>
                   </div>
@@ -116,12 +114,12 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Capabilities</h2>
-            <p className="text-gray-400 text-lg">A quick peek at what we build</p>
+            <p className="text-white text-lg">A quick peek at what we build</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {capabilities.map((capability, index) => (
-              <GlassCard key={index} className="overflow-hidden hover:bg-white/10 transition-all duration-300">
+              <GlassCard key={index} className="overflow-hidden hover:bg-neutral-900/80 transition-all duration-300">
                 <div className="aspect-[4/3] bg-gray-800 rounded-lg mb-4 overflow-hidden">
                   <img
                     src={capability.image || "/placeholder.svg"}
@@ -131,7 +129,7 @@ export default function HomePage() {
                 </div>
                 <div className="p-2">
                   <h3 className="text-lg font-semibold mb-1 text-white">{capability.title}</h3>
-                  <p className="text-gray-200 text-sm">{capability.subtitle}</p>
+                  <p className="text-white text-sm">{capability.subtitle}</p>
                 </div>
               </GlassCard>
             ))}
@@ -145,7 +143,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <GlassCard className="p-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Brand?</h2>
-            <p className="text-gray-400 text-lg mb-8">
+            <p className="text-white text-lg mb-8">
               Let's create something extraordinary together. Contact us to discuss your premium design needs.
             </p>
             <FrostedButton href="/contact">Contact Us</FrostedButton>

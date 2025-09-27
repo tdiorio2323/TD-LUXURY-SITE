@@ -140,8 +140,13 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden -mt-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-800 to-slate-900">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/portfolio-hero-image.jpg"
+            alt="Portfolio Hero"
+            className="w-full h-full object-cover object-center"
+          />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
@@ -243,20 +248,20 @@ export default function PortfolioPage() {
 
       {/* Modal for Project Details */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-black/90 border border-white/20 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm">
+          <div className="bg-black/90 border border-white/20 rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6 lg:p-8">
               {/* Header */}
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center space-x-4">
+              <div className="flex items-center justify-between mb-6 sm:mb-8">
+                <div className="flex items-center space-x-3 sm:space-x-4">
                   <img
                     src={selectedProject.logo}
                     alt={selectedProject.clientName}
-                    className="w-12 h-12 object-contain"
+                    className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                   />
                   <div>
-                    <h2 className="text-2xl font-bold text-white">{selectedProject.clientName}</h2>
-                    <p className="text-white">{selectedProject.industry} • {selectedProject.year}</p>
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{selectedProject.clientName}</h2>
+                    <p className="text-white text-sm sm:text-base">{selectedProject.industry} • {selectedProject.year}</p>
                   </div>
                 </div>
                 <button

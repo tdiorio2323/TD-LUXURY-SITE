@@ -9,10 +9,12 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 ## Architecture
 
 **Framework**: Next.js 14 with App Router
-**Language**: TypeScript
-**Styling**: Tailwind CSS v4 with custom glass morphism utilities
-**UI Components**: Radix UI primitives with shadcn/ui setup
+**Language**: TypeScript with strict mode
+**Styling**: Tailwind CSS v4 with PostCSS integration and custom glass morphism utilities
+**UI Components**: Radix UI primitives with shadcn/ui setup (New York style, RSC enabled)
+**Package Manager**: pnpm (specified in package.json)
 **Fonts**: Geist Sans and Geist Mono
+**Icons**: Lucide React
 **Analytics**: Vercel Analytics
 
 ### Key Directories
@@ -31,10 +33,11 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 ### Component Architecture
 
 The app uses a consistent layout with:
-- Persistent navigation (`Nav` component)
-- Glass card components for content presentation
-- Frosted button components for interactions
-- Custom glass morphism CSS utilities
+- Persistent navigation (`Nav` component with mobile hamburger menu)
+- Glass card components (`GlassCard`) for content presentation
+- Frosted button components (`FrostedButton`) - polymorphic (Link or button)
+- Custom glass morphism CSS utilities (`.glass`, `.glass-strong`, `.luxury-glass`)
+- Theme provider for dark/light mode support
 
 ## Development Commands
 
@@ -61,10 +64,12 @@ npm run lint         # Run Next.js linting
 ## Design System
 
 The project implements a luxury design system with:
-- **Glass morphism effects**: `.glass` and `.glass-strong` utility classes
-- **Dark theme**: Black background with white text as primary scheme
+- **Glass morphism effects**: `.glass`, `.glass-strong`, `.luxury-glass` utility classes with backdrop blur
+- **Dark theme**: Black background with white text as primary scheme (neutral color palette)
 - **Typography**: Geist font family for modern, clean aesthetics
 - **Icons**: Lucide React for consistent iconography
+- **Components**: Built on Radix UI primitives with class-variance-authority for variants
+- **Styling**: Utility-first approach with custom CSS variables and responsive design
 
 ## Deployment
 
@@ -78,3 +83,25 @@ The project implements a luxury design system with:
 - Manual changes should be carefully considered as they may be overwritten by v0.app syncs
 - The app uses Suspense for loading states and error boundaries
 - Console logging is present in layout for debugging v0.app integration
+
+## Key Libraries & Dependencies
+
+**UI Framework:**
+- `@radix-ui/*` - Complete suite of accessible UI primitives
+- `class-variance-authority` - Component variant management
+- `clsx` + `tailwind-merge` - Conditional className handling (via `cn` utility)
+
+**Forms & Validation:**
+- `react-hook-form` + `zod` - Form handling and validation
+- `sonner` - Toast notifications
+
+**Development:**
+- `@vercel/analytics` - Performance tracking
+- `next-themes` - Theme management capability
+
+## TypeScript Patterns
+
+- Path aliases: `@/*` points to project root
+- Strict typing with proper interface definitions
+- Client components marked with `"use client"` directive
+- Polymorphic components (e.g., FrostedButton as Link or button)

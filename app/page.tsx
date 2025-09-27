@@ -64,14 +64,14 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-32">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 global-hero" aria-hidden="true"></div>
         <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance text-white">LUXURY STRATEGY CREATIVITY</h1>
-          <p className="text-xl md:text-2xl text-white mb-8">All in one place</p>
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight">LUXURY STRATEGY CREATIVITY</h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8">All in one place.</p>
         </div>
       </section>
 

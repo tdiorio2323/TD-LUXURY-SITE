@@ -71,8 +71,13 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden -mt-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-gray-900 to-blue-900">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/contact-hero-image.jpg"
+            alt="Contact Hero"
+            className="w-full h-full object-cover object-center"
+          />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
@@ -88,9 +93,9 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             {/* Email */}
             <div className="flex items-start space-x-4">
               <div className="w-12 h-12 bg-neutral-900/70 border border-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -151,11 +156,11 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <GlassCard className="p-8">
-              <h2 className="text-2xl font-bold mb-8">Start Your Project</h2>
+            <GlassCard className="p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Start Your Project</h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="fullName" className="block text-sm font-medium mb-2">
                       Full Name *

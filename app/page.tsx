@@ -91,8 +91,8 @@ export default function HomePage() {
       {/* Scrollable Content Overlay */}
       <div className="content-overlay">
         {/* Hero Content - Full Viewport Height */}
-        <section className="relative h-screen h-[100dvh] flex items-center justify-center pt-32 md:pt-0">
-          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10 flex flex-col items-center justify-center min-h-[50vh] md:min-h-auto">
+        <section className="relative h-screen h-[100dvh] flex items-center justify-center">
+          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10 flex flex-col items-center justify-center h-full">
             <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight text-center">
               LUXURY STRATEGY CREATIVITY
             </h1>

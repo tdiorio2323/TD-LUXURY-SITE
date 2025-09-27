@@ -63,7 +63,7 @@ export default function DevPage() {
         <div className="absolute inset-0">
           <img
             src="/dev-hero-image.jpg"
-            alt="Full-Stack Development Hero"
+            alt="Advanced full-stack development platform showcasing modern architecture and scalable solutions"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>

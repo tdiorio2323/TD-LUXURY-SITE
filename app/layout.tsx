@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Nav } from "@/components/nav"
 import { Footer } from "@/components/footer"
+import { AnalyticsProvider } from "@/components/analytics-provider"
 import "./globals.css"
 import type React from "react"
 import { Suspense } from "react"
@@ -23,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-black text-white antialiased`}>
-        <Nav />
-        <main className="pt-32">
-          <Suspense fallback={<div className="text-white p-8">Loading...</div>}>{children}</Suspense>
-        </main>
-        <Footer />
+        <AnalyticsProvider>
+          <Nav />
+          <main className="pt-32">
+            <Suspense fallback={<div className="text-white p-8">Loading...</div>}>{children}</Suspense>
+          </main>
+          <Footer />
+        </AnalyticsProvider>
         <Analytics />
       </body>
     </html>

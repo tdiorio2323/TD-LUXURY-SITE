@@ -58,7 +58,7 @@ export default function WebPage() {
         <div className="absolute inset-0">
           <img
             src="/hero-image.jpg"
-            alt="Website Design Hero"
+            alt="Luxury website design showcasing premium digital experiences and conversion-focused solutions"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>

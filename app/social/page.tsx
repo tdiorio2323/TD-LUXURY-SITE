@@ -58,7 +58,7 @@ export default function SocialPage() {
         <div className="absolute inset-0">
           <img
             src="/social-hero-image.jpg"
-            alt="Social Media Marketing Hero"
+            alt="Strategic social media marketing showcasing content creation and community engagement solutions"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>

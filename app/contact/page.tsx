@@ -2,10 +2,10 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
-import { Mail, Clock, MapPin } from "lucide-react"
+import { Mail, Clock, MapPin, Download, Calendar, Rocket, Mail as MailIcon } from "lucide-react"
 
 const services = [
   "Web Experience",
@@ -44,6 +44,7 @@ const faqs = [
 ]
 
 export default function ContactPage() {
+  const [contactType, setContactType] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -54,6 +55,14 @@ export default function ContactPage() {
     timeline: "",
     details: "",
   })
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const type = urlParams.get('type')
+    if (type) {
+      setContactType(type)
+    }
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -156,8 +165,30 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <GlassCard className="p-6 sm:p-8">
-              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Start Your Project</h2>
+            {/* Quick Contact Options */}
+            <div className="grid md:grid-cols-2 gap-4 mb-8">
+              <GlassCard className="p-4 text-center hover:bg-neutral-900/80 transition-all cursor-pointer">
+                <h3 className="font-semibold mb-2">Quick Consultation</h3>
+                <p className="text-white text-sm mb-4">15-minute discovery call to discuss your project</p>
+                <FrostedButton href="https://calendly.com/tdstudios" className="w-full text-sm">
+                  Book Call
+                </FrostedButton>
+              </GlassCard>
+
+              <GlassCard className="p-4 text-center hover:bg-neutral-900/80 transition-all cursor-pointer">
+                <h3 className="font-semibold mb-2">Project Estimate</h3>
+                <p className="text-white text-sm mb-4">Get a detailed quote for your specific needs</p>
+                <button
+                  onClick={() => document.getElementById('full-form')?.scrollIntoView({behavior: 'smooth'})}
+                  className="w-full px-4 py-2 bg-neutral-900/70 backdrop-blur-sm border border-white/20 rounded-lg text-white text-sm font-medium hover:bg-neutral-900/80 transition-colors"
+                >
+                  Get Quote
+                </button>
+              </GlassCard>
+            </div>
+
+            <GlassCard className="p-6 sm:p-8" id="full-form">
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Project Details</h2>
 
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
@@ -197,7 +228,7 @@ export default function ContactPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium mb-2">
-                      Company Name
+                      Company Name (Optional)
                     </label>
                     <input
                       type="text"
@@ -212,7 +243,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number
+                      Phone Number (Optional)
                     </label>
                     <input
                       type="tel"
@@ -221,7 +252,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
-                      placeholder="(555) 123-4567"
+                      placeholder="Preferred for urgent projects"
                     />
                   </div>
                 </div>
@@ -289,26 +320,59 @@ export default function ContactPage() {
                   </select>
                 </div>
 
-                <div>
-                  <label htmlFor="details" className="block text-sm font-medium mb-2">
-                    Project Details *
-                  </label>
-                  <textarea
-                    id="details"
-                    name="details"
-                    value={formData.details}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60 resize-none"
-                    placeholder="Tell us about your project, goals, and any specific requirements..."
-                  />
-                </div>
+                {/* Conditional details field based on contact type */}
+                {!contactType || contactType === 'project' ? (
+                  <div>
+                    <label htmlFor="details" className="block text-sm font-medium mb-2">
+                      Project Details *
+                    </label>
+                    <textarea
+                      id="details"
+                      name="details"
+                      value={formData.details}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60 resize-none"
+                      placeholder="Tell us about your project, goals, and any specific requirements..."
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <label htmlFor="details" className="block text-sm font-medium mb-2">
+                      Additional Information (Optional)
+                    </label>
+                    <textarea
+                      id="details"
+                      name="details"
+                      value={formData.details}
+                      onChange={handleChange}
+                      rows={3}
+                      className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60 resize-none"
+                      placeholder={
+                        contactType === 'guide' ? 'What specific design challenges are you facing?' :
+                        contactType === 'consultation' ? 'What would you like to discuss in our call?' :
+                        contactType === 'newsletter' ? 'What type of design content interests you most?' :
+                        'Any additional information...'
+                      }
+                    />
+                  </div>
+                )}
 
                 <div className="pt-4">
-                  <FrostedButton type="submit" className="w-full">
-                    Send Message
+                  <FrostedButton type="submit" className="w-full btn-primary">
+                    {contactType === 'guide' && 'Download Free Guide'}
+                    {contactType === 'consultation' && 'Book Free Consultation'}
+                    {contactType === 'newsletter' && 'Subscribe Now'}
+                    {!contactType && 'Send Message'}
                   </FrostedButton>
+                  {contactType && (
+                    <p className="text-white/60 text-xs mt-3 text-center">
+                      {contactType === 'newsletter' && 'No spam, unsubscribe anytime'}
+                      {contactType === 'guide' && 'Instant download after submission'}
+                      {contactType === 'consultation' && 'We\'ll send calendar link via email'}
+                    </p>
+                  )}
                 </div>
               </form>
             </GlassCard>

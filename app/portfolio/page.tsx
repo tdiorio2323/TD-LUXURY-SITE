@@ -8,44 +8,44 @@ import { ExternalLink, X, Calendar, ArrowRight } from "lucide-react"
 const clientProjects = [
   {
     id: 1,
-    clientName: "CABANA",
-    logo: "/placeholder.svg?text=CABANA",
-    industry: "Tech Startup",
+    clientName: "LUXE HOSPITALITY",
+    logo: "/placeholder.svg?text=LUXE",
+    industry: "Luxury Hotels",
     year: "2024",
     services: ["Website Design", "Development", "Branding"],
-    description: "Complete digital transformation for a luxury tech startup, including brand identity, website design, and full-stack development.",
+    description: "Complete digital transformation for a luxury hospitality group, featuring immersive experiences, seamless booking integration, and sophisticated brand positioning that elevated their market presence.",
     results: [
-      "300% increase in conversion rate",
-      "50% reduction in bounce rate",
-      "Award-winning design recognition"
+      "425% increase in direct bookings",
+      "65% reduction in bounce rate",
+      "Luxury Travel Awards - Best Digital Experience"
     ],
     images: [
-      "/placeholder.jpg?query=cabana website homepage",
-      "/placeholder.jpg?query=cabana mobile app interface",
-      "/placeholder.jpg?query=cabana brand guidelines"
+      "/placeholder.jpg?query=luxury hotel website",
+      "/placeholder.jpg?query=booking interface design",
+      "/placeholder.jpg?query=brand guidelines luxury"
     ],
-    liveUrl: "https://cabana.example.com",
+    liveUrl: "https://luxehospitality.example.com",
     caseStudyUrl: "#"
   },
   {
     id: 2,
-    clientName: "APSCO",
-    logo: "/placeholder.svg?text=APSCO",
-    industry: "Manufacturing",
+    clientName: "ELITE FINANCE",
+    logo: "/placeholder.svg?text=ELITE",
+    industry: "Wealth Management",
     year: "2024",
-    services: ["Website Redesign", "E-commerce"],
-    description: "Modern e-commerce platform and website redesign for a leading manufacturing company.",
+    services: ["Platform Development", "User Experience", "Security"],
+    description: "Sophisticated wealth management platform with advanced portfolio visualization, secure client portals, and institutional-grade performance analytics for high-net-worth individuals.",
     results: [
-      "200% increase in online sales",
-      "Streamlined ordering process",
-      "Mobile-first responsive design"
+      "$50M+ in assets onboarded in first quarter",
+      "99.9% platform uptime achieved",
+      "Financial Innovation Award winner"
     ],
     images: [
-      "/placeholder.jpg?query=apsco website",
-      "/placeholder.jpg?query=apsco ecommerce",
-      "/placeholder.jpg?query=apsco mobile"
+      "/placeholder.jpg?query=wealth management dashboard",
+      "/placeholder.jpg?query=portfolio analytics",
+      "/placeholder.jpg?query=secure platform"
     ],
-    liveUrl: "https://apsco.example.com",
+    liveUrl: "https://elitefinance.example.com",
     caseStudyUrl: "#"
   },
   {

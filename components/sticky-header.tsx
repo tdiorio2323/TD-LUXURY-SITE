@@ -8,10 +8,10 @@ export function StickyHeader() {
 
   return (
     <div
-      className="sticky-header"
+      className="fixed top-0 left-0 right-0 z-50 sticky-header"
       style={{
-        opacity: headerOpacity,
-        transform: headerTransform,
+        opacity: isHeroVisible ? 1 : headerOpacity,
+        transform: isHeroVisible ? 'translateY(0)' : headerTransform,
       }}
     >
       <div className="bg-black/95 backdrop-blur-md border-b border-white/10">

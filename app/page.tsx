@@ -76,6 +76,9 @@ export default function HomePage() {
 
   return (
     <div className="parallax-container">
+      {/* Navigation - Always visible */}
+      <StickyHeader />
+
       {/* Fixed Hero Background */}
       <section className="hero-fixed">
         <div
@@ -89,7 +92,7 @@ export default function HomePage() {
       {/* Scrollable Content Overlay */}
       <div className="content-overlay">
         {/* Hero Content - Full Viewport Height */}
-        <section className="relative h-screen h-[100dvh] flex items-center justify-center">
+        <section className="relative h-screen h-[100dvh] flex items-center justify-center pt-32">
           <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10">
             <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight">
               LUXURY STRATEGY CREATIVITY
@@ -99,9 +102,6 @@ export default function HomePage() {
             </p>
           </div>
         </section>
-
-        {/* Sticky Header appears here */}
-        <StickyHeader />
 
       {/* Services Section */}
       <section className="relative py-20 px-6">

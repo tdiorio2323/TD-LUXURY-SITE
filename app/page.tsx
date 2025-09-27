@@ -1,7 +1,11 @@
+"use client"
+
 import { Globe, Share2, Palette, Award, Download, Calendar, Rocket, Mail } from "lucide-react"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { ABTestWrapper, useABTestVariant } from "@/components/ab-test-wrapper"
+import { StickyHeader } from "@/components/sticky-header"
+import { useParallax } from "@/lib/use-parallax"
 
 const services = [
   {
@@ -68,20 +72,36 @@ const capabilities = [
 
 export default function HomePage() {
   console.log("[v0] HomePage rendering")
+  const { heroTransform } = useParallax()
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 global-hero" aria-hidden="true"></div>
-        <div className="absolute inset-0 bg-black/60" aria-hidden="true"></div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
-          <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight">LUXURY STRATEGY CREATIVITY</h1>
-          <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8">All in one place.</p>
-        </div>
+    <div className="parallax-container">
+      {/* Fixed Hero Background */}
+      <section className="hero-fixed">
+        <div
+          className="parallax-hero h-full w-full"
+          style={{ transform: heroTransform }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
       </section>
+
+      {/* Scrollable Content Overlay */}
+      <div className="content-overlay">
+        {/* Hero Content - Full Viewport Height */}
+        <section className="relative h-screen h-[100dvh] flex items-center justify-center">
+          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10">
+            <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight">
+              LUXURY STRATEGY CREATIVITY
+            </h1>
+            <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8">
+              All in one place.
+            </p>
+          </div>
+        </section>
+
+        {/* Sticky Header appears here */}
+        <StickyHeader />
 
       {/* Services Section */}
       <section className="relative py-20 px-6">
@@ -399,6 +419,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   )
 }

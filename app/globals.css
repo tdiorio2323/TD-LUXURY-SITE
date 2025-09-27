@@ -115,7 +115,7 @@ body::before {
 }
 
 .global-hero {
-  background-image: url("/images/nyc-background.jpg");
+  background-image: url("/hero-image.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -61,7 +61,7 @@ export default function WebPage() {
             alt="Website Design Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>
 
         {/* Hero Content */}

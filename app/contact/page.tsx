@@ -78,7 +78,7 @@ export default function ContactPage() {
             alt="Contact Hero"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">

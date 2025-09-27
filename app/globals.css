@@ -59,6 +59,11 @@ body {
   body {
     background-attachment: scroll;
   }
+
+  /* Reduce hero overlay darkness on mobile */
+  .hero-overlay-mobile {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
 }
 
 body::before {

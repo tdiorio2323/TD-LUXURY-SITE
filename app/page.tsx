@@ -83,7 +83,6 @@ export default function HomePage() {
       <section className="hero-fixed">
         <div
           className="parallax-hero h-full w-full"
-          style={{ transform: heroTransform }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
@@ -92,12 +91,12 @@ export default function HomePage() {
       {/* Scrollable Content Overlay */}
       <div className="content-overlay">
         {/* Hero Content - Full Viewport Height */}
-        <section className="relative h-screen h-[100dvh] flex items-center justify-center pt-32">
-          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10">
-            <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight">
+        <section className="relative h-screen h-[100dvh] flex items-center justify-center pt-32 md:pt-0">
+          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10 flex flex-col items-center justify-center min-h-[50vh] md:min-h-auto">
+            <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight text-center">
               LUXURY STRATEGY CREATIVITY
             </h1>
-            <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8">
+            <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8 text-center">
               All in one place.
             </p>
           </div>

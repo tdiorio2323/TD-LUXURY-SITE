@@ -53,7 +53,7 @@ export default function WebPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with overlay */}
         <div className="absolute inset-0">
           <img
@@ -65,7 +65,7 @@ export default function WebPage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-6">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Website Design That Converts</h1>
           <p className="text-xl text-white mb-8 max-w-2xl">
             Premium website design with luxury aesthetics, conversion-focused UX, and stunning visual storytelling.

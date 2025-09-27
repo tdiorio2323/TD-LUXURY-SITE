@@ -92,13 +92,15 @@ export default function HomePage() {
       <div className="content-overlay">
         {/* Hero Content - Full Viewport Height */}
         <section className="relative h-screen h-[100dvh] flex items-center justify-center">
-          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10 flex flex-col items-center justify-center h-full">
-            <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight text-center">
-              LUXURY STRATEGY CREATIVITY
-            </h1>
-            <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8 text-center">
-              All in one place.
-            </p>
+          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10 flex flex-col items-center justify-center h-full w-full">
+            <div className="flex flex-col items-center justify-center text-center w-full">
+              <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight text-center">
+                LUXURY STRATEGY CREATIVITY
+              </h1>
+              <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8 text-center">
+                All in one place.
+              </p>
+            </div>
           </div>
         </section>
 

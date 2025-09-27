@@ -16,7 +16,7 @@ interface FrostedButtonProps {
 
 export function FrostedButton({ href, children, className = "", onClick, type = "button", analyticsLabel, analyticsPosition }: FrostedButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center px-6 py-3 bg-neutral-900/70 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium hover:bg-neutral-900/80 transition-colors"
+    "inline-flex items-center justify-center px-6 py-3 bg-neutral-900/70 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium hover:bg-neutral-900/80 transition-all duration-300 mobile-touch-target mobile-btn-primary md:mobile-btn-primary"
 
   const handleClick = () => {
     const buttonText = typeof children === 'string' ? children : 'Button'

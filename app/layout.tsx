@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  userScalable: false,
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +37,36 @@ export default function RootLayout({
           <Footer />
         </AnalyticsProvider>
         <Analytics />
+
+        {/* Mobile Viewport Height Fix Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Fix mobile viewport height issues
+              function setVH() {
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', vh + 'px');
+              }
+
+              // Set initial value
+              setVH();
+
+              // Re-calculate on resize and orientation change
+              window.addEventListener('resize', setVH);
+              window.addEventListener('orientationchange', () => {
+                setTimeout(setVH, 100);
+              });
+
+              // Stagger animation delays for mobile content
+              document.addEventListener('DOMContentLoaded', () => {
+                const mobileContentElements = document.querySelectorAll('.mobile-content-spacing');
+                mobileContentElements.forEach((el, index) => {
+                  el.style.setProperty('--stagger-delay', index);
+                });
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   )

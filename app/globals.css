@@ -58,57 +58,199 @@ body {
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
+    background-size: cover;
+    background-position: center top;
+    /* Ensure consistent luxury background on mobile */
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
-  /* Reduce hero overlay darkness on mobile */
+  /* Luxury Mobile Hero Overlay */
   .hero-overlay-mobile {
-    background-color: rgba(0, 0, 0, 0.05) !important;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0.45) 100%
+    ) !important;
+    backdrop-filter: blur(2px);
   }
 
-  /* Mobile-optimized touch targets */
+  /* Premium Mobile Touch Targets */
   .mobile-touch-target {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Mobile-friendly glass cards */
+  .mobile-touch-target:active {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+  }
+
+  /* Luxury Mobile Glass Effects */
   .glass-mobile {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Mobile typography scaling */
+  .glass-mobile:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Luxury Mobile Typography System */
   .mobile-title {
-    line-height: 1.2;
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: clamp(2.25rem, 8vw, 3.5rem);
+    letter-spacing: -0.02em;
     text-align: center;
-    word-break: break-word;
-    hyphens: auto;
     margin: 0 auto;
-    max-width: 90vw;
+    max-width: 95vw;
     display: block;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: luxuryTextShine 3s ease-in-out infinite;
+  }
+
+  @keyframes luxuryTextShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 
   .mobile-subtitle {
-    line-height: 1.4;
-    font-size: clamp(1rem, 3.5vw, 1.25rem);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: clamp(1.125rem, 4vw, 1.5rem);
+    letter-spacing: 0.01em;
     text-align: center;
-    margin: 0 auto;
-    max-width: 85vw;
+    margin: 1rem auto 0;
+    max-width: 90vw;
     display: block;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   }
 
-  /* Mobile-optimized grid spacing */
+  /* Mobile Hero Content Container */
+  .mobile-hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    position: relative;
+    z-index: 10;
+  }
+
+  .mobile-hero-content {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    animation: luxuryFadeInUp 1s ease-out;
+  }
+
+  @keyframes luxuryFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile Grid with Luxury Spacing */
   .mobile-grid {
-    gap: 1rem;
+    gap: 1.5rem;
+    padding: 0 1rem;
   }
 
-  /* Mobile navigation enhancements */
+  /* Luxury Mobile Navigation */
   .mobile-nav-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Mobile Button Enhancements */
+  .mobile-btn-primary {
+    min-height: 48px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-hover) 100%);
+    color: var(--luxury-charcoal);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 4px 16px rgba(212, 175, 55, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-btn-primary:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow:
+      0 2px 8px rgba(212, 175, 55, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Mobile Spacing Adjustments */
+  .mobile-section-padding {
+    padding: 3rem 1rem;
+  }
+
+  .mobile-content-spacing {
+    margin-bottom: 2rem;
+  }
+
+  /* Mobile Luxury Scroll Indicators */
+  .mobile-scroll-indicator {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    animation: bounceGentle 2s infinite;
+  }
+
+  @keyframes bounceGentle {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-8px); }
+    60% { transform: translateX(-50%) translateY(-4px); }
   }
 }
 
@@ -133,37 +275,18 @@ body::before {
   background-attachment: fixed;
 }
 
-/* Mobile-specific hero styles */
+/* Clean Mobile Hero Implementation */
 @media (max-width: 768px) {
-  .parallax-hero {
-    background-attachment: scroll; /* Fixed attachment doesn't work on mobile */
-    background-size: cover;
-    background-position: center center;
-    /* Ensure image covers full viewport without zooming */
-    min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height for mobile */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  /* Simple mobile text styling */
+  .mobile-title {
+    font-size: 2.5rem !important;
+    line-height: 1.1;
+    text-align: center;
   }
 
-  /* Ensure hero section is properly positioned on mobile */
-  .hero-fixed {
-    position: relative !important; /* Override fixed positioning on mobile */
-  }
-
-  /* Mobile hero content positioning */
-  .content-overlay section:first-child {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-top: 80px; /* Account for navigation */
+  .mobile-subtitle {
+    font-size: 1.25rem !important;
+    text-align: center;
   }
 }
 
@@ -506,11 +629,115 @@ body::before {
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Mobile Viewport Height Fix */
+.mobile-vh-fix {
+  height: 100vh;
+  height: 100dvh;
+  /* Fallback for older browsers */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 768px) {
+  /* Enhance button interactions */
+  button, .btn, a[role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  button:active, .btn:active, a[role="button"]:active {
+    transform: scale(0.95);
+  }
+
+  /* Improved text selection */
+  ::selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #ffffff;
+  }
+
+  /* Smooth scrolling enhancement */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile glass card hover states */
+  .glass-mobile:active {
+    transform: scale(0.98) translateY(-1px);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Mobile hero text animations */
+  .mobile-title {
+    animation: luxuryTextEntry 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .mobile-subtitle {
+    animation: luxuryTextEntry 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  }
+
+  @keyframes luxuryTextEntry {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  /* Mobile content stagger animation */
+  .mobile-content-spacing {
+    animation: staggerIn 0.8s ease-out forwards;
+    animation-delay: calc(var(--stagger-delay, 0) * 0.1s);
+    opacity: 0;
+  }
+
+  @keyframes staggerIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Performance optimizations */
+  .parallax-hero {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .glass-mobile {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Set CSS custom property for viewport height on mobile */
+  html {
+    /* Set viewport height custom property */
+    --vh: 1vh;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      /* Update custom property on mobile for accurate viewport height */
+      --vh: 1vh;
+    }
   }
 }

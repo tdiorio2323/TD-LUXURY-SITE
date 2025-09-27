@@ -75,38 +75,35 @@ export default function HomePage() {
   const { heroTransform } = useParallax()
 
   return (
-    <div className="parallax-container">
+    <div className="min-h-screen">
       {/* Navigation - Always visible */}
       <StickyHeader />
 
-      {/* Fixed Hero Background */}
-      <section className="hero-fixed">
-        <div
-          className="parallax-hero h-full w-full"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+      {/* SIMPLE MOBILE HERO SECTION */}
+      <section
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/parallax-hero.jpg")',
+          backgroundAttachment: 'scroll'
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* Hero content */}
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-white leading-tight">
+            LUXURY STRATEGY CREATIVITY
+          </h1>
+          <p className="text-xl md:text-2xl text-white mb-6 sm:mb-8">
+            All in one place.
+          </p>
+        </div>
       </section>
 
-      {/* Scrollable Content Overlay */}
-      <div className="content-overlay">
-        {/* Hero Content - Full Viewport Height */}
-        <section className="relative h-screen h-[100dvh] flex items-center justify-center">
-          <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 z-10 flex flex-col items-center justify-center h-full w-full">
-            <div className="flex flex-col items-center justify-center text-center w-full">
-              <h1 className="mobile-title md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance text-white leading-tight text-center">
-                LUXURY STRATEGY CREATIVITY
-              </h1>
-              <p className="mobile-subtitle md:text-2xl text-white mb-6 sm:mb-8 text-center">
-                All in one place.
-              </p>
-            </div>
-          </div>
-        </section>
-
       {/* Services Section */}
-      <section className="relative py-20 px-6">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative py-20 px-6 mobile-section-padding">
+        <div className="absolute inset-0 bg-black/40 hero-overlay-mobile"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
@@ -115,9 +112,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mobile-grid">
             {services.map((service, index) => (
-              <GlassCard key={index} className="hover:bg-neutral-900/80 transition-all duration-300">
+              <GlassCard key={index} className="glass-mobile hover:bg-neutral-900/80 transition-all duration-300 mobile-content-spacing">
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-neutral-900/80 border border-white/20 rounded-lg">
+                  <div className="mobile-touch-target p-3 bg-neutral-900/80 border border-white/20 rounded-lg">
                     <service.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -138,8 +135,8 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-16 px-6">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative py-16 px-6 mobile-section-padding">
+        <div className="absolute inset-0 bg-black/40 hero-overlay-mobile"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-8">
@@ -187,17 +184,17 @@ export default function HomePage() {
       </section>
 
       {/* Client Testimonials */}
-      <section className="relative py-20 px-6">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative py-20 px-6 mobile-section-padding">
+        <div className="absolute inset-0 bg-black/40 hero-overlay-mobile"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
             <p className="text-white text-lg">Real results from luxury brands we've transformed</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16 mobile-grid">
-            <GlassCard className="luxury-glass">
+            <GlassCard className="luxury-glass glass-mobile mobile-content-spacing">
               <div className="flex items-start space-x-4 mb-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <div className="mobile-touch-target w-12 h-12 bg-white rounded-full flex items-center justify-center">
                   <span className="text-black font-bold text-lg">M</span>
                 </div>
                 <div>
@@ -212,9 +209,9 @@ export default function HomePage() {
               <div className="flex text-yellow-400 text-sm">★★★★★</div>
             </GlassCard>
 
-            <GlassCard className="luxury-glass">
+            <GlassCard className="luxury-glass glass-mobile mobile-content-spacing">
               <div className="flex items-start space-x-4 mb-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <div className="mobile-touch-target w-12 h-12 bg-white rounded-full flex items-center justify-center">
                   <span className="text-black font-bold text-lg">S</span>
                 </div>
                 <div>
@@ -229,9 +226,9 @@ export default function HomePage() {
               <div className="flex text-yellow-400 text-sm">★★★★★</div>
             </GlassCard>
 
-            <GlassCard className="luxury-glass">
+            <GlassCard className="luxury-glass glass-mobile mobile-content-spacing">
               <div className="flex items-start space-x-4 mb-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                <div className="mobile-touch-target w-12 h-12 bg-white rounded-full flex items-center justify-center">
                   <span className="text-black font-bold text-lg">R</span>
                 </div>
                 <div>
@@ -250,8 +247,8 @@ export default function HomePage() {
       </section>
 
       {/* Featured Capabilities */}
-      <section className="relative py-20 px-6">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative py-20 px-6 mobile-section-padding">
+        <div className="absolute inset-0 bg-black/40 hero-overlay-mobile"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Capabilities</h2>
@@ -260,7 +257,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 mobile-grid">
             {capabilities.map((capability, index) => (
-              <GlassCard key={index} className="overflow-hidden hover:bg-neutral-900/80 transition-all duration-300">
+              <GlassCard key={index} className="glass-mobile overflow-hidden hover:bg-neutral-900/80 transition-all duration-300 mobile-content-spacing">
                 <div className="aspect-[4/3] bg-gray-800 rounded-lg mb-4 overflow-hidden">
                   <img
                     src={capability.image || "/placeholder.svg"}
@@ -279,8 +276,8 @@ export default function HomePage() {
       </section>
 
       {/* Lead Magnets Section */}
-      <section className="relative py-20 px-6">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section className="relative py-20 px-6 mobile-section-padding">
+        <div className="absolute inset-0 bg-black/40 hero-overlay-mobile"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Start Your Journey</h2>
@@ -289,9 +286,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Free Resource */}
-            <GlassCard className="luxury-glass text-center">
+            <GlassCard className="luxury-glass glass-mobile text-center mobile-content-spacing">
               <div className="mb-6">
-                <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="mobile-touch-target w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-black font-bold text-xl">📚</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Design Guide</h3>
@@ -326,9 +323,9 @@ export default function HomePage() {
             </GlassCard>
 
             {/* Quick Consultation */}
-            <GlassCard className="luxury-glass text-center border-luxury-gold">
+            <GlassCard className="luxury-glass glass-mobile text-center border-luxury-gold mobile-content-spacing">
               <div className="mb-6">
-                <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="mobile-touch-target w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-black font-bold text-xl">💬</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Quick Consultation</h3>
@@ -363,9 +360,9 @@ export default function HomePage() {
             </GlassCard>
 
             {/* Full Project */}
-            <GlassCard className="luxury-glass text-center">
+            <GlassCard className="luxury-glass glass-mobile text-center mobile-content-spacing">
               <div className="mb-6">
-                <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="mobile-touch-target w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-black font-bold text-xl">🚀</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Custom Project</h3>
@@ -405,7 +402,7 @@ export default function HomePage() {
 
           {/* Soft Commitment CTA */}
           <div className="text-center">
-            <GlassCard className="glass-premium p-8 max-w-2xl mx-auto">
+            <GlassCard className="glass-premium glass-mobile p-8 max-w-2xl mx-auto mobile-content-spacing">
               <h3 className="text-2xl font-bold mb-4">Not Sure Where to Start?</h3>
               <p className="text-white mb-6">
                 Join our luxury design newsletter for weekly insights, case studies, and premium design tips.

@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Footer } from "@/components/footer"
+import { StickyHeader } from "@/components/sticky-header"
 import { AnalyticsProvider } from "@/components/analytics-provider"
 import "./globals.css"
 import type React from "react"
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-black text-white antialiased`}>
         <AnalyticsProvider>
+          <StickyHeader />
           <main>
             <Suspense fallback={<div className="text-white p-8">Loading...</div>}>{children}</Suspense>
           </main>

@@ -24,7 +24,7 @@ const clientProjects = [
       "/placeholder.jpg?query=booking interface design",
       "/placeholder.jpg?query=brand guidelines luxury"
     ],
-    liveUrl: "https://luxehospitality.example.com",
+    liveUrl: null,
     caseStudyUrl: "#"
   },
   {
@@ -45,7 +45,7 @@ const clientProjects = [
       "/placeholder.jpg?query=portfolio analytics",
       "/placeholder.jpg?query=secure platform"
     ],
-    liveUrl: "https://elitefinance.example.com",
+    liveUrl: null,
     caseStudyUrl: "#"
   },
   {
@@ -66,7 +66,7 @@ const clientProjects = [
       "/placeholder.jpg?query=truth matters content",
       "/placeholder.jpg?query=truth matters campaign"
     ],
-    liveUrl: "https://truthmatters.example.com",
+    liveUrl: null,
     caseStudyUrl: "#"
   },
   {
@@ -87,7 +87,7 @@ const clientProjects = [
       "/placeholder.jpg?query=studio interactive design",
       "/placeholder.jpg?query=studio awards"
     ],
-    liveUrl: "https://studio.example.com",
+    liveUrl: null,
     caseStudyUrl: "#"
   },
   {
@@ -108,7 +108,7 @@ const clientProjects = [
       "/placeholder.jpg?query=colombia booking platform",
       "/placeholder.jpg?query=colombia destinations"
     ],
-    liveUrl: "https://colombia.example.com",
+    liveUrl: null,
     caseStudyUrl: "#"
   },
   {
@@ -129,7 +129,7 @@ const clientProjects = [
       "/placeholder.jpg?query=lucas world platform",
       "/placeholder.jpg?query=lucas world entertainment"
     ],
-    liveUrl: "https://lucasworld.example.com",
+    liveUrl: null,
     caseStudyUrl: "#"
   }
 ]
@@ -324,10 +324,12 @@ export default function PortfolioPage() {
 
               {/* Actions */}
               <div className="flex gap-4">
-                <FrostedButton href={selectedProject.liveUrl} className="flex items-center">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  View Live Site
-                </FrostedButton>
+                {selectedProject.liveUrl && (
+                  <FrostedButton href={selectedProject.liveUrl} className="flex items-center">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View Live Site
+                  </FrostedButton>
+                )}
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="px-6 py-3 bg-neutral-900/70 border border-white/20 rounded-lg text-white hover:bg-neutral-900/80 transition-colors"

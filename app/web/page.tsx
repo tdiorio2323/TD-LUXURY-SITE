@@ -57,7 +57,7 @@ export default function WebPage() {
         {/* Background Image with overlay */}
         <div className="absolute inset-0">
           <img
-            src="/hero-image.jpg"
+            src="/web-hero.jpg"
             alt="Luxury website design showcasing premium digital experiences and conversion-focused solutions"
             className="w-full h-full object-cover"
           />

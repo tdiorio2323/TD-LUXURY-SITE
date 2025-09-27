@@ -22,7 +22,7 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 - `app/` - Next.js app router pages with route-based organization
   - `contact/` - Contact page with form functionality
   - `dev/` - Development/product platform services page
-  - `portfolio/` - Portfolio showcase and case studies
+  - `portfolio/` - Portfolio showcase and case studies (currently hidden from navigation)
   - `social/` - Social programs and community services page
   - `web/` - Web experience and marketing services page
   - `resources/` - Resource downloads and content hub
@@ -47,6 +47,7 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 
 - `public/` - Static assets including hero images and branding materials
 - `styles/` - Additional CSS files (currently contains globals.css)
+- `tests/` - Playwright end-to-end tests for mobile layout and functionality
 
 ### Component Architecture
 
@@ -62,17 +63,40 @@ The app uses a consistent luxury design layout with:
 ## Development Commands
 
 ```bash
-# Development
-npm run dev          # Start development server (Next.js dev mode)
-pnpm dev            # Alternative using pnpm (preferred package manager)
+# Development (preferred package manager: pnpm)
+pnpm dev            # Start development server (Next.js dev mode)
+npm run dev         # Alternative using npm
 
 # Building
-npm run build        # Build for production
-npm run start        # Start production server
+pnpm build          # Build for production
+pnpm start          # Start production server
+npm run build       # Alternative using npm
+npm run start       # Alternative using npm
 
 # Code Quality
-npm run lint         # Run Next.js linting with ESLint
+pnpm lint           # Run Next.js linting with ESLint
+npm run lint        # Alternative using npm
+
+# Testing
+npx playwright test # Run Playwright end-to-end tests
+npx playwright test --ui # Run tests with UI mode for debugging
+npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 ```
+
+## Testing
+
+### End-to-End Testing with Playwright
+- **Framework**: Playwright for cross-browser testing
+- **Test Files**: Located in `tests/` directory
+- **Mobile Focus**: Tests specifically validate mobile layout behavior and responsive design
+- **Key Test Areas**:
+  - Hero text centering on mobile viewports
+  - Background image parallax behavior
+  - Touch target accessibility standards
+  - Mobile viewport handling and text sizing
+- **Screenshots**: Automated visual testing captures in `tests/screenshots/`
+- **Local Development**: Tests expect dev server running on `http://localhost:3003`
+- **Configuration**: Currently no playwright.config.js - tests run with default configuration
 
 ## Configuration Details
 
@@ -182,6 +206,7 @@ npm run lint         # Run Next.js linting with ESLint
 - `next-themes`: Theme management system
 - `geist`: Premium font family (Sans and Mono variants)
 - `lucide-react`: Consistent icon library with 1000+ icons
+- `@playwright/test`: End-to-end testing framework for mobile and responsive testing
 
 ## UX Research & Optimization Context
 

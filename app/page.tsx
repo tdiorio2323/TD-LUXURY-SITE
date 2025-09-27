@@ -4,7 +4,6 @@ import { Globe, Share2, Palette, Award, Download, Calendar, Rocket, Mail } from 
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { ABTestWrapper, useABTestVariant } from "@/components/ab-test-wrapper"
-import { StickyHeader } from "@/components/sticky-header"
 import { useParallax } from "@/lib/use-parallax"
 
 const services = [
@@ -76,9 +75,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Navigation - Always visible */}
-      <StickyHeader />
-
       {/* SIMPLE MOBILE HERO SECTION */}
       <section
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"

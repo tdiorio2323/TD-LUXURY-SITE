@@ -120,7 +120,7 @@ export default function ResourcesPage() {
       <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/resources-hero-image.jpg"
+            src="/resources-hero.jpg"
             alt="Educational resources and design guides for luxury brands"
             className="w-full h-full object-cover object-center"
           />

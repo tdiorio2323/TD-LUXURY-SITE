@@ -160,18 +160,18 @@ export default function HomePage() {
             {/* Luxury Brand Recognition */}
             <div className="mt-16">
               <p className="text-sm text-white/60 mb-8 uppercase tracking-wider">Industry Recognition</p>
-              <div className="flex flex-wrap justify-center items-center gap-6 opacity-70">
+              <div className="flex flex-wrap justify-center items-center gap-6">
                 <div className="glass-light px-6 py-3 rounded-lg">
-                  <span className="text-xs text-white/80 font-medium">AWWWARDS WINNER</span>
+                  <span className="text-xs text-white font-medium">AWWWARDS WINNER</span>
                 </div>
                 <div className="glass-light px-6 py-3 rounded-lg">
-                  <span className="text-xs text-white/80 font-medium">CSS DESIGN AWARDS</span>
+                  <span className="text-xs text-white font-medium">CSS DESIGN AWARDS</span>
                 </div>
                 <div className="glass-light px-6 py-3 rounded-lg">
-                  <span className="text-xs text-white/80 font-medium">WEBBY HONOREE</span>
+                  <span className="text-xs text-white font-medium">WEBBY HONOREE</span>
                 </div>
                 <div className="glass-light px-6 py-3 rounded-lg">
-                  <span className="text-xs text-white/80 font-medium">FWA SITE OF THE DAY</span>
+                  <span className="text-xs text-white font-medium">FWA SITE OF THE DAY</span>
                 </div>
               </div>
             </div>

@@ -4,12 +4,13 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Logo } from "./logo"
-import { Instagram, Phone, MessageCircle, Send, Menu, X } from "lucide-react"
+import { Instagram, MessageCircle, Send, Menu, X } from "lucide-react"
 
 const navItems = [
   { name: "HOME", href: "/" },
   { name: "WEB", href: "/web" },
   { name: "DEV", href: "/dev" },
+  { name: "DESIGN", href: "/design" },
   { name: "SOCIAL", href: "/social" },
   { name: "RESOURCES", href: "/resources" },
   { name: "PORTFOLIO", href: "/portfolio" },
@@ -26,7 +27,20 @@ export function Nav() {
 
   return (
     <nav className="bg-black/80 backdrop-blur-sm border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      {/* Desktop: Centered Logo at Top */}
+      <div className="hidden md:block">
+        <div className="max-w-7xl mx-auto px-6 pt-6 pb-2">
+          <div className="flex justify-center">
+            <Link href="/" className="flex items-center" aria-label="TD Studios - Home">
+              <Logo className="h-16" aria-hidden="true" />
+              <span className="sr-only">TD Studios</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation and Mobile Logo Section */}
+      <div className="max-w-7xl mx-auto px-6 py-4 md:py-4">
         <div className="flex items-center justify-between">
           {/* Mobile: Centered Logo */}
           <div className="md:hidden flex-1 flex justify-center">
@@ -36,16 +50,8 @@ export function Nav() {
             </Link>
           </div>
 
-          {/* Desktop: Left-aligned Logo */}
-          <div className="hidden md:flex">
-            <Link href="/" className="flex items-center" aria-label="TD Studios - Home">
-              <Logo className="h-16" aria-hidden="true" />
-              <span className="sr-only">TD Studios</span>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          {/* Desktop Navigation - Now Centered */}
+          <div className="hidden md:flex items-center justify-center flex-1 space-x-12">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -59,15 +65,8 @@ export function Nav() {
             ))}
           </div>
 
-          {/* Desktop Social Icons */}
+          {/* Desktop Social Icons - Now on the Right */}
           <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="tel:347-485-9935"
-              aria-label="Call TD Studios at 347-485-9935"
-              className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-white/30"
-            >
-              <Phone className="w-6 h-6 text-white group-hover:scale-110 transition-transform" aria-hidden="true" />
-            </a>
             <a
               href="tel:347-485-9935"
               aria-label="Message TD Studios on Telegram at 347-485-9935"
@@ -134,14 +133,6 @@ export function Nav() {
 
             {/* Mobile Social Icons */}
             <div className="flex items-center justify-center space-x-8 pb-16 px-6">
-              <a
-                href="tel:347-485-9935"
-                onClick={() => setIsMobileMenuOpen(false)}
-                aria-label="Call TD Studios at 347-485-9935"
-                className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-white/30"
-              >
-                <Phone className="w-6 h-6 text-white group-hover:scale-110 transition-transform" aria-hidden="true" />
-              </a>
               <a
                 href="tel:347-485-9935"
                 onClick={() => setIsMobileMenuOpen(false)}

@@ -1,0 +1,25 @@
+SESSION SEED (paste this in Claude after /init)
+
+Context:
+- Project: tdstudiosny (Next.js on Vercel)
+- Domains: tdstudiosny.com (A → 76.76.21.21), www → cname.vercel-dns.com
+- Redirects: www → apex 301 in next.config.mjs
+- Build stamp: NEXT_PUBLIC_BUILD_TIME set by package.json "prebuild"
+- Deploys: prod from main only
+
+Last verified:
+- curl -I shows Vercel + PRERENDER + age:0
+- DNS dig resolves correctly
+
+Next tasks (edit below per session):
+- [ ] UI/UX polish: hero, nav, footer
+- [ ] Performance: images audit, route-level caching
+- [ ] SEO: <Head> tags, og images, sitemap/robots
+- [ ] Analytics: GA4, basic events
+- [ ] Content: homepage sections
+
+Commands to rehydrate context:
+- Read(next.config.mjs)
+- Read(package.json)
+- Read(app/layout.tsx)  or  Read(app/page.tsx)
+- Read/Write(PROJECT_NOTES.md)  ← running session log

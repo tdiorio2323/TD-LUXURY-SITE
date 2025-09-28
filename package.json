@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "echo NEXT_PUBLIC_BUILD_TIME=$(date -u +%FT%TZ) >> .env.local",
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",

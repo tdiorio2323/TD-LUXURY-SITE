@@ -13,6 +13,3 @@ coverage
 tmp
 dist
 build
-mobile-background-fix-progress.md
-lockdown.sh
-setup-secret-scanning.sh

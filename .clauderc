@@ -1,0 +1,14 @@
+project_name: TD Studios Website
+context:
+  - docs/TD_RELEASE_PIPELINE.md
+  - docs/funnel.md
+default_commands:
+  - edit
+  - diff
+  - apply
+rules:
+  - "Never start multiple Next dev servers"
+  - "Use Node 20.x"
+  - "Always use port 3000 for development"
+  - "Clear .next cache when encountering module errors"
+  - "Use pnpm as primary package manager"

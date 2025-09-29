@@ -24,9 +24,12 @@
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and iOS text size fix */
 html {
   scroll-behavior: smooth;
+  /* Prevent iOS Safari from auto-zooming text */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Custom scrollbar */
@@ -60,35 +63,16 @@ body {
 
 @media (max-width: 768px) {
   body {
-    /* Keep background fixed on mobile for proper viewport handling */
-    background-attachment: fixed;
+    /* iOS Safari doesn't handle fixed backgrounds well with viewport scaling */
+    background-attachment: scroll;
     background-size: cover;
     background-position: center center;
-    /* Ensure proper mobile viewport height */
+    background-repeat: no-repeat;
+    /* Ensure proper mobile viewport height with dvh fallback */
     min-height: 100vh;
     min-height: 100dvh;
-    /* Add webkit-specific fixes for mobile Safari */
+    /* iOS Safari specific background fix */
     -webkit-background-size: cover;
-    /* Ensure background covers full mobile viewport */
-    background-size: 100% 100%;
-  }
-
-  /* Mobile Safari and iOS specific fixes */
-  @supports (-webkit-touch-callout: none) {
-    body {
-      /* Fix for iOS Safari background positioning */
-      background-attachment: scroll;
-      background-size: cover;
-      background-position: center center;
-      /* Prevent background zoom/shift on iOS */
-      background-repeat: no-repeat;
-    }
-  }
-
-  /* Fallback for other mobile browsers */
-  body {
-    background-size: cover;
-    background-position: center center;
   }
 
   /* Luxury Mobile Hero Overlay */

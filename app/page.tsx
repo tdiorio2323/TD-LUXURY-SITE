@@ -77,7 +77,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* SIMPLE MOBILE HERO SECTION */}
       <section
-        className="relative min-h-screen flex items-center justify-center"
+        className="relative min-h-[100dvh] flex items-center justify-center"
       >
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40"></div>

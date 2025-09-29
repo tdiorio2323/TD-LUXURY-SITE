@@ -54,16 +54,41 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 @media (max-width: 768px) {
   body {
-    background-attachment: scroll;
+    /* Keep background fixed on mobile for proper viewport handling */
+    background-attachment: fixed;
     background-size: cover;
-    background-position: center top;
-    /* Ensure consistent luxury background on mobile */
+    background-position: center center;
+    /* Ensure proper mobile viewport height */
     min-height: 100vh;
     min-height: 100dvh;
+    /* Add webkit-specific fixes for mobile Safari */
+    -webkit-background-size: cover;
+    /* Ensure background covers full mobile viewport */
+    background-size: 100% 100%;
+  }
+
+  /* Mobile Safari and iOS specific fixes */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      /* Fix for iOS Safari background positioning */
+      background-attachment: scroll;
+      background-size: cover;
+      background-position: center center;
+      /* Prevent background zoom/shift on iOS */
+      background-repeat: no-repeat;
+    }
+  }
+
+  /* Fallback for other mobile browsers */
+  body {
+    background-size: cover;
+    background-position: center center;
   }
 
   /* Luxury Mobile Hero Overlay */
@@ -598,6 +623,39 @@ body::before {
   height: calc(var(--vh, 1vh) * 100);
 }
 
+/* Mobile Background Container Fix */
+@media (max-width: 768px) {
+  /* Ensure full viewport coverage on mobile */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Mobile background positioning optimization */
+  body {
+    /* Prevent background image distortion on mobile */
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    /* iOS Safari specific fixes */
+    -webkit-background-size: cover;
+    -webkit-background-attachment: scroll;
+
+    /* Ensure background covers status bar area */
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+
+  /* Fix for dynamic viewport height changes */
+  @supports (height: 100dvh) {
+    body {
+      min-height: 100dvh;
+    }
+  }
+}
+
 /* Mobile-specific enhancements */
 @media (max-width: 768px) {
   /* Enhance button interactions */
@@ -691,16 +749,26 @@ body::before {
     color: hsl(var(--foreground));
   }
 
-  /* Set CSS custom property for viewport height on mobile */
+  /* Dynamic viewport height system for mobile */
   html {
     /* Set viewport height custom property */
     --vh: 1vh;
+    /* Mobile-specific height calculations */
+    --mobile-vh: 1vh;
   }
 
   @media (max-width: 768px) {
     html {
-      /* Update custom property on mobile for accurate viewport height */
+      /* Dynamic viewport height for mobile browsers */
       --vh: 1vh;
+      --mobile-vh: 1vh;
+    }
+
+    /* iOS Safari specific viewport handling */
+    @supports (-webkit-touch-callout: none) {
+      html {
+        --mobile-vh: 1vh;
+      }
     }
   }
 }

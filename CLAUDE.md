@@ -10,7 +10,7 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 
 **Framework**: Next.js 14 with App Router
 **Language**: TypeScript with strict mode enabled
-**Styling**: Tailwind CSS v4 with PostCSS integration and custom design system
+**Styling**: Tailwind CSS v3.4.17 with PostCSS integration and custom design system
 **UI Components**: Radix UI primitives with shadcn/ui setup (New York style, RSC enabled)
 **Package Manager**: pnpm (v10.15.1 specified in package.json)
 **Fonts**: Geist Sans and Geist Mono
@@ -104,6 +104,7 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 - ESLint errors ignored during builds for deployment compatibility
 - TypeScript build errors ignored for v0.app integration
 - Images set to unoptimized for static deployment compatibility
+- Domain redirects: www.tdstudiosny.com → tdstudiosny.com (permanent)
 
 ### TypeScript Configuration (`tsconfig.json`)
 - Strict mode enabled with ES6 target
@@ -112,11 +113,12 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 - Isolated modules for better build performance
 
 ### Styling Configuration
-- **Tailwind CSS v4**: Modern PostCSS-only configuration
-- **Global Styles**: Located in `app/globals.css` and `styles/globals.css`
+- **Tailwind CSS v3.4.17**: Modern PostCSS configuration with custom design system
+- **Global Styles**: Located in `app/globals.css` with comprehensive mobile optimizations
 - **Design Tokens**: CSS custom properties for colors, typography, and spacing
 - **Theme Support**: Light/dark mode variables with OKLCH color space
 - **Component Variants**: shadcn/ui New York style with neutral base color
+- **Mobile Background**: Optimized viewport handling with iOS Safari fixes and dynamic height calculation
 
 ### shadcn/ui Configuration (`components.json`)
 - Style: New York variant for premium aesthetic
@@ -186,7 +188,7 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 
 ### UI & Design System
 - `@radix-ui/*`: Complete suite of 20+ accessible UI primitives
-- `tailwindcss`: ^4.1.9 - Latest Tailwind CSS with v4 features
+- `tailwindcss`: ^3.4.17 - Modern Tailwind CSS with custom design system
 - `tailwindcss-animate`: Animation utilities for micro-interactions
 - `class-variance-authority`: Type-safe component variant management
 - `clsx` + `tailwind-merge`: Conditional className handling via `cn` utility

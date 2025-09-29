@@ -77,11 +77,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* SIMPLE MOBILE HERO SECTION */}
       <section
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url("/parallax-hero.jpg")',
-          backgroundAttachment: 'scroll'
-        }}
+        className="relative min-h-screen flex items-center justify-center"
       >
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40"></div>

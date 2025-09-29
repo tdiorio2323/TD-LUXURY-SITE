@@ -10,7 +10,7 @@
     "start": "next start",
     "scan:secrets": "secretlint \"**/*\"",
     "scan:secrets:staged": "git diff --cached --name-only --diff-filter=ACM | xargs -I{} -r secretlint \"{}\"",
-    "prepare": "husky"
+    "postinstall": "husky || true"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+node_modules
+.git
+.vscode
+.idea
+coverage
+*.log
+.next/cache
+.next/static/chunks/*.map
+.env
+.env.*
+tmp
+dist
+build

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+if ! git diff --cached --name-only --diff-filter=ACM | xargs -I{} -r secretlint "{}"; then
+  echo "🚫 Secretlint found potential secrets in staged files."
+  exit 1
+fi

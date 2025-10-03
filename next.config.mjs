@@ -9,6 +9,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        has: [{ type: "host", value: "shopquickprintz.tdstudiosny.com" }],
+        destination: "/web",
+      },
+    ];
+  },
   async redirects() {
     return [
       {

@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { clientAccessProfiles } from "@/lib/client-access"
-import { FrostedButton } from "@/components/frosted-button"
 
 interface ClientPortalPageProps {
   params: {
@@ -54,12 +53,13 @@ export default function ClientPortalPage({ params }: ClientPortalPageProps) {
     >
       <div className="min-h-screen bg-black/70 backdrop-blur-md">
         <header className="border-b border-white/10 bg-white/90 backdrop-blur flex flex-col items-center px-6 py-8">
-          <div className="relative h-16 w-16 mb-3">
+          <div className="relative h-20 w-20 mb-4">
             <Image
               src={profile.logoPath}
               alt={`${profile.displayName} logo`}
               fill
-              sizes="64px"
+              sizes="80px"
+              priority
               className="object-contain"
             />
           </div>
@@ -78,18 +78,18 @@ export default function ClientPortalPage({ params }: ClientPortalPageProps) {
               <section
                 id={section.id}
                 key={section.id}
-                className="rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl p-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+                className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)]"
               >
                 <h2 className="text-2xl font-semibold text-white mb-4 tracking-wide">{section.title}</h2>
                 <p className="text-white/80 text-sm leading-relaxed mb-6">{section.description}</p>
-                <FrostedButton className="bg-white text-black hover:bg-white/90" href="#">
+                <button className="inline-flex items-center justify-center rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 px-5 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-black shadow-[0_12px_32px_rgba(255,200,60,0.45)] transition-all duration-200 hover:from-yellow-400 hover:to-yellow-400 active:scale-[0.98]">
                   {section.cta}
-                </FrostedButton>
+                </button>
               </section>
             ))}
           </div>
 
-          <div className="mx-auto mt-16 max-w-5xl rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl p-8 text-white shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+          <div className="mx-auto mt-16 max-w-5xl rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 text-white shadow-[0_24px_70px_rgba(0,0,0,0.45)]">
             <h3 className="text-xl font-semibold mb-4 tracking-wide">Account Notes</h3>
             <p className="text-white/70 text-sm leading-relaxed">
               TD Studios manages credentials and sensitive integrations on your behalf. When you need to add or update

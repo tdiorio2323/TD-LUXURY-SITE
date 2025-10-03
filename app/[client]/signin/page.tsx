@@ -58,35 +58,36 @@ export default function ClientSignInPage({ params }: { params: { client: string 
       className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-16"
       style={{ backgroundImage: `url(${profile.backgroundPath})` }}
     >
-      <div className="relative max-w-md w-full rounded-3xl bg-black/70 backdrop-blur-lg border border-white/15 shadow-[0_20px_80px_rgba(0,0,0,0.45)] px-8 py-12">
+      <div className="relative max-w-lg w-full rounded-[32px] bg-black/68 backdrop-blur-lg border border-white/20 shadow-[0_28px_90px_rgba(0,0,0,0.55)] px-10 py-14">
         <div className="flex flex-col items-center mb-8">
-          <div className="relative h-24 w-24">
+          <div className="relative h-36 w-36">
             <Image
               src={profile.logoPath}
               alt={`${profile.displayName} logo`}
               fill
-              sizes="96px"
+              sizes="144px"
+              priority
               className="object-contain"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mb-8">
+        <div className="grid grid-cols-3 gap-4 mb-8">
           {keypadLayout.flat().map((key) => {
             const label = key === "clear" ? "C" : key === "back" ? "⌫" : key
 
             const controlStyles =
               key === "back"
-                ? "bg-red-500/80 hover:bg-red-500"
+                ? "bg-red-500/85 hover:bg-red-500"
                 : key === "clear"
-                  ? "bg-neutral-800/80 hover:bg-neutral-800"
-                  : "bg-neutral-900/75 hover:bg-neutral-900"
+                  ? "bg-neutral-800/85 hover:bg-neutral-800"
+                  : "bg-neutral-900/70 hover:bg-neutral-900"
 
             return (
               <button
                 key={key}
                 onClick={() => handleKeyPress(key)}
-                className={`aspect-square rounded-2xl border border-white/15 text-white text-xl font-semibold transition-all duration-200 flex items-center justify-center ${controlStyles}`}
+                className={`aspect-square rounded-[28px] border border-white/20 text-white text-2xl font-semibold transition-transform duration-150 ease-out flex items-center justify-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/30 ${controlStyles}`}
               >
                 {label}
               </button>
@@ -95,13 +96,13 @@ export default function ClientSignInPage({ params }: { params: { client: string 
         </div>
 
         <div className="mb-6">
-          <div className="mb-2 text-xs uppercase text-white/60 tracking-[0.35em] text-center">Passcode</div>
-          <div className="flex justify-center gap-3">
+          <div className="mb-2 text-xs uppercase text-white/65 tracking-[0.4em] text-center">Passcode</div>
+          <div className="flex justify-center gap-4">
             {[0, 1, 2, 3].map((index) => (
               <span
                 key={index}
-                className="h-3 w-3 rounded-full border border-white/40 bg-white/30"
-                style={{ opacity: code.length > index ? 1 : 0.25 }}
+                className="h-3 w-3 rounded-full border border-white/45 bg-white/35"
+                style={{ opacity: code.length > index ? 1 : 0.2 }}
               />
             ))}
           </div>
@@ -111,7 +112,7 @@ export default function ClientSignInPage({ params }: { params: { client: string 
 
         <button
           onClick={handleSubmit}
-          className="w-full rounded-full border border-yellow-400/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_12px_30px_rgba(255,200,60,0.45)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200"
+          className="w-full rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_16px_40px_rgba(255,200,60,0.55)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200 active:scale-[0.98]"
         >
           Enter
         </button>

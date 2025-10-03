@@ -52,7 +52,10 @@ export function Nav() {
 
           {/* Desktop Navigation - Now Centered */}
           <div className="hidden md:flex items-center justify-center flex-1 space-x-12">
-            {navItems.map((item) => (
+            {(typeof window !== "undefined" && window.location.host === "shopquickprintz.tdstudiosny.com"
+              ? [...navItems.slice(0, 2), { name: "PREMADE", href: "/premade-designs" }, ...navItems.slice(2)]
+              : navItems
+            ).map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -117,7 +120,10 @@ export function Nav() {
           <div className="flex flex-col justify-between h-full">
             {/* Navigation Items */}
             <div className="flex flex-col items-center justify-start pt-16 space-y-6 px-6">
-              {navItems.map((item) => (
+              {(typeof window !== "undefined" && window.location.host === "shopquickprintz.tdstudiosny.com"
+                ? [...navItems.slice(0, 2), { name: "PREMADE", href: "/premade-designs" }, ...navItems.slice(2)]
+                : navItems
+              ).map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}

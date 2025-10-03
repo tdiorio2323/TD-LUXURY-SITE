@@ -3,8 +3,7 @@
 import { Globe, Share2, Palette, Award, Download, Calendar, Rocket, Mail } from "lucide-react"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
-import { ABTestWrapper, useABTestVariant } from "@/components/ab-test-wrapper"
-import { useParallax } from "@/lib/use-parallax"
+import { ABTestWrapper } from "@/components/ab-test-wrapper"
 
 const services = [
   {
@@ -70,8 +69,6 @@ const capabilities = [
 ]
 
 export default function HomePage() {
-  console.log("[v0] HomePage rendering")
-  const { heroTransform } = useParallax()
 
   return (
     <div className="min-h-screen">

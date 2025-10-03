@@ -5,7 +5,8 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
-import { Mail, Clock, MapPin, Download, Calendar, Rocket, Mail as MailIcon } from "lucide-react"
+import { CalendlyWidget } from "@/components/calendly-widget"
+import { Mail, Clock, MapPin } from "lucide-react"
 
 const services = [
   "Web Experience",
@@ -55,6 +56,8 @@ export default function ContactPage() {
     timeline: "",
     details: "",
   })
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [statusMessage, setStatusMessage] = useState<string | null>(null)
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -64,10 +67,49 @@ export default function ContactPage() {
     }
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    setStatus('idle')
+    setStatusMessage(null)
+  }, [contactType])
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setStatus('submitting')
+    setStatusMessage(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          contactType
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Request failed')
+      }
+
+      setStatus('success')
+      setStatusMessage('Thanks for reaching out. We\'ll get back to you within one business day.')
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        budget: "",
+        timeline: "",
+        details: "",
+      })
+    } catch (error) {
+      console.error('Error submitting contact form:', error)
+      setStatus('error')
+      setStatusMessage('We couldn\'t send your message. Email tyler@tdstudiosny.com and we\'ll help right away.')
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -165,29 +207,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            {/* Quick Contact Options */}
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              <GlassCard className="p-4 text-center hover:bg-neutral-900/80 transition-all cursor-pointer">
-                <h3 className="font-semibold mb-2">Quick Consultation</h3>
-                <p className="text-white text-sm mb-4">15-minute discovery call to discuss your project</p>
-                <FrostedButton href="https://calendly.com/tdstudios" className="w-full text-sm">
-                  Book Call
-                </FrostedButton>
-              </GlassCard>
-
-              <GlassCard className="p-4 text-center hover:bg-neutral-900/80 transition-all cursor-pointer">
-                <h3 className="font-semibold mb-2">Project Estimate</h3>
-                <p className="text-white text-sm mb-4">Get a detailed quote for your specific needs</p>
-                <button
-                  onClick={() => document.getElementById('full-form')?.scrollIntoView({behavior: 'smooth'})}
-                  className="w-full px-4 py-2 bg-neutral-900/70 backdrop-blur-sm border border-white/20 rounded-lg text-white text-sm font-medium hover:bg-neutral-900/80 transition-colors"
-                >
-                  Get Quote
-                </button>
-              </GlassCard>
-            </div>
-
-            <GlassCard className="p-6 sm:p-8" id="full-form">
+            <GlassCard className="p-6 sm:p-8 mb-8" id="full-form">
               <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Project Details</h2>
 
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -360,21 +380,43 @@ export default function ContactPage() {
                 )}
 
                 <div className="pt-4">
-                  <FrostedButton type="submit" className="w-full btn-primary">
-                    {contactType === 'guide' && 'Download Free Guide'}
-                    {contactType === 'consultation' && 'Book Free Consultation'}
-                    {contactType === 'newsletter' && 'Subscribe Now'}
-                    {!contactType && 'Send Message'}
+                  <FrostedButton type="submit" className="w-full btn-primary" disabled={status === 'submitting'}>
+                    {status === 'submitting' && 'Sending...'}
+                    {status !== 'submitting' && contactType === 'guide' && 'Download Free Guide'}
+                    {status !== 'submitting' && contactType === 'consultation' && 'Book Free Consultation'}
+                    {status !== 'submitting' && contactType === 'newsletter' && 'Subscribe Now'}
+                    {status !== 'submitting' && !contactType && 'Send Message'}
                   </FrostedButton>
+                  {statusMessage && (
+                    <p
+                      className={`text-xs mt-3 text-center ${
+                        status === 'error' ? 'text-red-300' : 'text-white/80'
+                      }`}
+                    >
+                      {statusMessage}
+                    </p>
+                  )}
                   {contactType && (
                     <p className="text-white/60 text-xs mt-3 text-center">
                       {contactType === 'newsletter' && 'No spam, unsubscribe anytime'}
-                      {contactType === 'guide' && 'Instant download after submission'}
+                      {contactType === 'guide' && 'We\'ll email the guide within a few minutes'}
                       {contactType === 'consultation' && 'We\'ll send calendar link via email'}
                     </p>
                   )}
                 </div>
               </form>
+            </GlassCard>
+
+            {/* Schedule Consultation */}
+            <GlassCard className="p-6 sm:p-8 mt-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4">Or Schedule a Consultation</h2>
+              <p className="text-white text-sm mb-6">
+                Book a 15-minute discovery call to discuss your project and explore how we can help bring your vision to life.
+              </p>
+              <CalendlyWidget
+                url="https://calendly.com/tyler-tdstudiosny/new-meeting"
+                className="rounded-lg overflow-hidden"
+              />
             </GlassCard>
           </div>
         </div>

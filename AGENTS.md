@@ -1,37 +1,34 @@
 # Repository Guidelines
 
-This guide helps contributors work efficiently in this Next.js + TypeScript project. Use it as the single source of truth when developing, testing, and submitting changes.
-
 ## Project Structure & Module Organization
-- `app/` — App Router routes, layouts, and pages. Keep data fetching localized to each route to keep hydration predictable.
-- `components/` — Reusable UI imported via `@/components/*`. Expose stable, well-typed props to keep downstream routes easy to refactor.
-- `lib/` — Shared hooks/utilities. Side‑effect free; prefer pure, testable helpers.
-- `public/` — Static assets. Optimize media; use descriptive filenames for quick audits.
-- `tests/` — Playwright specs; baselines in `tests/screenshots/`. Do not commit `test-results/`.
+- `app/` owns App Router routes, layouts, and route-specific data fetching; keep server data loaders close to each page to avoid unintended re-hydration.
+- `components/` hosts shared UI imported via `@/components/*`; expose well-typed props and prefer composition over deep prop drilling.
+- `lib/` stores pure hooks and utilities; keep side effects out so helpers stay easy to unit test.
+- `public/` contains static assets; use descriptive filenames and optimize images before committing.
+- `tests/` holds Playwright specs and `tests/screenshots/` baselines; never commit `test-results/` output.
 
 ## Build, Test, and Development Commands
-- `npm ci` (or `npm install` if CI cache is absent): install deps. Use `npm cache verify` when troubleshooting lockfile drift.
-- `npm run dev`: start Next.js dev server (http://localhost:3000) with hot reload.
-- `npm run build`: production build; surfaces missing environment variables.
-- `npm start`: serve the build locally; validate image optimization and headers.
-- `npx playwright test` (`--ui` to debug, `--update-snapshots` to refresh baselines intentionally).
+- `npm ci` installs exact lockfile versions; fall back to `npm install` only when caches miss.
+- `npm run dev` starts the Next.js dev server on http://localhost:3000 with hot reload.
+- `npm run build` compiles the production build and surfaces missing env vars.
+- `npm start` serves the production bundle locally to validate optimized assets and headers.
+- `npx playwright test` runs end-to-end specs (`--headed` for debugging, `--update-snapshots` to refresh approved screenshots).
 
 ## Coding Style & Naming Conventions
-- TypeScript strict: avoid `any`. Colocate interfaces near usage; export explicit types.
-- Indent 2 spaces. Order JSX props: structure → modifiers → handlers; alphabetize multi‑line props within each group when practical.
-- File names: components PascalCase (e.g., `GlassCard.tsx`); utilities camelCase. Default export mirrors file name.
-- Tailwind is mobile‑first. Keep class lists readable and grouped; extract repeated sets into `styles/` utilities when repetition grows.
+- TypeScript strict mode: avoid `any`, colocate interfaces near usage, and export explicit types.
+- Indent with two spaces; in JSX, order props as structure → modifiers → handlers and alphabetize within each group when practical.
+- Components use PascalCase filenames (e.g., `CartDrawer.tsx`); utilities use camelCase; default exports mirror the file name.
+- Tailwind is mobile-first; group class tokens logically and extract repeats into `styles/` helpers when duplication grows.
 
 ## Testing Guidelines
-- Name specs `*.spec.ts`; use action‑first titles (e.g., “navigates to contact”).
-- Assert user‑visible outcomes. Review screenshot diffs before committing updates.
-- Before merging UI changes, run `npx playwright test --headed` and attach diffs if visuals change. Do not commit `test-results/`.
+- Name specs `*.spec.ts` with action-first titles (e.g., `navigates to contact`).
+- Assert user-visible outcomes and review screenshot diffs before approving updates.
+- Run `npx playwright test --headed` prior to merging UI or layout changes.
 
 ## Commit & Pull Request Guidelines
-- Conventional commits: `feat(scope): summary` or `fix(scope): summary` (~72 chars, present tense). Scopes mirror route or subsystem directories.
-- PRs must state problem, solution, UI impact, linked issue(s), and confirm lint/build/tests pass. Include screenshots or videos for styling shifts.
+- Follow Conventional Commits such as `feat(app): add cart summary` or `fix(lib): guard null params` (<=72 chars, present tense).
+- PR descriptions must state problem, solution, UI impact, linked issues, and confirm lint/build/tests pass; attach screenshots or videos for visual changes.
 
 ## Security & Configuration
-- Do not commit secrets. Use `.env.local` for local values; ensure required env vars are present (checked during `npm run build`).
-- Prefer descriptive env names; document any required configuration in the PR if newly introduced.
-
+- Never commit secrets; store local overrides in `.env.local` and document new env vars in the PR.
+- Use descriptive env names and let `npm run build` verify required configuration before shipping.

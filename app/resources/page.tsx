@@ -179,9 +179,12 @@ export default function ResourcesPage() {
                         analyticsLabel={`Download ${item.title}`}
                         analyticsPosition="Featured Resources"
                       >
-                        Download Free
+                        Request Access
                       </FrostedButton>
                     </div>
+                    <p className="text-white/50 text-xs mt-3">
+                      We send every resource straight to your inbox once you submit the request form.
+                    </p>
                   </GlassCard>
                 ))
             )}

@@ -69,7 +69,7 @@ export function Nav() {
           <div className="hidden md:flex items-center space-x-4">
             <a
               href="tel:347-485-9935"
-              aria-label="Message TD Studios on Telegram at 347-485-9935"
+              aria-label="Call TD Studios at 347-485-9935"
               className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             >
               <Send className="w-6 h-6 text-white group-hover:text-blue-500 transition-colors" aria-hidden="true" />
@@ -136,7 +136,7 @@ export function Nav() {
               <a
                 href="tel:347-485-9935"
                 onClick={() => setIsMobileMenuOpen(false)}
-                aria-label="Message TD Studios on Telegram at 347-485-9935"
+                aria-label="Call TD Studios at 347-485-9935"
                 className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               >
                 <Send className="w-6 h-6 text-white group-hover:text-blue-500 transition-colors" aria-hidden="true" />

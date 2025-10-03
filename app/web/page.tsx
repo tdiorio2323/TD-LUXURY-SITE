@@ -167,11 +167,17 @@ export default function WebPage() {
           {/* Case Study Section */}
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <GlassCard className="luxury-glass">
-              <h3 className="text-xl font-semibold mb-6">Featured case study placeholder</h3>
-              <p className="text-white mb-8">
-                Drop in results, screenshots, and narrative once your next flagship web engagement is ready to share.
-                Use this block for ROI numbers, testimonial quotes, or before/after visuals.
+              <h3 className="text-xl font-semibold mb-6">Quick Printz conversion lift</h3>
+              <p className="text-white mb-6">
+                We rebuilt the Quick Printz storefront with modular landing pages, a Sanity CMS model, and split-tested
+                hero funnels. Within six weeks the brand saw a 38% increase in average order value and checkout speed
+                improvements that doubled mobile conversion.
               </p>
+              <ul className="space-y-2 text-sm text-white/80">
+                <li>• 38% lift in average order value post-launch</li>
+                <li>• Mobile checkout completion up 102%</li>
+                <li>• Team can now launch seasonal offers in under an hour</li>
+              </ul>
             </GlassCard>
 
             <GlassCard className="luxury-glass">

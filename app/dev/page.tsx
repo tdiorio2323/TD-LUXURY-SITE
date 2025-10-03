@@ -137,21 +137,23 @@ export default function DevPage() {
 
           {/* Team Enablement */}
           <div className="mb-20">
-            <h3 className="text-xl font-semibold mb-8">Team enablement</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {teamEnablement.map((item, index) => (
-                <div key={index} className="flex items-start">
-                  <span className="text-white mr-3">•</span>
-                  <span className="text-white text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-6">Team enablement</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {teamEnablement.map((item, index) => (
+                  <div key={index} className="flex items-start">
+                    <span className="text-white mr-3">•</span>
+                    <span className="text-white text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
           </div>
 
           {/* Three Column Breakdown */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Delivery rhythm</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Delivery rhythm</h3>
               <ul className="space-y-3">
                 {deliveryRhythm.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -160,10 +162,10 @@ export default function DevPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Quality & security</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Quality & security</h3>
               <ul className="space-y-3">
                 {qualitySecurity.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -172,10 +174,10 @@ export default function DevPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Documentation bundle</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Documentation bundle</h3>
               <ul className="space-y-3">
                 {documentationBundle.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -184,14 +186,14 @@ export default function DevPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           </div>
 
           {/* Case Study Section */}
-          <div className="grid md:grid-cols-2 gap-12 mb-20">
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Cabana booking platform</h3>
-              <p className="text-white mb-6">
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Cabana booking platform</h3>
+              <p className="text-white text-sm mb-4">
                 Cabana needed a fast booking engine that played nicely with legacy property systems. We migrated them to
                 a Next.js app backed by Supabase, added rate-limiting middleware, and instrumented analytics for every
                 key interaction.
@@ -201,10 +203,10 @@ export default function DevPage() {
                 <li>• Automated regression suite catches issues before deploy</li>
                 <li>• Revenue dashboard now updates in real-time for operators</li>
               </ul>
-            </div>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Suggested content</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Suggested content</h3>
               <ul className="space-y-3">
                 {suggestedContent.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -213,7 +215,7 @@ export default function DevPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           </div>
 
           {/* CTA */}

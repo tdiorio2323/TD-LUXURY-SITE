@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { ClientLogo } from "@/components/client-logo"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { X, ArrowRight, Instagram, Facebook, Twitter, Linkedin, Globe } from "lucide-react"
@@ -47,21 +48,14 @@ export default function PortfolioPage() {
                 className="group cursor-pointer hover:bg-neutral-900/80 transition-all duration-300 p-8 text-center"
                 onClick={() => setSelectedProject(client)}
               >
-                <div className="relative w-24 h-24 mx-auto mb-6 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-full group-hover:bg-neutral-900/90 transition-colors">
-                  {client.logo ? (
-                    <Image
-                      src={client.logo}
-                      alt={`${client.name} logo`}
-                      fill
-                      sizes="96px"
-                      className="object-contain p-4"
-                    />
-                  ) : (
-                    <div className="flex h-full items-center justify-center px-2 text-center text-xs font-semibold text-white">
-                      {client.name}
-                    </div>
-                  )}
-                </div>
+                <ClientLogo
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  fallbackText={client.name}
+                  sizes="96px"
+                  containerClassName="relative w-24 h-24 mx-auto mb-6 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-full group-hover:bg-neutral-900/90 transition-colors"
+                  imageClassName={`object-contain p-4 ${client.logoInvert ? "invert" : ""}`}
+                />
                 <h3 className="text-xl font-semibold mb-2 text-white">{client.name}</h3>
                 <p className="text-white text-sm mb-4">{client.industry} • {client.year}</p>
                 {client.services.length > 0 && (
@@ -137,21 +131,14 @@ export default function PortfolioPage() {
               {/* Header */}
               <div className="flex items-center justify-between mb-6 sm:mb-8">
                 <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-lg">
-                    {selectedProject.logo ? (
-                      <Image
-                        src={selectedProject.logo}
-                        alt={`${selectedProject.name} logo`}
-                        fill
-                        sizes="(max-width: 640px) 48px, 64px"
-                        className="object-contain p-2"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center px-2 text-center text-[10px] font-semibold text-white">
-                        {selectedProject.name}
-                      </div>
-                    )}
-                  </div>
+                  <ClientLogo
+                    src={selectedProject.logo}
+                    alt={`${selectedProject.name} logo`}
+                    fallbackText={selectedProject.name}
+                    sizes="(max-width: 640px) 48px, 64px"
+                    containerClassName="relative w-12 h-12 sm:w-16 sm:h-16 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-lg"
+                    imageClassName={`object-contain p-2 ${selectedProject.logoInvert ? "invert" : ""}`}
+                  />
                   <div>
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{selectedProject.name}</h2>
                     <p className="text-white text-sm sm:text-base">{selectedProject.industry} • {selectedProject.year}</p>

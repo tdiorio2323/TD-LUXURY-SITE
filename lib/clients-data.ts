@@ -3,6 +3,8 @@ export interface Client {
   name: string
   slug: string
   logo: string
+  // Optional logo display modifiers
+  logoInvert?: boolean
   industry: string
   year: string
   services: string[]
@@ -56,7 +58,7 @@ export const clients: Client[] = [
     id: "apsco-sports",
     name: "Apsco Sports Enterprises",
     slug: "apsco-sports-enterprises",
-    logo: "",
+    logo: "/clients/apsco-sports/logo.avif",
     industry: "Sports & Entertainment",
     year: "2024",
     services: [
@@ -119,7 +121,7 @@ export const clients: Client[] = [
     id: "mama-rosaria",
     name: "Mama Rosaria",
     slug: "mama-rosaria",
-    logo: "",
+    logo: "/clients/mama-rosaria/logo.avif",
     industry: "Restaurant",
     year: "2024",
     services: [
@@ -135,48 +137,6 @@ export const clients: Client[] = [
       "Average table spend up 18%"
     ],
     gallery: ["/design-portfolio-2.jpg", "/design-portfolio-4.jpg"]
-  },
-  {
-    id: "yummy-time-deli",
-    name: "Yummy Time Deli",
-    slug: "yummy-time-deli",
-    logo: "",
-    industry: "Restaurant",
-    year: "2024",
-    services: [
-      "Visual identity",
-      "Online ordering kiosk",
-      "Loyalty program setup"
-    ],
-    description:
-      "Neighborhood deli transitioning to digital. Created a bold identity, launched an order-ahead kiosk, and implemented loyalty mechanics that reward repeat morning traffic.",
-    results: [
-      "Mobile orders now represent 55% of sales",
-      "Loyalty opt-in rate at 71%",
-      "Prep time per order reduced by 30%"
-    ],
-    gallery: ["/design-portfolio-1.jpg"]
-  },
-  {
-    id: "money-shot-filmz",
-    name: "Money Shot Filmz",
-    slug: "money-shot-filmz",
-    logo: "",
-    industry: "Film Production",
-    year: "2024",
-    services: [
-      "Production portfolio site",
-      "Treatment templates",
-      "Pitch deck design"
-    ],
-    description:
-      "Indie studio needed a premium showcase for music videos and documentaries. We designed a motion-forward reel hub and delivered treatment templates that impress clients.",
-    results: [
-      "Booked three national campaigns post-launch",
-      "Average proposal approval up 46%",
-      "Site watch time averages 3.8 minutes"
-    ],
-    gallery: ["/design-portfolio-4.jpg"]
   },
   {
     id: "cabana",
@@ -203,7 +163,7 @@ export const clients: Client[] = [
     id: "legacy-capital",
     name: "Legacy Capital Group",
     slug: "legacy-capital-group",
-    logo: "",
+    logo: "/clients/legacy-capital/logo.avif",
     industry: "Finance",
     year: "2024",
     services: [
@@ -287,7 +247,7 @@ export const clients: Client[] = [
     id: "serious-inquiries-only",
     name: "Serious Inquiries Only",
     slug: "serious-inquiries-only",
-    logo: "",
+    logo: "/clients/serious-inquiries-only/logo.png",
     industry: "Media",
     year: "2024",
     services: [
@@ -303,27 +263,6 @@ export const clients: Client[] = [
       "Clip production time reduced by 60%"
     ],
     gallery: ["/design-portfolio-2.jpg"]
-  },
-  {
-    id: "eam-construction",
-    name: "EAM Construction",
-    slug: "eam-construction",
-    logo: "",
-    industry: "Construction",
-    year: "2024",
-    services: [
-      "Project portfolio portal",
-      "Bid management tools",
-      "Drone footage edits"
-    ],
-    description:
-      "Commercial construction firm wanting to showcase large builds. We built a polished project gallery, centralized bids to Airtable, and edited drone footage for prospects.",
-    results: [
-      "Bid turnaround decreased by 35%",
-      "Shortlist rate up 22%",
-      "Site sessions per visit doubled"
-    ],
-    gallery: ["/design-portfolio-3.jpg"]
   },
   {
     id: "truth",
@@ -350,7 +289,7 @@ export const clients: Client[] = [
     id: "leonardos-auto",
     name: "Leonardo's Auto Body",
     slug: "leonardos-auto-body",
-    logo: "",
+    logo: "/clients/leonardos-auto/logo.avif",
     industry: "Automotive",
     year: "2024",
     services: [
@@ -408,89 +347,5 @@ export const clients: Client[] = [
       "Site dwell time averages 4 minutes"
     ],
     gallery: sharedGallery
-  },
-  {
-    id: "supreme-burger",
-    name: "Supreme Burger Co",
-    slug: "supreme-burger-co",
-    logo: "",
-    industry: "Restaurant",
-    year: "2024",
-    services: [
-      "Drive-thru branding",
-      "Menu engineering",
-      "Franchise sales kit"
-    ],
-    description:
-      "Fast casual concept franchising nationwide. We overhauled the drive-thru identity, optimized menu boards, and built a franchise deck with unit economics slides.",
-    results: [
-      "Average order speed improved by 42 seconds",
-      "Franchise inquiries up 3.2x",
-      "Combo conversion increased 33%"
-    ],
-    gallery: ["/design-portfolio-2.jpg"]
-  },
-  {
-    id: "c1mah",
-    name: "C1MAH",
-    slug: "c1mah",
-    logo: "",
-    industry: "Entertainment",
-    year: "2024",
-    services: [
-      "Artist branding",
-      "Tour merch strategy",
-      "Fan community ops"
-    ],
-    description:
-      "Independent artist collective building direct fan relationships. We refreshed the visual identity, mapped tour merch drops, and deployed a Discord-powered fan club.",
-    results: [
-      "Merch sell-outs in under 12 minutes",
-      "Fan club retention at 88%",
-      "Streaming saves up 47%"
-    ],
-    gallery: ["/design-portfolio-3.jpg"]
-  },
-  {
-    id: "elev8-fitness",
-    name: "Elev8 Fitness",
-    slug: "elev8-fitness",
-    logo: "",
-    industry: "Health & Fitness",
-    year: "2024",
-    services: [
-      "Hybrid training app",
-      "Lead nurture automation",
-      "In-studio signage"
-    ],
-    description:
-      "High-energy training studio expanding to digital classes. We shipped a hybrid training hub, automated nurture campaigns, and designed signage for consistent experience.",
-    results: [
-      "Digital memberships up 76%",
-      "Churn reduced to 4.5%",
-      "Average class fill rate at 92%"
-    ],
-    gallery: sharedGallery
-  },
-  {
-    id: "iq-format",
-    name: "IQ FORMAT",
-    slug: "iq-format",
-    logo: "",
-    industry: "Technology",
-    year: "2024",
-    services: [
-      "SaaS product marketing",
-      "Interactive ROI calculator",
-      "Thought leadership engine"
-    ],
-    description:
-      "AI-enabled ops platform preparing for Series A. We established product storytelling, built an interactive ROI calculator, and delivered a content engine for the exec team.",
-    results: [
-      "Sales-qualified pipeline up 64%",
-      "Demo-to-close rate improved by 19%",
-      "Content cadence increased to weekly"
-    ],
-    gallery: ["/design-portfolio-4.jpg", "/design-portfolio-1.jpg"]
   }
 ]

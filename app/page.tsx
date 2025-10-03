@@ -1,6 +1,7 @@
 "use client"
 
 import { Globe, Share2, Palette, Award, Download, Calendar, Rocket, Mail } from "lucide-react"
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { ABTestWrapper } from "@/components/ab-test-wrapper"
@@ -59,12 +60,12 @@ const capabilities = [
   {
     title: "E-commerce",
     subtitle: "Convert with speed",
-    image: "/sleek-ecommerce-interface.jpg",
+    image: "/ecommerce-serious-storefront.png",
   },
   {
     title: "Brand Kits",
     subtitle: "Visual identity everywhere",
-    image: "/brand-identity-kit-design.jpg",
+    image: "/design-showcase-2.jpg",
   },
 ]
 
@@ -247,11 +248,14 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 mobile-grid">
             {capabilities.map((capability, index) => (
               <GlassCard key={index} className="glass-mobile overflow-hidden hover:bg-neutral-900/80 transition-all duration-300 mobile-content-spacing">
-                <div className="aspect-[4/3] bg-gray-800 rounded-lg mb-4 overflow-hidden">
-                  <img
+                <div className="aspect-[4/3] bg-gray-800 rounded-lg mb-4 overflow-hidden relative">
+                  <Image
                     src={capability.image || "/placeholder.svg"}
                     alt={capability.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                    className="object-cover"
+                    priority={capability.title === "Brand Kits"}
                   />
                 </div>
                 <div className="p-2">

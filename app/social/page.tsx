@@ -102,22 +102,22 @@ export default function SocialPage() {
           </div>
 
           {/* Detailed Services */}
-          <div className="grid md:grid-cols-2 gap-12 mb-20">
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Channel expertise</h3>
-              <p className="text-white mb-8">{channelExpertise[0]}</p>
-            </div>
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-3">Channel expertise</h3>
+              <p className="text-white text-sm">{channelExpertise[0]}</p>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Signal reporting</h3>
-              <p className="text-white mb-8">{signalReporting[0]}</p>
-            </div>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-3">Signal reporting</h3>
+              <p className="text-white text-sm">{signalReporting[0]}</p>
+            </GlassCard>
           </div>
 
           {/* Three Column Breakdown */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Program blueprint</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Program blueprint</h3>
               <ul className="space-y-3">
                 {programBlueprint.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -126,10 +126,10 @@ export default function SocialPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Content engines</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Content engines</h3>
               <ul className="space-y-3">
                 {contentEngines.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -138,10 +138,10 @@ export default function SocialPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Reporting cadence</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Reporting cadence</h3>
               <ul className="space-y-3">
                 {reportingCadence.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -150,14 +150,14 @@ export default function SocialPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           </div>
 
           {/* Case Study Section */}
-          <div className="grid md:grid-cols-2 gap-12 mb-20">
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Sneaker Zoo launch blitz</h3>
-              <p className="text-white mb-6">
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Sneaker Zoo launch blitz</h3>
+              <p className="text-white text-sm mb-4">
                 We built a six-week drop calendar for Sneaker Zoo with daily short-form, Discord AMAs, and paid creator
                 collaborations. The program delivered a 4.2x ROAS and grew their member list by 8k subscribers.
               </p>
@@ -166,10 +166,10 @@ export default function SocialPage() {
                 <li>• 65% lift in daily story replies from community prompts</li>
                 <li>• 8k new loyalty members added during the campaign</li>
               </ul>
-            </div>
+            </GlassCard>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-6">Suggested content</h3>
+            <GlassCard className="glass-mobile mobile-content-spacing">
+              <h3 className="text-xl font-semibold mb-4">Suggested content</h3>
               <ul className="space-y-3">
                 {suggestedContent.map((item, index) => (
                   <li key={index} className="flex items-start">
@@ -178,7 +178,7 @@ export default function SocialPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           </div>
 
           {/* CTA */}

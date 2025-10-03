@@ -23,23 +23,16 @@ Each client has their own folder with the following structure:
 3. `body-boutique/` - The Body Boutique
 4. `chef-izzy/` - Chef Izzy
 5. `mama-rosaria/` - Mama Rosaria
-6. `yummy-time-deli/` - Yummy Time Deli
-7. `money-shot-filmz/` - Money Shot Filmz
-8. `cabana/` - Cabana
-9. `legacy-capital/` - Legacy Capital Group
-10. `sneaker-zoo/` - Sneaker Zoo
-11. `calco-roofing/` - Calco Roofing & Seamless Gutters
-12. `punkiez/` - Punkiez
-13. `serious-inquiries-only/` - Serious Inquiries Only
-14. `eam-construction/` - EAM Construction
-15. `truth/` - Truth
-16. `leonardos-auto/` - Leonardo's Auto Body
-17. `custom-creations-auto/` - Custom Creations Auto Body
-18. `fort-maner/` - Fort Maner
-19. `supreme-burger/` - Supreme Burger Co
-20. `c1mah/` - C1MAH
-21. `elev8-fitness/` - Elev8 Fitness
-22. `iq-format/` - IQ FORMAT
+6. `cabana/` - Cabana
+7. `legacy-capital/` - Legacy Capital Group
+8. `sneaker-zoo/` - Sneaker Zoo
+9. `calco-roofing/` - Calco Roofing & Seamless Gutters
+10. `punkiez/` - Punkiez
+11. `serious-inquiries-only/` - Serious Inquiries Only
+12. `truth/` - Truth
+13. `leonardos-auto/` - Leonardo's Auto Body
+14. `custom-creations-auto/` - Custom Creations Auto Body
+15. `fort-maner/` - Fort Maner
 
 ## How to Add Client Assets
 

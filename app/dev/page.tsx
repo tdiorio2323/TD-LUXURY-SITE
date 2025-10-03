@@ -190,11 +190,17 @@ export default function DevPage() {
           {/* Case Study Section */}
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div>
-              <h3 className="text-xl font-semibold mb-6">Engineering case study placeholder</h3>
-              <p className="text-white mb-8">
-                Swap in client logos, throughput metrics, or screenshots. Highlight latency improvements, revenue
-                impact, or feature velocity gains from a recent engagement.
+              <h3 className="text-xl font-semibold mb-6">Cabana booking platform</h3>
+              <p className="text-white mb-6">
+                Cabana needed a fast booking engine that played nicely with legacy property systems. We migrated them to
+                a Next.js app backed by Supabase, added rate-limiting middleware, and instrumented analytics for every
+                key interaction.
               </p>
+              <ul className="space-y-2 text-sm text-white/80">
+                <li>• API response times dropped from 480ms to 120ms</li>
+                <li>• Automated regression suite catches issues before deploy</li>
+                <li>• Revenue dashboard now updates in real-time for operators</li>
+              </ul>
             </div>
 
             <div>

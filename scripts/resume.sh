@@ -26,7 +26,7 @@ Context:
 - Project: tdstudiosny (Next.js on Vercel)
 - Domains: tdstudiosny.com (A → 76.76.21.21), www → cname.vercel-dns.com
 - Redirects: www → apex 301 in next.config.mjs
-- Build stamp: NEXT_PUBLIC_BUILD_TIME set by package.json "prebuild"
+- Build stamp: NEXT_PUBLIC_BUILD_TIME injected by scripts/build-with-timestamp.mjs
 - Deploys: prod from main only
 
 Last verified:

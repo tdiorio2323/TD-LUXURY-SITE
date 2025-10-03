@@ -10,15 +10,27 @@ interface FrostedButtonProps {
   className?: string
   onClick?: () => void
   type?: "button" | "submit" | "reset"
+  disabled?: boolean
   analyticsLabel?: string // Optional label for analytics tracking
   analyticsPosition?: string // Optional position for analytics
 }
 
-export function FrostedButton({ href, children, className = "", onClick, type = "button", analyticsLabel, analyticsPosition }: FrostedButtonProps) {
+export function FrostedButton({
+  href,
+  children,
+  className = "",
+  onClick,
+  type = "button",
+  disabled = false,
+  analyticsLabel,
+  analyticsPosition
+}: FrostedButtonProps) {
   const baseClasses =
     "inline-flex items-center justify-center px-6 py-3 bg-neutral-900/70 backdrop-blur-sm border border-white/20 rounded-lg text-white font-medium hover:bg-neutral-900/80 transition-all duration-300 mobile-touch-target mobile-btn-primary md:mobile-btn-primary"
 
   const handleClick = () => {
+    if (disabled) return
+
     const buttonText = typeof children === 'string' ? children : 'Button'
     const label = analyticsLabel || buttonText
     const position = analyticsPosition || 'unknown'
@@ -31,20 +43,27 @@ export function FrostedButton({ href, children, className = "", onClick, type = 
     }
   }
 
+  const disabledClasses = disabled ? "opacity-60 pointer-events-none" : ""
+
   if (href) {
     return (
       <Link
         href={href}
-        className={`${baseClasses} ${className}`}
+        className={`${baseClasses} ${className} ${disabledClasses}`}
         onClick={handleClick}
-      >
+        >
         {children}
       </Link>
     )
   }
 
   return (
-    <button type={type} onClick={handleClick} className={`${baseClasses} ${className}`}>
+    <button
+      type={type}
+      onClick={handleClick}
+      className={`${baseClasses} ${className} ${disabledClasses}`}
+      disabled={disabled}
+    >
       {children}
     </button>
   )

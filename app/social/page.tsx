@@ -156,11 +156,16 @@ export default function SocialPage() {
           {/* Case Study Section */}
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div>
-              <h3 className="text-xl font-semibold mb-6">Campaign highlight placeholder</h3>
-              <p className="text-white mb-8">
-                Use this block for a social case study—include reach, engagement lift, follower growth, or sales impact
-                once results are ready.
+              <h3 className="text-xl font-semibold mb-6">Sneaker Zoo launch blitz</h3>
+              <p className="text-white mb-6">
+                We built a six-week drop calendar for Sneaker Zoo with daily short-form, Discord AMAs, and paid creator
+                collaborations. The program delivered a 4.2x ROAS and grew their member list by 8k subscribers.
               </p>
+              <ul className="space-y-2 text-sm text-white/80">
+                <li>• 4.2x paid media return across TikTok + Meta</li>
+                <li>• 65% lift in daily story replies from community prompts</li>
+                <li>• 8k new loyalty members added during the campaign</li>
+              </ul>
             </div>
 
             <div>

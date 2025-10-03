@@ -1,141 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
-import { ExternalLink, X, Calendar, ArrowRight } from "lucide-react"
-
-const clientProjects = [
-  {
-    id: 1,
-    clientName: "LUXE HOSPITALITY",
-    logo: "/placeholder.svg?text=LUXE",
-    industry: "Luxury Hotels",
-    year: "2024",
-    services: ["Website Design", "Development", "Branding"],
-    description: "Complete digital transformation for a luxury hospitality group, featuring immersive experiences, seamless booking integration, and sophisticated brand positioning that elevated their market presence.",
-    results: [
-      "425% increase in direct bookings",
-      "65% reduction in bounce rate",
-      "Luxury Travel Awards - Best Digital Experience"
-    ],
-    images: [
-      "/placeholder.jpg?query=luxury hotel website",
-      "/placeholder.jpg?query=booking interface design",
-      "/placeholder.jpg?query=brand guidelines luxury"
-    ],
-    liveUrl: null,
-    caseStudyUrl: "#"
-  },
-  {
-    id: 2,
-    clientName: "ELITE FINANCE",
-    logo: "/placeholder.svg?text=ELITE",
-    industry: "Wealth Management",
-    year: "2024",
-    services: ["Platform Development", "User Experience", "Security"],
-    description: "Sophisticated wealth management platform with advanced portfolio visualization, secure client portals, and institutional-grade performance analytics for high-net-worth individuals.",
-    results: [
-      "$50M+ in assets onboarded in first quarter",
-      "99.9% platform uptime achieved",
-      "Financial Innovation Award winner"
-    ],
-    images: [
-      "/placeholder.jpg?query=wealth management dashboard",
-      "/placeholder.jpg?query=portfolio analytics",
-      "/placeholder.jpg?query=secure platform"
-    ],
-    liveUrl: null,
-    caseStudyUrl: "#"
-  },
-  {
-    id: 3,
-    clientName: "TRUTH MATTERS",
-    logo: "/placeholder.svg?text=TRUTH",
-    industry: "Media",
-    year: "2023",
-    services: ["Social Media", "Content Strategy"],
-    description: "Comprehensive social media strategy and content creation for a digital media platform.",
-    results: [
-      "500K+ social media reach",
-      "150% engagement increase",
-      "Viral content campaigns"
-    ],
-    images: [
-      "/placeholder.jpg?query=truth matters social media",
-      "/placeholder.jpg?query=truth matters content",
-      "/placeholder.jpg?query=truth matters campaign"
-    ],
-    liveUrl: null,
-    caseStudyUrl: "#"
-  },
-  {
-    id: 4,
-    clientName: "STUDIO",
-    logo: "/placeholder.svg?text=STUDIO",
-    industry: "Creative Agency",
-    year: "2023",
-    services: ["Portfolio Website", "Development"],
-    description: "Custom portfolio website with advanced animations and interactive elements.",
-    results: [
-      "Award-winning portfolio design",
-      "60% increase in client inquiries",
-      "Featured in design showcases"
-    ],
-    images: [
-      "/placeholder.jpg?query=studio portfolio website",
-      "/placeholder.jpg?query=studio interactive design",
-      "/placeholder.jpg?query=studio awards"
-    ],
-    liveUrl: null,
-    caseStudyUrl: "#"
-  },
-  {
-    id: 5,
-    clientName: "COLOMBIA",
-    logo: "/placeholder.svg?text=COL",
-    industry: "Tourism",
-    year: "2023",
-    services: ["Tourism Platform", "Full-Stack Development"],
-    description: "Interactive tourism platform showcasing Colombia's destinations with booking integration.",
-    results: [
-      "40% increase in bookings",
-      "Multilingual platform launch",
-      "Government partnership secured"
-    ],
-    images: [
-      "/placeholder.jpg?query=colombia tourism website",
-      "/placeholder.jpg?query=colombia booking platform",
-      "/placeholder.jpg?query=colombia destinations"
-    ],
-    liveUrl: null,
-    caseStudyUrl: "#"
-  },
-  {
-    id: 6,
-    clientName: "LUCAS WORLD",
-    logo: "/placeholder.svg?text=LW",
-    industry: "Entertainment",
-    year: "2022",
-    services: ["Brand Identity", "Website Design"],
-    description: "Complete brand identity and digital presence for an entertainment platform.",
-    results: [
-      "Brand recognition increased 400%",
-      "Successful platform launch",
-      "Celebrity endorsements secured"
-    ],
-    images: [
-      "/placeholder.jpg?query=lucas world brand",
-      "/placeholder.jpg?query=lucas world platform",
-      "/placeholder.jpg?query=lucas world entertainment"
-    ],
-    liveUrl: null,
-    caseStudyUrl: "#"
-  }
-]
+import { X, ArrowRight, Instagram, Facebook, Twitter, Linkedin, Globe } from "lucide-react"
+import { clients, type Client } from "@/lib/clients-data"
 
 export default function PortfolioPage() {
-  const [selectedProject, setSelectedProject] = useState<typeof clientProjects[0] | null>(null)
+  const [selectedProject, setSelectedProject] = useState<Client | null>(null)
 
   return (
     <div className="min-h-screen">
@@ -168,36 +41,46 @@ export default function PortfolioPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {clientProjects.map((project) => (
+            {clients.map((client) => (
               <GlassCard
-                key={project.id}
+                key={client.id}
                 className="group cursor-pointer hover:bg-neutral-900/80 transition-all duration-300 p-8 text-center"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => setSelectedProject(client)}
               >
-                <div className="w-24 h-24 mx-auto mb-6 bg-neutral-900/80 border border-white/20 rounded-full flex items-center justify-center group-hover:bg-neutral-900/90 transition-colors">
-                  <img
-                    src={project.logo}
-                    alt={project.clientName}
-                    className="w-16 h-16 object-contain"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">{project.clientName}</h3>
-                <p className="text-white text-sm mb-4">{project.industry} • {project.year}</p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {project.services.slice(0, 2).map((service) => (
-                    <span
-                      key={service}
-                      className="px-3 py-1 bg-neutral-900/80 border border-white/20 rounded-full text-xs text-white"
-                    >
-                      {service}
-                    </span>
-                  ))}
-                  {project.services.length > 2 && (
-                    <span className="px-3 py-1 bg-neutral-900/80 border border-white/20 rounded-full text-xs text-white">
-                      +{project.services.length - 2} more
-                    </span>
+                <div className="relative w-24 h-24 mx-auto mb-6 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-full group-hover:bg-neutral-900/90 transition-colors">
+                  {client.logo ? (
+                    <Image
+                      src={client.logo}
+                      alt={`${client.name} logo`}
+                      fill
+                      sizes="96px"
+                      className="object-contain p-4"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center px-2 text-center text-xs font-semibold text-white">
+                      {client.name}
+                    </div>
                   )}
                 </div>
+                <h3 className="text-xl font-semibold mb-2 text-white">{client.name}</h3>
+                <p className="text-white text-sm mb-4">{client.industry} • {client.year}</p>
+                {client.services.length > 0 && (
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {client.services.slice(0, 2).map((service) => (
+                      <span
+                        key={service}
+                        className="px-3 py-1 bg-neutral-900/80 border border-white/20 rounded-full text-xs text-white"
+                      >
+                        {service}
+                      </span>
+                    ))}
+                    {client.services.length > 2 && (
+                      <span className="px-3 py-1 bg-neutral-900/80 border border-white/20 rounded-full text-xs text-white">
+                        +{client.services.length - 2} more
+                      </span>
+                    )}
+                  </div>
+                )}
                 <div className="mt-4 flex items-center justify-center text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                   View Case Study <ArrowRight className="w-4 h-4 ml-2" />
                 </div>
@@ -213,7 +96,7 @@ export default function PortfolioPage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold mb-2 text-white">25+</div>
+              <div className="text-4xl font-bold mb-2 text-white">{clients.length}+</div>
               <div className="text-white text-sm">Clients Served</div>
             </div>
             <div>
@@ -249,18 +132,28 @@ export default function PortfolioPage() {
       {/* Modal for Project Details */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-black/90 border border-white/20 rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+          <div className="bg-black/90 border border-white/20 rounded-2xl max-w-5xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
             <div className="p-4 sm:p-6 lg:p-8">
               {/* Header */}
               <div className="flex items-center justify-between mb-6 sm:mb-8">
                 <div className="flex items-center space-x-3 sm:space-x-4">
-                  <img
-                    src={selectedProject.logo}
-                    alt={selectedProject.clientName}
-                    className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
-                  />
+                  <div className="relative w-12 h-12 sm:w-16 sm:h-16 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-lg">
+                    {selectedProject.logo ? (
+                      <Image
+                        src={selectedProject.logo}
+                        alt={`${selectedProject.name} logo`}
+                        fill
+                        sizes="(max-width: 640px) 48px, 64px"
+                        className="object-contain p-2"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center px-2 text-center text-[10px] font-semibold text-white">
+                        {selectedProject.name}
+                      </div>
+                    )}
+                  </div>
                   <div>
-                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{selectedProject.clientName}</h2>
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{selectedProject.name}</h2>
                     <p className="text-white text-sm sm:text-base">{selectedProject.industry} • {selectedProject.year}</p>
                   </div>
                 </div>
@@ -272,64 +165,140 @@ export default function PortfolioPage() {
                 </button>
               </div>
 
-              {/* Services */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold mb-4 text-white">Services Provided</h3>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.services.map((service) => (
-                    <span
-                      key={service}
-                      className="px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-full text-sm text-white"
-                    >
-                      {service}
-                    </span>
-                  ))}
+              {/* Client Info */}
+              {(selectedProject.websiteUrl || selectedProject.socialLinks) && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Client Links</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {selectedProject.websiteUrl && (
+                      <a
+                        href={selectedProject.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                      >
+                        <Globe className="w-4 h-4" />
+                        Website
+                      </a>
+                    )}
+                    {selectedProject.socialLinks?.instagram && (
+                      <a
+                        href={selectedProject.socialLinks.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                      >
+                        <Instagram className="w-4 h-4" />
+                        Instagram
+                      </a>
+                    )}
+                    {selectedProject.socialLinks?.facebook && (
+                      <a
+                        href={selectedProject.socialLinks.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                      >
+                        <Facebook className="w-4 h-4" />
+                        Facebook
+                      </a>
+                    )}
+                    {selectedProject.socialLinks?.twitter && (
+                      <a
+                        href={selectedProject.socialLinks.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                      >
+                        <Twitter className="w-4 h-4" />
+                        Twitter
+                      </a>
+                    )}
+                    {selectedProject.socialLinks?.linkedin && (
+                      <a
+                        href={selectedProject.socialLinks.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* Services */}
+              {selectedProject.services.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Services Provided</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.services.map((service) => (
+                      <span
+                        key={service}
+                        className="px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-full text-sm text-white"
+                      >
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Description */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold mb-4 text-white">Project Overview</h3>
-                <p className="text-white leading-relaxed">{selectedProject.description}</p>
-              </div>
+              {selectedProject.description && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Project Overview</h3>
+                  <p className="text-white leading-relaxed">{selectedProject.description}</p>
+                </div>
+              )}
 
               {/* Results */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold mb-4 text-white">Key Results</h3>
-                <ul className="space-y-2">
-                  {selectedProject.results.map((result, index) => (
-                    <li key={index} className="flex items-center text-white">
-                      <span className="text-green-400 mr-3">✓</span>
-                      {result}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Images */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold mb-4 text-white">Project Gallery</h3>
-                <div className="grid md:grid-cols-3 gap-4">
-                  {selectedProject.images.map((image, index) => (
-                    <div key={index} className="aspect-video bg-neutral-900/70 rounded-lg overflow-hidden">
-                      <img
-                        src={image}
-                        alt={`${selectedProject.clientName} project ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
+              {selectedProject.results.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Key Results</h3>
+                  <ul className="space-y-2">
+                    {selectedProject.results.map((result, index) => (
+                      <li key={index} className="flex items-center text-white">
+                        <span className="text-green-400 mr-3">✓</span>
+                        {result}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              )}
+
+              {/* Gallery */}
+              {selectedProject.gallery.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Project Gallery</h3>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {selectedProject.gallery.map((image, index) => (
+                      <div key={index} className="aspect-video bg-neutral-900/70 rounded-lg overflow-hidden border border-white/10">
+                        <div className="w-full h-full flex items-center justify-center text-white/40 text-sm">
+                          Gallery Image {index + 1}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Testimonial */}
+              {selectedProject.testimonial && (
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold mb-4 text-white">Client Testimonial</h3>
+                  <GlassCard className="p-6">
+                    <p className="text-white italic mb-4">"{selectedProject.testimonial.quote}"</p>
+                    <p className="text-white font-semibold">{selectedProject.testimonial.author}</p>
+                    <p className="text-white/70 text-sm">{selectedProject.testimonial.position}</p>
+                  </GlassCard>
+                </div>
+              )}
 
               {/* Actions */}
               <div className="flex gap-4">
-                {selectedProject.liveUrl && (
-                  <FrostedButton href={selectedProject.liveUrl} className="flex items-center">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Live Site
-                  </FrostedButton>
-                )}
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="px-6 py-3 bg-neutral-900/70 border border-white/20 rounded-lg text-white hover:bg-neutral-900/80 transition-colors"

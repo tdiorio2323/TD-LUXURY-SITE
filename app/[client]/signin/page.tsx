@@ -4,7 +4,6 @@ import { useMemo, useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { clientAccessProfiles } from "@/lib/client-access"
-import { FrostedButton } from "@/components/frosted-button"
 
 const keypadLayout = [
   ["1", "2", "3"],
@@ -17,7 +16,6 @@ export default function ClientSignInPage({ params }: { params: { client: string 
   const router = useRouter()
   const profile = useMemo(() => clientAccessProfiles[params.client.toLowerCase()], [params.client])
   const [code, setCode] = useState("")
-  const [brandInput, setBrandInput] = useState("")
   const [error, setError] = useState<string | null>(null)
 
   if (!profile) {
@@ -27,10 +25,6 @@ export default function ClientSignInPage({ params }: { params: { client: string 
       </div>
     )
   }
-
-  const backgroundStyle = {
-    backgroundImage: `url(${profile.backgroundPath})`,
-  } as const
 
   const handleKeyPress = (key: string) => {
     setError(null)
@@ -56,23 +50,15 @@ export default function ClientSignInPage({ params }: { params: { client: string 
       return
     }
 
-    const normalized = brandInput.trim().toLowerCase()
-    const matchesBrand = profile.brandNames.some((name) => name === normalized)
-
-    if (!matchesBrand) {
-      setError("Brand name does not match")
-      return
-    }
-
     router.push(`/clients/${profile.slug}`)
   }
 
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-16"
-      style={backgroundStyle}
+      style={{ backgroundImage: `url(${profile.backgroundPath})` }}
     >
-      <div className="relative max-w-md w-full rounded-3xl bg-black/75 backdrop-blur-lg border border-white/15 shadow-[0_20px_80px_rgba(0,0,0,0.45)] px-8 py-12">
+      <div className="relative max-w-md w-full rounded-3xl bg-black/70 backdrop-blur-lg border border-white/15 shadow-[0_20px_80px_rgba(0,0,0,0.45)] px-8 py-12">
         <div className="flex flex-col items-center mb-8">
           <div className="relative h-24 w-24">
             <Image
@@ -85,7 +71,7 @@ export default function ClientSignInPage({ params }: { params: { client: string 
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-3 gap-3 mb-8">
           {keypadLayout.flat().map((key) => {
             const label = key === "clear" ? "C" : key === "back" ? "⌫" : key
 
@@ -94,7 +80,7 @@ export default function ClientSignInPage({ params }: { params: { client: string 
                 ? "bg-red-500/80 hover:bg-red-500"
                 : key === "clear"
                   ? "bg-neutral-800/80 hover:bg-neutral-800"
-                  : "bg-neutral-900/80 hover:bg-neutral-900"
+                  : "bg-neutral-900/75 hover:bg-neutral-900"
 
             return (
               <button
@@ -108,40 +94,27 @@ export default function ClientSignInPage({ params }: { params: { client: string 
           })}
         </div>
 
-        <div className="mb-4">
-          <div className="mb-1 text-xs uppercase text-white/50 tracking-[0.3em] text-center">Passcode</div>
+        <div className="mb-6">
+          <div className="mb-2 text-xs uppercase text-white/60 tracking-[0.35em] text-center">Passcode</div>
           <div className="flex justify-center gap-3">
             {[0, 1, 2, 3].map((index) => (
               <span
                 key={index}
-                className="h-3 w-3 rounded-full border border-white/20 bg-white/10"
-                style={{ opacity: code.length > index ? 1 : 0.3 }}
+                className="h-3 w-3 rounded-full border border-white/40 bg-white/30"
+                style={{ opacity: code.length > index ? 1 : 0.25 }}
               />
             ))}
           </div>
         </div>
 
-        <div className="mb-6">
-          <label htmlFor="brand" className="sr-only">
-            Brand name
-          </label>
-          <input
-            id="brand"
-            value={brandInput}
-            onChange={(event) => {
-              setError(null)
-              setBrandInput(event.target.value)
-            }}
-            placeholder="Brand name"
-            className="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40"
-          />
-        </div>
+        {error && <p className="mb-4 text-center text-sm text-red-200">{error}</p>}
 
-        {error && <p className="mb-4 text-center text-sm text-red-300">{error}</p>}
-
-        <FrostedButton className="w-full bg-white text-black hover:bg-white/90" onClick={handleSubmit}>
-          ENTER
-        </FrostedButton>
+        <button
+          onClick={handleSubmit}
+          className="w-full rounded-full border border-yellow-400/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_12px_30px_rgba(255,200,60,0.45)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200"
+        >
+          Enter
+        </button>
       </div>
     </div>
   )

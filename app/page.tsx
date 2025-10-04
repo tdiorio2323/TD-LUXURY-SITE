@@ -155,18 +155,46 @@ export default function HomePage() {
             <div className="mt-16">
               <p className="text-sm text-white/60 mb-8 uppercase tracking-wider">Industry Recognition</p>
               <div className="flex flex-wrap justify-center items-center gap-6">
-                <div className="glass-light px-6 py-3 rounded-lg">
+                <a
+                  href="https://www.awwwards.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-light px-6 py-3 rounded-lg hover:bg-white/10 transition-colors"
+                  data-verify="pending"
+                >
                   <span className="text-xs text-white font-medium">AWWWARDS WINNER</span>
-                </div>
-                <div className="glass-light px-6 py-3 rounded-lg">
+                  <span className="sr-only">View Awwwards profile (verification pending)</span>
+                </a>
+                <a
+                  href="https://www.cssdesignawards.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-light px-6 py-3 rounded-lg hover:bg-white/10 transition-colors"
+                  data-verify="pending"
+                >
                   <span className="text-xs text-white font-medium">CSS DESIGN AWARDS</span>
-                </div>
-                <div className="glass-light px-6 py-3 rounded-lg">
+                  <span className="sr-only">View CSS Design Awards profile (verification pending)</span>
+                </a>
+                <a
+                  href="https://www.webbyawards.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-light px-6 py-3 rounded-lg hover:bg-white/10 transition-colors"
+                  data-verify="pending"
+                >
                   <span className="text-xs text-white font-medium">WEBBY HONOREE</span>
-                </div>
-                <div className="glass-light px-6 py-3 rounded-lg">
+                  <span className="sr-only">View Webby Awards profile (verification pending)</span>
+                </a>
+                <a
+                  href="https://www.thefwa.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-light px-6 py-3 rounded-lg hover:bg-white/10 transition-colors"
+                  data-verify="pending"
+                >
                   <span className="text-xs text-white font-medium">FWA SITE OF THE DAY</span>
-                </div>
+                  <span className="sr-only">View FWA profile (verification pending)</span>
+                </a>
               </div>
             </div>
           </div>

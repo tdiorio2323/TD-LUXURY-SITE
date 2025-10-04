@@ -262,10 +262,14 @@ export default function PortfolioPage() {
                   <h3 className="text-lg font-semibold mb-4 text-white">Project Gallery</h3>
                   <div className="grid md:grid-cols-3 gap-4">
                     {selectedProject.gallery.map((image, index) => (
-                      <div key={index} className="aspect-video bg-neutral-900/70 rounded-lg overflow-hidden border border-white/10">
-                        <div className="w-full h-full flex items-center justify-center text-white/40 text-sm">
-                          Gallery Image {index + 1}
-                        </div>
+                      <div key={index} className="relative aspect-video overflow-hidden rounded-lg border border-white/10">
+                        <Image
+                          src={image}
+                          alt={`${selectedProject.name} gallery ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                        />
                       </div>
                     ))}
                   </div>

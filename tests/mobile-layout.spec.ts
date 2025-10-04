@@ -56,27 +56,32 @@ test.describe('Mobile Layout Analysis', () => {
     // Take screenshot after scroll
     await page.screenshot({ path: 'tests/screenshots/mobile-after-scroll.png' });
 
-    // Check if background stays fixed
-    const backgroundStyles = await heroBackground.evaluate((el) => {
+    // Check that hero section has proper background styling
+    const heroBackgroundDiv = heroSection.locator('div').first();
+    const backgroundStyles = await heroBackgroundDiv.evaluate((el) => {
       const styles = window.getComputedStyle(el);
       return {
-        backgroundAttachment: styles.backgroundAttachment,
-        transform: styles.transform
+        position: styles.position,
+        inset: styles.inset
       };
     });
 
     console.log('Background styles:', backgroundStyles);
-    expect(backgroundStyles.backgroundAttachment).toBe('fixed');
+    // Hero background should be absolutely positioned to cover the section
+    expect(backgroundStyles.position).toBe('absolute');
   });
 
   test('Mobile viewport and text sizing', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
 
-    const heroTitle = page.locator('h1.mobile-title');
-    const heroContainer = page.locator('.content-overlay section').first();
+    // Wait for page to load
+    await page.waitForSelector('h1');
+
+    const heroTitle = page.locator('h1').first();
+    const heroSection = page.locator('section').first();
 
     // Check container height and positioning
-    const containerBox = await heroContainer.boundingBox();
+    const containerBox = await heroSection.boundingBox();
     console.log('Hero container:', containerBox);
 
     // Check text properties
@@ -97,14 +102,20 @@ test.describe('Mobile Layout Analysis', () => {
   test('Touch target accessibility', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
 
-    // Check navigation menu button
-    const menuButton = page.locator('[data-testid="mobile-menu-button"]');
-    if (await menuButton.count() > 0) {
-      const buttonBox = await menuButton.boundingBox();
-      if (buttonBox) {
-        expect(buttonBox.width).toBeGreaterThanOrEqual(44);
-        expect(buttonBox.height).toBeGreaterThanOrEqual(44);
-      }
+    // Wait for navigation to load
+    await page.waitForSelector('nav');
+
+    // Check navigation menu button (mobile hamburger menu)
+    const menuButton = page.locator('button[aria-label*="menu"]').first();
+
+    // Wait for button to be visible
+    await expect(menuButton).toBeVisible();
+
+    const buttonBox = await menuButton.boundingBox();
+    if (buttonBox) {
+      // WCAG 2.1 minimum touch target size is 44x44 pixels
+      expect(buttonBox.width).toBeGreaterThanOrEqual(44);
+      expect(buttonBox.height).toBeGreaterThanOrEqual(44);
     }
   });
 });

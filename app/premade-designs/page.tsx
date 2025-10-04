@@ -1,5 +1,7 @@
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
+import { PREMADE, type PremadeDesign } from "@/lib/premade-designs"
 
 export default function PremadeDesignsPage() {
   return (
@@ -20,19 +22,44 @@ export default function PremadeDesignsPage() {
         </div>
       </section>
 
-      {/* Catalog placeholder */}
+      {/* Design Catalog */}
       <section className="relative py-16 px-6">
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
-            {[1,2,3].map((i) => (
-              <GlassCard key={i} className="glass-mobile mobile-content-spacing">
-                <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-neutral-900/70 border border-white/10 flex items-center justify-center text-white/60">
-                  Preview {i}
+            {PREMADE.map((design: PremadeDesign) => (
+              <GlassCard key={design.id} className="glass-mobile mobile-content-spacing">
+                <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-neutral-900/70 border border-white/10 relative">
+                  <Image
+                    src={design.thumb}
+                    alt={design.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                  />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Design Pack {i}</h3>
-                <p className="text-white text-sm mb-4">Includes social posts, story frames, and print-ready files.</p>
-                <FrostedButton href="/contact?type=premade" className="w-full">Request Access</FrostedButton>
+                <h3 className="text-lg font-semibold text-white mb-2">{design.title}</h3>
+                <p className="text-white text-sm mb-3">{design.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {design.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 bg-neutral-900/70 border border-white/10 rounded text-xs text-white"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="text-white font-bold text-xl mb-4">${design.price}</div>
+                <div className="flex gap-2">
+                  <FrostedButton href={`/contact?type=premade&design=${design.slug}`} className="flex-1">
+                    Preview
+                  </FrostedButton>
+                  {/* TODO: Integrate Stripe/checkout for direct purchase */}
+                  <FrostedButton href="/contact?type=premade" className="flex-1 btn-primary">
+                    Contact
+                  </FrostedButton>
+                </div>
               </GlassCard>
             ))}
           </div>

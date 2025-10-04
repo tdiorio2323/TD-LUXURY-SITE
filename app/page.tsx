@@ -33,14 +33,14 @@ const services = [
     title: "Brand & Identity",
     description: "Design systems, visual identity, and asset libraries crafted to travel everywhere.",
     link: "Custom Design →",
-    href: "/portfolio",
+    href: "/design",
   },
   {
     icon: Award,
     title: "Digital Assets",
     description: "Ready-to-use content packs, templates, and downloads to accelerate launches.",
     link: "Browse Assets →",
-    href: "/portfolio",
+    href: "/design",
   },
   {
     icon: Share2,
@@ -60,7 +60,7 @@ const capabilities = [
   {
     title: "E-commerce",
     subtitle: "Convert with speed",
-    image: "/ecommerce-serious-storefront.png",
+    image: "/sleek-ecommerce-interface.jpg",
   },
   {
     title: "Brand Kits",

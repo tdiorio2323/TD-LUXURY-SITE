@@ -43,11 +43,11 @@ const services = [
     href: "/design",
   },
   {
-    icon: Share2,
-    title: "Partnerships",
-    description: "Referral alliances and white-label collaborations for agencies and boutiques.",
-    link: "Partnerships →",
-    href: "/contact",
+    icon: Award,
+    title: "Portfolio",
+    description: "Explore our case studies and see how we've helped brands like yours achieve their goals.",
+    link: "View Portfolio →",
+    href: "/portfolio",
   },
 ]
 
@@ -307,117 +307,76 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Free Resource */}
-            <GlassCard className="luxury-glass glass-mobile text-center mobile-content-spacing">
-              <div className="mb-6">
-                <div className="mobile-touch-target w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-black font-bold text-xl">📚</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Design Guide</h3>
+            <GlassCard className="luxury-glass glass-mobile mobile-content-spacing flex flex-col justify-between group">
+              <div className="relative w-full h-48 mb-4">
+                <Image src="https://i.imgur.com/pt5ALhM.png" alt="BRAND BIBLE" layout="fill" objectFit="cover" className="rounded-t-lg transition-opacity duration-300 opacity-100 group-hover:opacity-0" />
+                <Image src="https://i.imgur.com/0Hjs9Sg.png" alt="BRAND BIBLE Hover" layout="fill" objectFit="cover" className="rounded-t-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">BRAND BIBLE</h3>
                 <p className="text-white text-sm mb-4">
-                  Free 25-page luxury brand design guide with premium principles and examples
+                  Free 25-page luxury brand bible with premium principles and examples
                 </p>
                 <div className="text-luxury-gold font-semibold mb-4">FREE DOWNLOAD</div>
               </div>
-              <ABTestWrapper
-                testId="hero_cta_text"
-                controlComponent={
-                  <FrostedButton
-                    href="/contact?type=guide"
-                    className="w-full"
-                    analyticsLabel="Get Free Guide (Control)"
-                    analyticsPosition="Lead Magnet CTA"
-                  >
-                    Get Free Guide
-                  </FrostedButton>
-                }
-                variantComponent={
-                  <FrostedButton
-                    href="/contact?type=guide"
-                    className="w-full btn-primary"
-                    analyticsLabel="Download Now (Variant)"
-                    analyticsPosition="Lead Magnet CTA"
-                  >
-                    Download Now →
-                  </FrostedButton>
-                }
-              />
+              <div className="p-4 mt-auto">
+                <FrostedButton
+                  href="/contact?type=guide"
+                  className="w-full btn-secondary"
+                  analyticsLabel="Get Brand Bible"
+                  analyticsPosition="Lead Magnet CTA"
+                >
+                  Get Brand Bible
+                </FrostedButton>
+              </div>
             </GlassCard>
 
             {/* Quick Consultation */}
-            <GlassCard className="luxury-glass glass-mobile text-center border-luxury-gold mobile-content-spacing">
-              <div className="mb-6">
-                <div className="mobile-touch-target w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-black font-bold text-xl">💬</span>
-                </div>
+            <GlassCard className="luxury-glass glass-mobile border-luxury-gold mobile-content-spacing flex flex-col justify-between">
+              <div className="relative w-full h-48 mb-4">
+                <Image src="https://i.imgur.com/M5PRLMg.png" alt="Quick Consultation" layout="fill" objectFit="cover" className="rounded-t-lg" />
+              </div>
+              <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Quick Consultation</h3>
                 <p className="text-white text-sm mb-4">
                   15-minute strategy call to discuss your brand goals and get expert insights
                 </p>
                 <div className="text-luxury-gold font-semibold mb-4">15 MINUTES</div>
               </div>
-              <ABTestWrapper
-                testId="contact_form_fields"
-                controlComponent={
-                  <FrostedButton
-                    href="/contact?type=consultation"
-                    className="w-full"
-                    analyticsLabel="Book Free Call (Control)"
-                    analyticsPosition="Lead Magnet CTA"
-                  >
-                    Book Free Call
-                  </FrostedButton>
-                }
-                variantComponent={
-                  <FrostedButton
-                    href="/contact?type=consultation"
-                    className="w-full btn-primary"
-                    analyticsLabel="Schedule Now (Variant)"
-                    analyticsPosition="Lead Magnet CTA"
-                  >
-                    Schedule Now ⚡
-                  </FrostedButton>
-                }
-              />
+              <div className="p-4 mt-auto">
+                <FrostedButton
+                  href="/contact?type=consultation"
+                  className="w-full btn-secondary"
+                  analyticsLabel="Book Free Call"
+                  analyticsPosition="Lead Magnet CTA"
+                >
+                  Book Free Call
+                </FrostedButton>
+              </div>
             </GlassCard>
 
             {/* Full Project */}
-            <GlassCard className="luxury-glass glass-mobile text-center mobile-content-spacing">
-              <div className="mb-6">
-                <div className="mobile-touch-target w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-black font-bold text-xl">🚀</span>
-                </div>
+            <GlassCard className="luxury-glass glass-mobile mobile-content-spacing flex flex-col justify-between">
+              <div className="relative w-full h-48 mb-4">
+                <Image src="https://i.imgur.com/rdJTB14.png" alt="Custom Project" layout="fill" objectFit="cover" className="rounded-t-lg" />
+              </div>
+              <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">Custom Project</h3>
                 <p className="text-white text-sm mb-4">
                   Full luxury design solution tailored to your brand and business goals
                 </p>
                 <div className="text-luxury-gold font-semibold mb-4">PREMIUM SERVICE</div>
               </div>
-              <ABTestWrapper
-                testId="pricing_display"
-                controlComponent={
-                  <FrostedButton
-                    href="/contact?type=project"
-                    className="w-full"
-                    analyticsLabel="Start Project (Control)"
-                    analyticsPosition="Lead Magnet CTA"
-                  >
-                    Start Project
-                  </FrostedButton>
-                }
-                variantComponent={
-                  <div className="space-y-3">
-                    <div className="text-luxury-gold text-sm font-medium">FROM $25K</div>
-                    <FrostedButton
-                      href="/contact?type=project"
-                      className="w-full btn-primary"
-                      analyticsLabel="Get Quote (Variant)"
-                      analyticsPosition="Lead Magnet CTA"
-                    >
-                      Get Custom Quote
-                    </FrostedButton>
-                  </div>
-                }
-              />
+              <div className="p-4 mt-auto">
+                <FrostedButton
+                  href="/contact?type=project"
+                  className="w-full btn-secondary"
+                  analyticsLabel="Start Project"
+                  analyticsPosition="Lead Magnet CTA"
+                >
+                  Start Project
+                </FrostedButton>
+              </div>
             </GlassCard>
           </div>
 
@@ -428,7 +387,7 @@ export default function HomePage() {
               <p className="text-white mb-6">
                 Join our luxury design newsletter for weekly insights, case studies, and premium design tips.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="flex flex-col gap-4 items-center">
                 <FrostedButton href="/contact?type=newsletter" className="btn-secondary">
                   Subscribe to Newsletter
                 </FrostedButton>

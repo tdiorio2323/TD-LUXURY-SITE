@@ -16,10 +16,13 @@ export default function PortfolioClientPage() {
       {/* Hero Section */}
       <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/portfolio-hero-image.jpg"
+          <Image
+            src="https://i.imgur.com/a1bXC5y.png"
             alt="Portfolio Hero"
-            className="w-full h-full object-cover object-center"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            priority
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>
@@ -53,9 +56,8 @@ export default function PortfolioClientPage() {
                   alt={`${client.name} logo`}
                   fallbackText={client.name}
                   sizes="96px"
-                  containerClassName="relative w-24 h-24 mx-auto mb-6 overflow-hidden bg-neutral-900/80 border border-white/20 rounded-full group-hover:bg-neutral-900/90 transition-colors"
-                  imageClassName={`object-contain p-4 ${client.logoInvert ? "invert" : ""}`}
-                />
+                  containerClassName={`relative w-24 h-24 mx-auto mb-6 overflow-hidden ${client.logoBgColor || 'bg-neutral-900/80'} border border-white/20 rounded-full group-hover:bg-neutral-900/90 transition-colors`}
+                  imageClassName={`${client.id === 'serious-inquiries-only' ? 'object-cover' : 'object-contain p-4'} ${client.logoInvert ? "invert" : ""}`}                />
                 <h3 className="text-xl font-semibold mb-2 text-white">{client.name}</h3>
                 <p className="text-white text-sm mb-4">{client.industry} • {client.year}</p>
                 {client.services.length > 0 && (

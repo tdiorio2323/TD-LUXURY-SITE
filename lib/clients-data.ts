@@ -5,6 +5,7 @@ export interface Client {
   logo: string
   // Optional logo display modifiers
   logoInvert?: boolean
+  logoBgColor?: string
   industry: string
   year: string
   services: string[]
@@ -59,6 +60,7 @@ export const clients: Client[] = [
     name: "Apsco Sports Enterprises",
     slug: "apsco-sports-enterprises",
     logo: "/clients/apsco-sports/logo.avif",
+    logoBgColor: "bg-white",
     industry: "Sports & Entertainment",
     year: "2024",
     services: [
@@ -122,6 +124,7 @@ export const clients: Client[] = [
     name: "Mama Rosaria",
     slug: "mama-rosaria",
     logo: "/clients/mama-rosaria/logo.avif",
+    logoBgColor: "bg-white",
     industry: "Restaurant",
     year: "2024",
     services: [
@@ -247,7 +250,7 @@ export const clients: Client[] = [
     id: "serious-inquiries-only",
     name: "Serious Inquiries Only",
     slug: "serious-inquiries-only",
-    logo: "/clients/serious-inquiries-only/logo.png",
+    logo: "https://i.imgur.com/3aSxmxT.png",
     industry: "Media",
     year: "2024",
     services: [
@@ -332,6 +335,7 @@ export const clients: Client[] = [
     name: "Fort Maner",
     slug: "fort-maner",
     logo: "/clients/fort-maner/logo.jpg",
+    logoBgColor: "bg-white",
     industry: "Real Estate",
     year: "2024",
     services: [

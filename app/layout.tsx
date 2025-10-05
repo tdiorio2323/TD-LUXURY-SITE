@@ -91,7 +91,7 @@ export default function RootLayout({
               // Re-calculate on resize and orientation change
               window.addEventListener('resize', () => {
                 setVH();
-                optimizeMobile-background();
+                optimizeMobileBackground();
               });
 
               window.addEventListener('orientationchange', () => {

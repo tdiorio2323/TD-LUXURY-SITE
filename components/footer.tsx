@@ -1,14 +1,17 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export function Footer() {
   return (
     <footer className="relative border-t border-white/10 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/footer-background.jpg"
-          alt="Footer Background"
-          className="w-full h-full object-cover"
+          alt="Abstract background image"
+          fill
+          style={{ objectFit: "cover" }}
+          className="w-full h-full"
         />
         <div className="absolute inset-0 bg-black/10"></div>
       </div>

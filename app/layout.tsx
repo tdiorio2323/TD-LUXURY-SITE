@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Inter } from 'next/font/google'
 import { Analytics } from "@vercel/analytics/next"
 import { Footer } from "@/components/footer"
 import { StickyHeader } from "@/components/sticky-header"
@@ -9,10 +8,29 @@ import "./globals.css"
 import type React from "react"
 import { Suspense } from "react"
 
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
+
 export const metadata: Metadata = {
-  title: "TD Studios - Luxury Strategy Creativity",
-  description: "Premium design solutions tailored for high-growth brands",
-  generator: "v0.app",
+  title: "TD Studios | Luxury Creative & Digital Agency",
+  description: "A luxury creative agency building flagship digital experiences. We engineer for clarity, conversion, and authority to elevate ambitious brands.",
+  openGraph: {
+    title: "TD Studios | Luxury Creative & Digital Agency",
+    description: "A luxury creative agency building flagship digital experiences. We engineer for clarity, conversion, and authority to elevate ambitious brands.",
+    images: [{
+      url: "https://tdstudiosny.com/og-image-short.jpg",
+      width: 1200,
+      height: 630,
+      alt: "TD Studios - Luxury Creative & Digital Agency",
+    }],
+    url: "https://tdstudiosny.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TD Studios | Luxury Creative & Digital Agency",
+    description: "A luxury creative agency building flagship digital experiences. We engineer for clarity, conversion, and authority to elevate ambitious brands.",
+    images: ["https://tdstudiosny.com/twitter-image-short.jpg"],
+  },
 }
 
 export const viewport = {
@@ -28,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} bg-black text-white antialiased`}>
+      <body className={`${inter.className} bg-black text-white antialiased`}>
         <AnalyticsProvider>
           <StickyHeader />
           <main>
@@ -73,7 +91,7 @@ export default function RootLayout({
               // Re-calculate on resize and orientation change
               window.addEventListener('resize', () => {
                 setVH();
-                optimizeMobileBackground();
+                optimizeMobile-background();
               });
 
               window.addEventListener('orientationchange', () => {

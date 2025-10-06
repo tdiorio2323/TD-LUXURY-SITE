@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { DesignCarousel } from "@/components/design-carousel"
@@ -49,10 +50,13 @@ export default function DesignPage() {
       <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with overlay */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/design-hero.jpg"
             alt="Luxury brand design showcasing premium visual identity and sophisticated design systems"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>
@@ -122,10 +126,12 @@ export default function DesignPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             <div className="group cursor-pointer">
               <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gray-800 relative">
-                <img
+                <Image
                   src="/design-showcase-1.jpg"
                   alt="Premium brand identity design showcase"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white px-6">
@@ -138,10 +144,12 @@ export default function DesignPage() {
 
             <div className="group cursor-pointer">
               <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gray-800 relative">
-                <img
+                <Image
                   src="/design-showcase-2.jpg"
                   alt="Luxury packaging and product design"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white px-6">
@@ -154,10 +162,12 @@ export default function DesignPage() {
 
             <div className="group cursor-pointer">
               <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gray-800 relative">
-                <img
+                <Image
                   src="/design-showcase-3.jpg"
                   alt="Digital marketing and campaign design"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="text-center text-white px-6">

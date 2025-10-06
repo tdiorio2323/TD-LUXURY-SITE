@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Logo } from "./logo"
@@ -20,6 +20,13 @@ const navItems = [
 export function Nav() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const navigationItems = useMemo(() => {
+    if (typeof window !== "undefined" && window.location.host === "shopquickprintz.tdstudiosny.com") {
+      return [...navItems.slice(0, 2), { name: "PREMADE", href: "/premade-designs" }, ...navItems.slice(2)]
+    }
+    return navItems
+  }, [])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -52,16 +59,12 @@ export function Nav() {
 
           {/* Desktop Navigation - Now Centered */}
           <div className="hidden md:flex items-center justify-center flex-1 space-x-12">
-            {(typeof window !== "undefined" && window.location.host === "shopquickprintz.tdstudiosny.com"
-              ? [...navItems.slice(0, 2), { name: "PREMADE", href: "/premade-designs" }, ...navItems.slice(2)]
-              : navItems
-            ).map((item) => (
+            {navigationItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-lg font-medium tracking-wider transition-colors hover:text-white ${
-                  pathname === item.href ? "text-white border-b border-white" : "text-white/70"
-                }`}
+                className={`text-lg font-medium tracking-wider transition-colors hover:text-white ${pathname === item.href ? "text-white border-b border-white" : "text-white/70"
+                  }`}
               >
                 {item.name}
               </Link>
@@ -120,17 +123,13 @@ export function Nav() {
           <div className="flex flex-col justify-between h-full">
             {/* Navigation Items */}
             <div className="flex flex-col items-center justify-start pt-16 space-y-6 px-6">
-              {(typeof window !== "undefined" && window.location.host === "shopquickprintz.tdstudiosny.com"
-                ? [...navItems.slice(0, 2), { name: "PREMADE", href: "/premade-designs" }, ...navItems.slice(2)]
-                : navItems
-              ).map((item) => (
+              {navigationItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`w-full text-center text-2xl font-medium tracking-wider transition-all duration-300 mobile-nav-item mobile-touch-target flex items-center justify-center py-4 border-b border-white/10 ${
-                    pathname === item.href ? "text-white bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
-                  }`}
+                  className={`w-full text-center text-2xl font-medium tracking-wider transition-all duration-300 mobile-nav-item mobile-touch-target flex items-center justify-center py-4 border-b border-white/10 ${pathname === item.href ? "text-white bg-white/5" : "text-white/70 hover:text-white hover:bg-white/5"
+                    }`}
                 >
                   {item.name}
                 </Link>

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { BookOpen, Download, Video, Users, Lightbulb, TrendingUp } from "lucide-react"
@@ -119,10 +120,13 @@ export default function ResourcesPage() {
       {/* Hero Section */}
       <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/resources-hero.jpg"
             alt="Educational resources and design guides for luxury brands"
-            className="w-full h-full object-cover object-center"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>

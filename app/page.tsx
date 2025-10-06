@@ -4,7 +4,6 @@ import { Globe, Share2, Palette, Award, Download, Calendar, Rocket, Mail } from 
 import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
-import { ABTestWrapper } from "@/components/ab-test-wrapper"
 
 const services = [
   {

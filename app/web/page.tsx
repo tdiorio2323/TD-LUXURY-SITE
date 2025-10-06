@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 
@@ -56,10 +57,13 @@ export default function WebPage() {
       <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with overlay */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/web-hero.jpg"
             alt="Luxury website design showcasing premium digital experiences and conversion-focused solutions"
-            className="w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>

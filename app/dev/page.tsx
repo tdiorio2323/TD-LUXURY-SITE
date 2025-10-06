@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { Code, Database, Globe, Layers, Shield, Zap, Settings, BarChart3 } from "lucide-react"
@@ -61,10 +62,13 @@ export default function DevPage() {
       <section className="relative min-h-screen md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image with overlay */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/dev-hero-image.jpg"
             alt="Advanced full-stack development platform showcasing modern architecture and scalable solutions"
-            className="w-full h-full object-cover object-center"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40 md:bg-black/40 hero-overlay-mobile"></div>
         </div>

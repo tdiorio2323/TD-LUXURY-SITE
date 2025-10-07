@@ -26,7 +26,11 @@ const chromeFlags = [
     console.log(`Waiting for server on port ${port}...`);
     const http = require("http");
     
-    const waitForServer = async (retries = 30, delay = 1000) => {
+    // Environment-tunable retry configuration to prevent CI variance regressions
+    const maxAttempts = parseInt(process.env.LH_HEALTHCHECK_ATTEMPTS || '30', 10);
+    const delayMs = parseInt(process.env.LH_HEALTHCHECK_DELAY_MS || '1000', 10);
+    
+    const waitForServer = async (retries = maxAttempts, delay = delayMs) => {
         for (let i = 0; i < retries; i++) {
             try {
                 await new Promise((resolve, reject) => {

@@ -27,7 +27,12 @@ jobs:
           node-version: "20"
           cache: "pnpm"
       - run: pnpm install
+      # Install Chromium for Lighthouse
+      - run: npx playwright install chromium
       - run: pnpm lh:routes
+        env:
+          LH_HEALTHCHECK_ATTEMPTS: '45'
+          LH_HEALTHCHECK_DELAY_MS: '1000'
       # Optionally upload reports
       - uses: actions/upload-artifact@v4
         with:

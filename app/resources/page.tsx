@@ -3,7 +3,66 @@ import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { BookOpen, Download, Video, Users, Lightbulb, TrendingUp } from "lucide-react"
 
-const resources = [
+// Type definitions for different resource types
+interface BaseResource {
+  title: string
+  description: string
+  type: string
+  featured?: boolean
+}
+
+interface PDFGuide extends BaseResource {
+  type: "PDF Guide"
+  downloadSize: string
+  pages: string
+}
+
+interface VideoTutorial extends BaseResource {
+  type: "Video"
+  duration: string
+  level: string
+}
+
+interface CaseStudy extends BaseResource {
+  type: "Case Study"
+  readTime: string
+  industry: string
+}
+
+interface ToolResource extends BaseResource {
+  type: "Checklist" | "Assets"
+  format: string
+  items: string
+}
+
+type ResourceItem = PDFGuide | VideoTutorial | CaseStudy | ToolResource
+
+interface ResourceCategory {
+  category: string
+  icon: any
+  items: ResourceItem[]
+}
+
+// Helper functions to safely access properties
+const getResourceMetric = (item: ResourceItem): string => {
+  if ('pages' in item) return item.pages
+  if ('readTime' in item) return item.readTime
+  if ('duration' in item) return item.duration
+  if ('items' in item) return item.items
+  return ''
+}
+
+const getDownloadSize = (item: ResourceItem): string | undefined => {
+  if ('downloadSize' in item) return item.downloadSize
+  return undefined
+}
+
+const getIndustry = (item: ResourceItem): string | undefined => {
+  if ('industry' in item) return item.industry
+  return undefined
+}
+
+const resources: ResourceCategory[] = [
   {
     category: "Design Guides",
     icon: BookOpen,
@@ -175,7 +234,7 @@ export default function ResourcesPage() {
                     <p className="text-white text-sm mb-4">{item.description}</p>
                     <div className="flex items-center justify-between">
                       <div className="text-white/60 text-xs">
-                        {item.pages || item.readTime || item.duration}
+                        {getResourceMetric(item)}
                       </div>
                       <FrostedButton
                         href="/contact?type=guide"
@@ -224,9 +283,9 @@ export default function ResourcesPage() {
                     </div>
 
                     <div className="flex items-center justify-between text-white/60 text-xs mb-4">
-                      <span>{item.pages || item.readTime || item.duration}</span>
-                      {item.downloadSize && <span>{item.downloadSize}</span>}
-                      {item.industry && <span>{item.industry}</span>}
+                      <span>{getResourceMetric(item)}</span>
+                      {getDownloadSize(item) && <span>{getDownloadSize(item)}</span>}
+                      {getIndustry(item) && <span>{getIndustry(item)}</span>}
                     </div>
 
                     <FrostedButton

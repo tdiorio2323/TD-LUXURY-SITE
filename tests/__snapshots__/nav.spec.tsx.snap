@@ -75,46 +75,34 @@ exports[`Nav > renders stable snapshot 1`] = `
           class="hidden md:flex items-center justify-center flex-1 space-x-12"
         >
           <a
-            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white border-b border-white"
-            href="/"
+            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
+            href="/work"
           >
-            HOME
+            WORK
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/web"
+            href="/services"
           >
-            WEB
+            SERVICES
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/dev"
+            href="/pricing"
           >
-            DEV
+            PRICING
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/design"
+            href="/process"
           >
-            DESIGN
-          </a>
-          <a
-            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/social"
-          >
-            SOCIAL
+            PROCESS
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
             href="/resources"
           >
             RESOURCES
-          </a>
-          <a
-            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/portfolio"
-          >
-            PORTFOLIO
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"

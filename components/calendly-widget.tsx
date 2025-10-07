@@ -10,18 +10,15 @@ interface CalendlyWidgetProps {
 
 export function CalendlyWidget({ url, className = "" }: CalendlyWidgetProps) {
   const [failed, setFailed] = useState(false)
-  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     // Set a timeout to detect if widget fails to load
     const timer = setTimeout(() => {
-      if (!loaded) {
-        setFailed(true)
-      }
-    }, 10000) // 10 second timeout
+      setFailed(true)
+    }, 15000) // 15 second timeout
 
     return () => clearTimeout(timer)
-  }, [loaded])
+  }, [])
 
   if (failed) {
     return (
@@ -56,7 +53,6 @@ export function CalendlyWidget({ url, className = "" }: CalendlyWidgetProps) {
           primaryColor: "ffffff",
           textColor: "ffffff",
         }}
-        onLoad={() => setLoaded(true)}
       />
     </div>
   )

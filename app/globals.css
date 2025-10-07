@@ -60,21 +60,16 @@ body {
   min-height: 100vh;
 }
 
-/* Mobile: Fixed background that doesn't scroll */
+/* Mobile: fixed background using a fixed layer (iOS-safe) */
 @media (max-width: 768px) {
   body {
-    /* Create a fixed background layer for mobile */
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
+    background-attachment: initial; /* avoid iOS Safari jank */
   }
 
-  /* Alternative: Use pseudo-element for better mobile support */
   body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100vw;
     height: 100vh;
     background-image: url("/global-background.jpg");
@@ -84,7 +79,6 @@ body {
     z-index: -1;
     pointer-events: none;
   }
-}
 
   /* Luxury Mobile Hero Overlay */
   .hero-overlay-mobile {
@@ -273,18 +267,6 @@ body {
     40% { transform: translateX(-50%) translateY(-8px); }
     60% { transform: translateX(-50%) translateY(-4px); }
   }
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.05);
-  pointer-events: none;
-  z-index: -1;
 }
 
 /* Clean Mobile Hero Implementation */

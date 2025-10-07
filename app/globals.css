@@ -52,7 +52,7 @@ html {
 
 body {
   background-image: url("/global-background.jpg");
-  background-size: 110%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -60,11 +60,31 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile: Fixed background that doesn't scroll */
 @media (max-width: 768px) {
   body {
-    /* iOS Safari doesn't handle fixed backgrounds well, use scroll */
-    background-attachment: scroll;
+    /* Create a fixed background layer for mobile */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
   }
+
+  /* Alternative: Use pseudo-element for better mobile support */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/global-background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
 
   /* Luxury Mobile Hero Overlay */
   .hero-overlay-mobile {

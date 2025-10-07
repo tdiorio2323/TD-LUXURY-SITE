@@ -7,13 +7,11 @@ import { Logo } from "./logo"
 import { Instagram, MessageCircle, Send, Menu, X } from "lucide-react"
 
 const navItems = [
-  { name: "HOME", href: "/" },
-  { name: "WEB", href: "/web" },
-  { name: "DEV", href: "/dev" },
-  { name: "DESIGN", href: "/design" },
-  { name: "SOCIAL", href: "/social" },
+  { name: "WORK", href: "/work" },
+  { name: "SERVICES", href: "/services" },
+  { name: "PRICING", href: "/pricing" },
+  { name: "PROCESS", href: "/process" },
   { name: "RESOURCES", href: "/resources" },
-  { name: "PORTFOLIO", href: "/portfolio" },
   { name: "CONTACT", href: "/contact" },
 ]
 
@@ -21,12 +19,7 @@ export function Nav() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const navigationItems = useMemo(() => {
-    if (typeof window !== "undefined" && window.location.host === "shopquickprintz.tdstudiosny.com") {
-      return [...navItems.slice(0, 2), { name: "PREMADE", href: "/premade-designs" }, ...navItems.slice(2)]
-    }
-    return navItems
-  }, [])
+  const navigationItems = useMemo(() => navItems, [])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)

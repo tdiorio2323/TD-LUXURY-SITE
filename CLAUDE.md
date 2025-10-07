@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is TD Studios' luxury website - a Next.js 14 application with TypeScript that showcases premium design solutions. The project is automatically synced with v0.app deployments and deployed on Vercel. It features a luxury design aesthetic with glassmorphism effects, premium branding, and comprehensive analytics tracking.
+This is TD Studios' luxury website - a Next.js 15 application with TypeScript that showcases premium design solutions. The project is automatically synced with v0.app deployments and deployed on Vercel. It features a luxury design aesthetic with glassmorphism effects, premium branding, comprehensive analytics tracking, and AI-powered support chat via OpenAI ChatKit.
 
 ## Architecture
 
-**Framework**: Next.js 14 with App Router
+**Framework**: Next.js 15.5.4 with App Router
 **Language**: TypeScript with strict mode enabled
 **Styling**: Tailwind CSS v3.4.17 with PostCSS integration and custom design system
 **UI Components**: Radix UI primitives with shadcn/ui setup (New York style, RSC enabled)
@@ -16,18 +16,25 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 **Fonts**: Geist Sans and Geist Mono
 **Icons**: Lucide React
 **Analytics**: Vercel Analytics with custom tracking utilities
+**Testing**: Vitest for unit tests, Playwright for E2E tests
 
 ### Key Directories
 
 - `app/` - Next.js app router pages with route-based organization
+  - `api/` - API routes for backend functionality
+    - `contact/` - Contact form submission endpoint
+    - `chatkit/session/` - ChatKit session management for support chat
+  - `services/` - Unified services page with tabbed layout (Design | Development | Web Experience)
+    - `_components/` - Service-specific tab components
+  - `work/` - Portfolio showcase and case studies (renamed from portfolio)
+  - `pricing/` - Pricing tiers (Starter, Pro, Elite) with FAQ
+  - `process/` - 5-step project methodology with deliverables
+  - `book/` - Calendly consultation booking page
+  - `legal/` - Terms of Service and Privacy Policy
   - `contact/` - Contact page with form functionality
-  - `dev/` - Development/product platform services page
-  - `design/` - Design services page
-  - `portfolio/` - Portfolio showcase and case studies (currently hidden from navigation)
-  - `social/` - Social programs and community services page
-  - `web/` - Web experience and marketing services page (also serves shopquickprintz subdomain root)
+  - `support/` - Support page with ChatKit integration for live chat
   - `resources/` - Resource downloads and content hub
-  - `premade-designs/` - Premade design offerings page
+    - `premade-designs/` - Premade design offerings catalog (relocated)
   - `clients/[client]/` - Dynamic client portal pages
   - `[client]/signin/` - Dynamic client sign-in pages
   - `globals.css` - Global styles with Tailwind configuration and mobile optimizations
@@ -36,9 +43,14 @@ This is TD Studios' luxury website - a Next.js 14 application with TypeScript th
 
 - `components/` - Reusable React components with consistent patterns
   - `sticky-header.tsx` - Sticky navigation header (replaces nav.tsx)
-  - `footer.tsx` - Site footer with branding and links
+  - `nav.tsx` - Navigation component with updated route structure
+  - `footer.tsx` - Site footer with branding and quick links (Support, Legal, Book)
   - `glass-card.tsx` - Glassmorphism card component for content presentation
   - `frosted-button.tsx` - Polymorphic button with analytics tracking
+  - `page-title.tsx` - Standardized page title component with eyebrow/subtitle
+  - `section.tsx` - Section wrapper with optional title and id
+  - `json-ld.tsx` - Structured data component for SEO
+  - `calendly-embed.tsx` - Calendly iframe embed component
   - `logo.tsx` - Brand logo component
   - `analytics-provider.tsx` - Analytics context and tracking wrapper
   - `ab-test-wrapper.tsx` - A/B testing component system
@@ -71,30 +83,50 @@ The app uses a consistent luxury design layout with:
 ```bash
 # Development (preferred package manager: pnpm)
 pnpm dev            # Start development server (Next.js dev mode on port 3000)
-npm run dev         # Alternative using npm
+pnpm serve          # Start production server on port 3000 (after building)
 
 # Building
-pnpm build          # Build for production (runs custom build script with timestamp injection)
-pnpm start          # Start production server
-npm run build       # Alternative using npm
-npm run start       # Alternative using npm
+pnpm build          # Build for production using Next.js
 
-# Code Quality & Security
+# Code Quality & Verification
 pnpm lint           # Run Next.js linting with ESLint
+pnpm typecheck      # Run TypeScript type checking without emitting files
+pnpm ci:verify      # Run full CI verification (lint + typecheck + test)
+pnpm report:types   # Generate type error report using custom script
 pnpm scan:secrets   # Scan entire codebase for potential secrets using secretlint
 pnpm scan:secrets:staged  # Scan only staged git files for secrets (used by pre-commit hook)
 
 # Testing
-npx playwright test # Run Playwright end-to-end tests (expects dev server on localhost:3003)
+pnpm test           # Run unit tests with Vitest (single run)
+pnpm test:watch     # Run Vitest in watch mode for development
+pnpm test:jest      # Run Jest tests (if applicable)
+npx playwright test # Run Playwright end-to-end tests
 npx playwright test --ui # Run tests with UI mode for debugging
 npx playwright test tests/mobile-layout.spec.ts # Run specific test file
+
+# Performance & Auditing
+pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 ```
 
 ## Testing
 
+### Unit Testing with Vitest
+- **Framework**: Vitest with jsdom environment for React component testing
+- **Test Files**: Located in `tests/` directory with `*.spec.ts?(x)` pattern
+- **Setup**: Test setup file at `tests/setup.ts`
+- **Configuration**: `vitest.config.ts` with path alias support (`@/` → project root)
+- **Key Features**:
+  - Globals enabled for test utilities
+  - Excludes Playwright E2E tests from Vitest runs
+  - JSX automatic transform via esbuild
+- **Commands**:
+  - `pnpm test` - Run all unit tests once
+  - `pnpm test:watch` - Watch mode for development
+  - `pnpm ci:verify` - Run lint + typecheck + test for CI
+
 ### End-to-End Testing with Playwright
 - **Framework**: Playwright for cross-browser testing
-- **Test Files**: Located in `tests/` directory
+- **Test Files**: Located in `tests/` directory (excluded from Vitest)
 - **Mobile Focus**: Tests specifically validate mobile layout behavior and responsive design
 - **Key Test Areas**:
   - Hero text centering on mobile viewports
@@ -102,17 +134,15 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
   - Touch target accessibility standards
   - Mobile viewport handling and text sizing
 - **Screenshots**: Automated visual testing captures in `tests/screenshots/`
-- **Local Development**: Tests expect dev server running on `http://localhost:3003`
-- **Configuration**: Currently no playwright.config.js - tests run with default configuration
+- **Configuration**: Default Playwright configuration (no custom config file)
 
 ## Configuration Details
 
 ### Next.js Configuration (`next.config.mjs`)
 - ESLint errors ignored during builds for deployment compatibility
 - TypeScript build errors ignored for v0.app integration
-- Images set to unoptimized for static deployment compatibility
+- **Image domains**: Configured for `i.imgur.com` and `via.placeholder.com`
 - **Domain redirects**: www.tdstudiosny.com → tdstudiosny.com (permanent, 301)
-- **Subdomain rewrites**: shopquickprintz.tdstudiosny.com `/` → `/web` (transparent rewrite)
 
 ### TypeScript Configuration (`tsconfig.json`)
 - Strict mode enabled with ES6 target
@@ -185,7 +215,8 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 - **Primary Development**: Use v0.app interface for major changes
 - **Manual Edits**: Consider sync implications when making direct code changes
 - **Debug Logging**: Console logging in layout for v0.app integration debugging
-- **Build Process**: Custom build script (`scripts/build-with-timestamp.mjs`) injects `NEXT_PUBLIC_BUILD_TIME` environment variable before running Next.js build
+- **Build Process**: Standard Next.js build process
+- **CI Pipeline**: Use `pnpm ci:verify` for comprehensive validation before commits
 
 ### Git Workflow & Security
 - **Husky Git Hooks**: Automated security and workflow enforcement
@@ -197,7 +228,7 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 ## Key Dependencies & Stack
 
 ### Core Framework
-- `next`: 14.2.16 - Latest stable Next.js with App Router
+- `next`: 15.5.4 - Next.js 15 with App Router and enhanced features
 - `react`: ^18 - React 18 with concurrent features
 - `typescript`: ^5 - Latest TypeScript with strict mode
 
@@ -221,16 +252,25 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 - `react-calendly`: ^4.4.0 - Calendly integration for booking consultations
 - `vaul`: ^0.9.9 - Drawer component for mobile interactions
 - `input-otp`: OTP input component for authentication flows
+- `@openai/chatkit-react`: ChatKit integration for AI-powered support chat
+- `openai`: OpenAI API client for AI functionality
+- `resend`: Email service for contact form submissions
 
 ### Development & Quality
 - `@vercel/analytics`: Performance and user behavior tracking
 - `next-themes`: Theme management system
 - `geist`: Premium font family (Sans and Mono variants)
 - `lucide-react`: Consistent icon library with 1000+ icons
+- `vitest`: Fast unit test framework with jsdom environment
 - `@playwright/test`: End-to-end testing framework for mobile and responsive testing
+- `@testing-library/react` + `@testing-library/jest-dom`: React component testing utilities
+- `jest`: JavaScript testing framework for additional test scenarios
+- `lighthouse`: Performance auditing and optimization tool
 - `secretlint`: Secret detection and prevention (with recommended rule preset)
 - `husky`: Git hooks for automated workflow enforcement
 - `tw-animate-css`: Additional Tailwind animation utilities
+- `tsx`: TypeScript execution for scripts
+- `start-server-and-test`: Utility for coordinating server startup with test execution
 
 ## UX Research & Optimization Context
 
@@ -261,3 +301,29 @@ The project includes comprehensive UX research documentation:
 - **Responsive Design**: Mobile-first breakpoint strategy
 - **Design Tokens**: CSS custom properties for theme consistency
 - **Glass Effects**: Consistent backdrop blur and transparency patterns
+
+## Route Structure
+
+See [ROUTES.md](./ROUTES.md) for complete routing documentation.
+
+### Primary Routes
+- `/` - Homepage with service grid and hero content
+- `/work` - Portfolio and case studies (renamed from /portfolio)
+- `/services` - Unified services page with tabs for Design, Development, and Web Experience
+- `/pricing` - Pricing tiers (Starter, Pro, Elite) with FAQ and JSON-LD
+- `/process` - 5-step project methodology with deliverables and timeline
+- `/book` - Calendly consultation booking page
+- `/legal` - Terms of Service and Privacy Policy
+- `/contact` - Contact form with email integration
+- `/support` - ChatKit AI-powered support chat
+- `/resources` - Resource hub
+  - `/resources/premade-designs` - Premade design catalog (relocated from /premade-designs)
+
+### Dynamic Routes
+- `/[client]/signin` - Dynamic client sign-in pages
+- `/clients/[client]` - Dynamic client portal pages
+
+### Navigation Structure
+- **Primary Nav**: Work · Services · Pricing · Process · Resources · Contact
+- **Footer Links**: Support · Legal · Book
+- **SEO**: All pages include canonical URLs, OpenGraph, Twitter Card metadata, and JSON-LD structured data

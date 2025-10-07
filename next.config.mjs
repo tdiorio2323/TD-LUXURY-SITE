@@ -9,15 +9,6 @@ const nextConfig = {
   images: {
     domains: ['i.imgur.com', 'via.placeholder.com'],
   },
-  async rewrites() {
-    return [
-      {
-        source: "/",
-        has: [{ type: "host", value: "shopquickprintz.tdstudiosny.com" }],
-        destination: "/web",
-      },
-    ];
-  },
   async redirects() {
     return [
       {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import { Analytics } from "@vercel/analytics/next"
 import { Footer } from "@/components/footer"
 import { StickyHeader } from "@/components/sticky-header"
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-black text-white antialiased`}>
+        <Script src='https://cdn.platform.openai.com/deployments/chatkit/chatkit.js' strategy='afterInteractive' />
         <AnalyticsProvider>
           <StickyHeader />
           <main>
@@ -60,45 +62,19 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Fix mobile viewport height issues
+              // Simple mobile viewport height fix
               function setVH() {
                 let vh = window.innerHeight * 0.01;
                 document.documentElement.style.setProperty('--vh', vh + 'px');
-                document.documentElement.style.setProperty('--mobile-vh', vh + 'px');
-              }
-
-              // Mobile background optimization
-              function optimizeMobileBackground() {
-                if (window.innerWidth <= 768) {
-                  const body = document.body;
-                  // Ensure background covers full viewport on mobile
-                  body.style.backgroundSize = 'cover';
-                  body.style.backgroundPosition = 'center center';
-                  body.style.backgroundRepeat = 'no-repeat';
-
-                  // iOS Safari specific fixes
-                  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                    body.style.backgroundAttachment = 'scroll';
-                    body.style.webkitBackgroundSize = 'cover';
-                  }
-                }
               }
 
               // Set initial values
               setVH();
-              optimizeMobileBackground();
 
               // Re-calculate on resize and orientation change
-              window.addEventListener('resize', () => {
-                setVH();
-                optimizeMobileBackground();
-              });
-
+              window.addEventListener('resize', setVH);
               window.addEventListener('orientationchange', () => {
-                setTimeout(() => {
-                  setVH();
-                  optimizeMobileBackground();
-                }, 100);
+                setTimeout(setVH, 100);
               });
 
               // Stagger animation delays for mobile content
@@ -107,9 +83,6 @@ export default function RootLayout({
                 mobileContentElements.forEach((el, index) => {
                   el.style.setProperty('--stagger-delay', index);
                 });
-
-                // Initial background optimization after DOM load
-                optimizeMobileBackground();
               });
             `,
           }}

@@ -1,0 +1,95 @@
+"use client"
+
+import { useSearchParams } from "next/navigation"
+import Link from "next/link"
+import { Design } from "./_components/Design"
+import { Development } from "./_components/Development"
+import { WebExperience } from "./_components/WebExperience"
+import { JsonLd } from "@/components/json-ld"
+
+type Tab = "design" | "dev" | "web"
+
+export default function ServicesPage() {
+  const searchParams = useSearchParams()
+  const currentTab = (searchParams.get("tab") as Tab) || "design"
+
+  const tabs: Array<{ id: Tab; label: string }> = [
+    { id: "design", label: "Design" },
+    { id: "dev", label: "Development" },
+    { id: "web", label: "Web Experience" },
+  ]
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://tdstudiosny.com/services",
+    "name": "TD Studios Design & Development Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "TD Studios",
+      "url": "https://tdstudiosny.com",
+    },
+    "serviceType": "Web Design and Development",
+    "areaServed": "Worldwide",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://tdstudiosny.com/contact",
+    },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tdstudiosny.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://tdstudiosny.com/services",
+      },
+    ],
+  }
+
+  return (
+    <>
+      <JsonLd data={serviceSchema} />
+      <JsonLd data={breadcrumbSchema} />
+
+      <div className="min-h-screen py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Tab Navigation */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex bg-neutral-900/70 backdrop-blur-sm rounded-lg p-1 border border-white/10">
+              {tabs.map((tab) => (
+                <Link
+                  key={tab.id}
+                  href={`/services?tab=${tab.id}`}
+                  className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                    currentTab === tab.id
+                      ? "bg-white text-black"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {tab.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Tab Content */}
+          <div className="transition-opacity duration-300">
+            {currentTab === "design" && <Design />}
+            {currentTab === "dev" && <Development />}
+            {currentTab === "web" && <WebExperience />}
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}

@@ -9,10 +9,13 @@ export default function PremadeDesignsPage() {
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/design-hero.jpg"
             alt="Premade designs showcase"
-            className="w-full h-full object-cover object-center"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40 hero-overlay-mobile" />
         </div>

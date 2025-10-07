@@ -22,24 +22,37 @@ const chromeFlags = [
     // start server on different port
     const srv = spawn("npx", ["next", "start", "-p", port.toString()], { stdio: "inherit" });
 
-    // wait for server
+    // Health check with retries - wait for server to start
     console.log(`Waiting for server on port ${port}...`);
-    await new Promise(r => setTimeout(r, 5000));
-
-    // Health check - verify server is responding
     const http = require("http");
-    await new Promise((resolve, reject) => {
-        const req = http.get(`http://localhost:${port}`, (res) => {
-            if (res.statusCode === 200) {
+    
+    const waitForServer = async (retries = 30, delay = 1000) => {
+        for (let i = 0; i < retries; i++) {
+            try {
+                await new Promise((resolve, reject) => {
+                    const req = http.get(`http://localhost:${port}`, (res) => {
+                        if (res.statusCode === 200) {
+                            resolve();
+                        } else {
+                            reject(new Error(`Server returned status ${res.statusCode}`));
+                        }
+                    });
+                    req.on('error', reject);
+                    req.setTimeout(5000, () => reject(new Error('Request timeout')));
+                });
                 console.log("Server health check passed");
-                resolve();
-            } else {
-                reject(new Error(`Server returned status ${res.statusCode}`));
+                return; // Success!
+            } catch (error) {
+                if (i === retries - 1) {
+                    throw new Error(`Server failed to start after ${retries} attempts: ${error.message}`);
+                }
+                console.log(`Attempt ${i + 1}/${retries} failed, retrying in ${delay}ms...`);
+                await new Promise(r => setTimeout(r, delay));
             }
-        });
-        req.on('error', reject);
-        req.setTimeout(10000, () => reject(new Error('Health check timeout')));
-    });
+        }
+    };
+    
+    await waitForServer();
 
     if (!fs.existsSync(".reports")) fs.mkdirSync(".reports");
 

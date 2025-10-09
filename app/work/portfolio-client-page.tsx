@@ -291,10 +291,16 @@ export default function PortfolioClientPage() {
               )}
 
               {/* Actions */}
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <FrostedButton
+                  href={`/work/${selectedProject.slug}`}
+                  className="flex-1 flex items-center justify-center gap-2"
+                >
+                  View Full Project <ArrowRight className="w-4 h-4" />
+                </FrostedButton>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-6 py-3 bg-neutral-900/70 border border-white/20 rounded-lg text-white hover:bg-neutral-900/80 transition-colors"
+                  className="flex-1 px-6 py-3 bg-neutral-900/70 border border-white/20 rounded-lg text-white hover:bg-neutral-900/80 transition-colors"
                 >
                   Close
                 </button>

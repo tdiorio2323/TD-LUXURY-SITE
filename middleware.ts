@@ -2,29 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { updateSession, verifySession } from "@/lib/utils/auth"
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-
-  // Protect /clients/* routes (except signin pages)
-  if (pathname.startsWith("/clients/")) {
-    const session = await verifySession()
-
-    if (!session) {
-      // Redirect to signin page
-      const clientSlug = pathname.split("/")[2]
-      return NextResponse.redirect(new URL(`/${clientSlug}/signin`, request.url))
-    }
-
-    // Verify the session matches the requested client
-    const requestedClient = pathname.split("/")[2]
-    if (session.clientSlug !== requestedClient) {
-      // Redirect to correct signin page
-      return NextResponse.redirect(new URL(`/${requestedClient}/signin`, request.url))
-    }
-
-    // Update session expiration
-    return await updateSession(request)
-  }
-
+  // Authentication disabled - allow all routes
   return NextResponse.next()
 }
 

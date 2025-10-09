@@ -40,13 +40,7 @@ const sections = [
 export default async function ClientPortalPage({ params }: ClientPortalPageProps) {
   const { client } = await params
 
-  // Verify session server-side
-  const session = await verifySession()
-
-  if (!session || session.clientSlug !== client?.toLowerCase()) {
-    redirect(`/${client}/signin`)
-  }
-
+  // Authentication disabled - direct access allowed
   const profile = clientAccessProfiles[client?.toLowerCase()]
 
   if (!profile) {

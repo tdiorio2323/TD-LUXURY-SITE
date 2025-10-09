@@ -57,51 +57,8 @@ export default function ClientSignInPage({ params }: { params: Promise<{ client:
   }
 
   const handleSubmit = async () => {
-    if (code.length !== 4) {
-      setError("Please enter a 4-digit passcode")
-      return
-    }
-
-    setIsSubmitting(true)
-    setError(null)
-
-    try {
-      const response = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          clientSlug: clientSlug,
-          passcode: code,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        if (response.status === 429) {
-          setError("Too many attempts. Please try again in 15 minutes.")
-          setRemainingAttempts(0)
-        } else {
-          setError(data.error || "Authentication failed")
-          if (data.remainingAttempts !== undefined) {
-            setRemainingAttempts(data.remainingAttempts)
-          }
-        }
-        setCode("")
-        return
-      }
-
-      // Success - redirect to portal
-      router.push(data.redirectUrl)
-    } catch (error) {
-      console.error("Signin error:", error)
-      setError("Connection error. Please try again.")
-      setCode("")
-    } finally {
-      setIsSubmitting(false)
-    }
+    // Bypass authentication - directly redirect to portal
+    router.push(`/clients/${clientSlug}`)
   }
 
   return (

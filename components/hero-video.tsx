@@ -25,8 +25,8 @@ export function HeroVideo({ videoSrc, posterSrc, fallbackImageSrc }: HeroVideoPr
     const handleCanPlay = () => {
       setIsVideoLoaded(true)
       // Try to play immediately when ready
-      video.play().catch((error) => {
-        console.log("Autoplay prevented:", error)
+      video.play().catch(() => {
+        // Autoplay prevented by browser - fallback to poster
       })
     }
 
@@ -46,9 +46,8 @@ export function HeroVideo({ videoSrc, posterSrc, fallbackImageSrc }: HeroVideoPr
     // Attempt immediate playback
     const playPromise = video.play()
     if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.log("Initial autoplay prevented:", error)
-        // Video will try again when canplay fires
+      playPromise.catch(() => {
+        // Initial autoplay prevented - video will try again when canplay fires
       })
     }
 

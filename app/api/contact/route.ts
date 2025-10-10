@@ -1,19 +1,6 @@
-import { z } from 'zod'
 import type { NextRequest } from 'next/server'
 import { Resend } from 'resend'
-
-export const Contact = z.object({
-  fullName: z.string().min(2).max(100),
-  email: z.string().email(),
-  company: z.string().optional(),
-  phone: z.string().optional(),
-  service: z.string().min(1).max(100),
-  budget: z.string().optional(),
-  timeline: z.string().optional(),
-  details: z.string().min(10).max(5000),
-  contactType: z.string().optional(),
-  website: z.string().optional(), // honeypot: must be empty
-})
+import { contactSchema } from '@/lib/schemas/contact'
 
 const hits = new Map<string, { n: number; ts: number }>() // naive in-memory
 
@@ -30,7 +17,7 @@ export async function POST(req: NextRequest) {
   if (limited(ip)) return new Response('Too Many Requests', { status: 429 })
 
   const body = await req.json().catch(() => null)
-  const parsed = Contact.safeParse(body)
+  const parsed = contactSchema.safeParse(body)
   if (!parsed.success) {
     return new Response(JSON.stringify(parsed.error.flatten()), {
       status: 400,

@@ -1,0 +1,495 @@
+{
+  "project": "TD Studios UX Roadmap",
+  "generated": "2025-10-07",
+  "total_hours": 35,
+  "total_tasks": 31,
+  "priorities": {
+    "high": {
+      "count": 7,
+      "hours": 7,
+      "label": "Pre-Launch Critical"
+    },
+    "medium": {
+      "count": 11,
+      "hours": 16,
+      "label": "Week 1-2 Post-Launch"
+    },
+    "low": {
+      "count": 13,
+      "hours": 12,
+      "label": "Week 3+ / Ongoing"
+    }
+  },
+  "tasks": [
+    {
+      "id": "H001",
+      "priority": "high",
+      "phase": 1,
+      "title": "Fix broken service links",
+      "description": "Update 4 broken links: /web, /dev, /social, /design to /services",
+      "hours": 0.5,
+      "files": ["app/page.tsx"],
+      "lines": [14, 21, 28, 35, 42],
+      "impact": "Prevents 404s, improves navigation flow",
+      "status": "pending"
+    },
+    {
+      "id": "H002",
+      "priority": "high",
+      "phase": 1,
+      "title": "Fix portfolio route",
+      "description": "Change /portfolio to /work",
+      "hours": 0.1,
+      "files": ["app/page.tsx"],
+      "lines": [49],
+      "impact": "Fixes broken navigation link",
+      "status": "pending"
+    },
+    {
+      "id": "H003",
+      "priority": "high",
+      "phase": 2,
+      "title": "Optimize hero images",
+      "description": "Convert 4.4MB parallax-hero.jpg + 3 others to WebP, target <300KB each",
+      "hours": 4,
+      "files": [
+        "public/parallax-hero.jpg",
+        "public/design-showcase-1.jpg",
+        "public/parallax-hero-backup.jpg",
+        "public/web-hero.jpg"
+      ],
+      "impact": "LCP improvement, mobile load speed, 85%+ reduction",
+      "status": "pending"
+    },
+    {
+      "id": "H004",
+      "priority": "high",
+      "phase": 1,
+      "title": "Update sitemap",
+      "description": "Add 9 missing routes, fix base URL to tdstudiosny.com",
+      "hours": 0.5,
+      "files": ["app/sitemap.ts"],
+      "routes_to_add": [
+        "/work",
+        "/services",
+        "/pricing",
+        "/process",
+        "/book",
+        "/support",
+        "/resources",
+        "/resources/premade-designs",
+        "/legal"
+      ],
+      "impact": "SEO crawlability, complete site index",
+      "status": "pending"
+    },
+    {
+      "id": "H005",
+      "priority": "high",
+      "phase": 1,
+      "title": "Create robots.txt",
+      "description": "Create app/robots.ts in Next.js 15 format",
+      "hours": 0.3,
+      "files": ["app/robots.ts"],
+      "impact": "SEO compliance, crawler guidance",
+      "status": "pending"
+    },
+    {
+      "id": "H006",
+      "priority": "high",
+      "phase": 2,
+      "title": "Remove/verify award badges",
+      "description": "4 unverified awards with data-verify=pending - remove, verify, or change",
+      "hours": 1,
+      "files": ["app/page.tsx"],
+      "lines": [157, 197],
+      "impact": "Credibility, trust signals, FTC compliance",
+      "status": "pending"
+    },
+    {
+      "id": "H007",
+      "priority": "high",
+      "phase": 1,
+      "title": "Add skip-to-content link",
+      "description": "Accessibility improvement for keyboard navigation",
+      "hours": 0.3,
+      "files": ["components/sticky-header.tsx"],
+      "impact": "WCAG compliance, keyboard accessibility",
+      "status": "pending"
+    },
+    {
+      "id": "M001",
+      "priority": "medium",
+      "phase": 3,
+      "title": "Add JSON-LD to 6 pages",
+      "description": "Add structured data: Organization, WebSite, CollectionPage, HowTo, ContactPoint, ItemList",
+      "hours": 3,
+      "files": [
+        "app/page.tsx",
+        "app/work/page.tsx",
+        "app/process/page.tsx",
+        "app/support/page.tsx",
+        "app/resources/page.tsx"
+      ],
+      "impact": "SEO rich results, enhanced SERP presence",
+      "status": "pending"
+    },
+    {
+      "id": "M002",
+      "priority": "medium",
+      "phase": 3,
+      "title": "Add canonical URLs",
+      "description": "Add alternates.canonical to all page metadata",
+      "hours": 1,
+      "files": ["app/*/page.tsx"],
+      "impact": "Prevents duplicate content issues",
+      "status": "pending"
+    },
+    {
+      "id": "M003",
+      "priority": "medium",
+      "phase": 3,
+      "title": "Optimize meta descriptions",
+      "description": "150-160 chars, unique per page, keyword-rich",
+      "hours": 1,
+      "files": ["app/*/page.tsx"],
+      "impact": "Improved CTR from search results",
+      "status": "pending"
+    },
+    {
+      "id": "M004",
+      "priority": "medium",
+      "phase": 3,
+      "title": "Lazy load below-fold images",
+      "description": "Add loading=lazy to testimonials, capabilities, lead magnets",
+      "hours": 1.5,
+      "files": ["app/page.tsx"],
+      "lines": [200],
+      "impact": "Faster initial page load, better LCP",
+      "status": "pending"
+    },
+    {
+      "id": "M005",
+      "priority": "medium",
+      "phase": 3,
+      "title": "Remove unused placeholder files",
+      "description": "Delete placeholder.{svg,jpg,png}, placeholder-logo.*, placeholder-user.jpg",
+      "hours": 0.5,
+      "files": ["public/placeholder.*", "app/page.tsx"],
+      "lines": [280],
+      "impact": "Reduced bundle size, cleaner assets",
+      "status": "pending"
+    },
+    {
+      "id": "M006",
+      "priority": "medium",
+      "phase": 4,
+      "title": "Add testimonial images",
+      "description": "Replace placeholder initials (M, S, R) with real photos",
+      "hours": 2,
+      "files": ["app/page.tsx", "public/testimonials/"],
+      "lines": [214, 231, 248],
+      "impact": "Trust, credibility, authentic social proof",
+      "status": "pending"
+    },
+    {
+      "id": "M007",
+      "priority": "medium",
+      "phase": 4,
+      "title": "Replace capability fallback",
+      "description": "Remove placeholder.svg fallback for capabilities section",
+      "hours": 0.5,
+      "files": ["app/page.tsx"],
+      "lines": [280],
+      "impact": "Professional appearance",
+      "status": "pending"
+    },
+    {
+      "id": "M008",
+      "priority": "medium",
+      "phase": 4,
+      "title": "Add case study links",
+      "description": "Enrich work page with detailed case studies",
+      "hours": 2,
+      "files": ["app/work/portfolio-client-page.tsx"],
+      "impact": "Content depth, engagement, conversion",
+      "status": "pending"
+    },
+    {
+      "id": "M009",
+      "priority": "medium",
+      "phase": 4,
+      "title": "Enhance mobile menu animations",
+      "description": "Add slide-in/fade transitions, improve touch feedback",
+      "hours": 1.5,
+      "files": ["components/nav.tsx"],
+      "lines": [114, 165],
+      "impact": "Mobile UX polish, perceived performance",
+      "status": "pending"
+    },
+    {
+      "id": "M010",
+      "priority": "medium",
+      "phase": 4,
+      "title": "Verify touch targets",
+      "description": "Ensure all CTAs are 44x44px minimum",
+      "hours": 1,
+      "files": ["app/page.tsx", "app/*/page.tsx"],
+      "impact": "Mobile usability, accessibility",
+      "status": "pending"
+    },
+    {
+      "id": "M011",
+      "priority": "medium",
+      "phase": 4,
+      "title": "Improve mobile form UX",
+      "description": "Floating labels, inline validation, better spacing",
+      "hours": 2,
+      "files": ["app/contact/page.tsx"],
+      "impact": "Form completion rate, lead generation",
+      "status": "pending"
+    },
+    {
+      "id": "L001",
+      "priority": "low",
+      "phase": 5,
+      "title": "Audit console.log statements",
+      "description": "Remove production console statements",
+      "hours": 0.5,
+      "command": "grep -r \"console.log\" app/ components/",
+      "impact": "Code cleanliness, bundle size",
+      "status": "pending"
+    },
+    {
+      "id": "L002",
+      "priority": "low",
+      "phase": 5,
+      "title": "Remove unused Image fallback",
+      "description": "Clean up placeholder.svg reference",
+      "hours": 0.3,
+      "files": ["app/page.tsx"],
+      "lines": [280],
+      "impact": "Code cleanliness",
+      "status": "pending"
+    },
+    {
+      "id": "L003",
+      "priority": "low",
+      "phase": 5,
+      "title": "Consolidate duplicate hero images",
+      "description": "Keep one: parallax-hero.jpg or backup",
+      "hours": 0.5,
+      "files": ["public/parallax-hero*.jpg"],
+      "impact": "Disk space, asset clarity",
+      "status": "pending"
+    },
+    {
+      "id": "L004",
+      "priority": "low",
+      "phase": 5,
+      "title": "Audit unused public images",
+      "description": "Remove duplicate backgrounds, unused hero variants",
+      "hours": 2,
+      "files": ["public/*.{jpg,png}"],
+      "impact": "Bundle size reduction, clean repo",
+      "status": "pending"
+    },
+    {
+      "id": "L005",
+      "priority": "low",
+      "phase": 5,
+      "title": "Standardize client logos",
+      "description": "Convert all to WebP, consistent naming",
+      "hours": 2,
+      "files": ["public/clients/*/logo.*"],
+      "impact": "Performance, consistency",
+      "status": "pending"
+    },
+    {
+      "id": "L006",
+      "priority": "low",
+      "phase": 5,
+      "title": "Create image optimization script",
+      "description": "Automate WebP conversion pre-commit",
+      "hours": 1,
+      "files": ["scripts/optimize-images.mjs", "package.json"],
+      "impact": "Automated performance, developer workflow",
+      "status": "pending"
+    },
+    {
+      "id": "L007",
+      "priority": "low",
+      "phase": 5,
+      "title": "Extract testimonial component",
+      "description": "Create reusable <TestimonialCard>",
+      "hours": 1.5,
+      "files": ["components/testimonial-card.tsx", "app/page.tsx"],
+      "lines": [204, 264],
+      "impact": "Code reusability, maintainability",
+      "status": "pending"
+    },
+    {
+      "id": "L008",
+      "priority": "low",
+      "phase": 5,
+      "title": "Create stat card component",
+      "description": "Extract to reusable <StatCard>",
+      "hours": 1,
+      "files": ["components/stat-card.tsx", "app/page.tsx"],
+      "lines": [126, 151],
+      "impact": "Component library, DRY principles",
+      "status": "pending"
+    },
+    {
+      "id": "L009",
+      "priority": "low",
+      "phase": 5,
+      "title": "Standardize page hero",
+      "description": "Create <PageHero> component pattern",
+      "hours": 2,
+      "files": [
+        "components/page-hero.tsx",
+        "app/pricing/page.tsx",
+        "app/process/page.tsx",
+        "app/contact/page.tsx"
+      ],
+      "impact": "Consistency, rapid page creation",
+      "status": "pending"
+    },
+    {
+      "id": "L010",
+      "priority": "low",
+      "phase": 5,
+      "title": "Test viewport height fix",
+      "description": "Verify iOS 14+, Android Chrome compatibility",
+      "hours": 0.5,
+      "files": ["app/layout.tsx"],
+      "lines": [62, 89],
+      "impact": "Mobile stability assurance",
+      "status": "pending"
+    },
+    {
+      "id": "L011",
+      "priority": "low",
+      "phase": 5,
+      "title": "Add touch gestures to carousel",
+      "description": "Swipe support for mobile design carousel",
+      "hours": 1,
+      "files": ["components/design-carousel.tsx"],
+      "impact": "Mobile engagement",
+      "status": "pending"
+    },
+    {
+      "id": "L012",
+      "priority": "low",
+      "phase": 5,
+      "title": "Review mobile text sizing",
+      "description": "Ensure minimum 16px body text on mobile",
+      "hours": 0.5,
+      "files": ["app/globals.css"],
+      "impact": "Readability, accessibility",
+      "status": "pending"
+    },
+    {
+      "id": "L013",
+      "priority": "low",
+      "phase": 5,
+      "title": "Improve contrast ratios",
+      "description": "WCAG AA compliance (4.5:1) for glassmorphism",
+      "hours": 1,
+      "files": ["app/globals.css"],
+      "impact": "Accessibility, legibility",
+      "status": "pending"
+    }
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Critical Fixes",
+      "duration": "Day 1",
+      "hours": 1.7,
+      "tasks": ["H001", "H002", "H004", "H005", "H007"]
+    },
+    {
+      "phase": 2,
+      "name": "Performance",
+      "duration": "Day 2-3",
+      "hours": 5,
+      "tasks": ["H003", "H006"]
+    },
+    {
+      "phase": 3,
+      "name": "SEO & Content",
+      "duration": "Week 1",
+      "hours": 7,
+      "tasks": ["M001", "M002", "M003", "M004", "M005"]
+    },
+    {
+      "phase": 4,
+      "name": "Mobile & Content Polish",
+      "duration": "Week 2",
+      "hours": 9,
+      "tasks": ["M006", "M007", "M008", "M009", "M010", "M011"]
+    },
+    {
+      "phase": 5,
+      "name": "Technical Cleanup",
+      "duration": "Week 3+",
+      "hours": 12.3,
+      "tasks": [
+        "L001",
+        "L002",
+        "L003",
+        "L004",
+        "L005",
+        "L006",
+        "L007",
+        "L008",
+        "L009",
+        "L010",
+        "L011",
+        "L012",
+        "L013"
+      ]
+    }
+  ],
+  "success_metrics": {
+    "phase_1": [
+      "Zero 404 errors from homepage",
+      "All routes in sitemap",
+      "robots.txt discoverable"
+    ],
+    "phase_2": [
+      "LCP < 2.5s on mobile",
+      "Homepage load < 3s on 3G",
+      "Image payload < 2MB total"
+    ],
+    "phase_3": [
+      "All pages have JSON-LD",
+      "Google Search Console validates schema",
+      "Meta descriptions unique & optimized"
+    ],
+    "phase_4": [
+      "Mobile conversion rate +15%",
+      "Touch targets pass accessibility audit",
+      "Form completion rate improved"
+    ],
+    "phase_5": [
+      "Codebase maintainability score +20%",
+      "Bundle size reduced by 15%",
+      "Component reusability improved"
+    ]
+  },
+  "commands": {
+    "development": "pnpm dev",
+    "optimize_images": "pnpm run optimize:images",
+    "audit_routes": "pnpm run audit:routes",
+    "audit_seo": "pnpm run audit:seo",
+    "test_unit": "pnpm test",
+    "test_e2e": "npx playwright test",
+    "lighthouse": "pnpm lh:routes",
+    "lint": "pnpm lint",
+    "typecheck": "pnpm typecheck",
+    "scan_secrets": "pnpm scan:secrets"
+  }
+}

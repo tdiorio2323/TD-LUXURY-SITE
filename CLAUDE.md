@@ -100,7 +100,7 @@ The app uses a consistent luxury design layout with:
 
 ## Environment Variables
 
-Required environment variables (see `.env.local.example`):
+Required environment variables (create `.env.local` file in project root, see `.env.local.example` for template):
 - `RESEND_API_KEY` - Resend API key for contact form emails
 - `CONTACT_TO_EMAIL` - Email address for contact form submissions
 - `OPENAI_API_KEY` - OpenAI API key for ChatKit agent integration
@@ -149,8 +149,9 @@ pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 - **Configuration**: `vitest.config.ts` with path alias support (`@/` → project root)
 - **Key Features**:
   - Globals enabled for test utilities
-  - Excludes Playwright E2E tests from Vitest runs
+  - Excludes Playwright E2E tests from Vitest runs (`**/mobile-layout.spec.ts`, `**/playwright/**`)
   - JSX automatic transform via esbuild
+  - `passWithNoTests: false` ensures tests must exist
 - **Commands**:
   - `pnpm test` - Run all unit tests once
   - `pnpm test:watch` - Watch mode for development

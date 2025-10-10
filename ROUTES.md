@@ -1,38 +1,32 @@
-# TD Studios — Routes
+# TD Studios — Final Route Architecture
 
-## Primary
-- `/` — Home
-- `/work` — Case studies
-- `/services` — Design | Development | Web Experience (tabs via `?tab=design|dev|web`)
-- `/pricing` — Packages (Starter, Pro, Elite) + FAQ
-- `/process` — 5-step method
-- `/resources` — Hub
-  - `/resources/premade-designs` — Catalog
-- `/contact` — Form
-- `/book` — Calendly
-- `/support` — ChatKit support
-- `/legal` — Terms + Privacy
+## Primary Routes
+| Path | Purpose | Notes |
+|------|----------|-------|
+| `/` | Landing page | Hero + "What We Do" + Why TD Studios + CTA |
+| `/work` | Portfolio showcase | Grid layout with projects and metrics |
+| `/web` | Web Experience | Website design, marketing, and builds |
+| `/dev` | Development | Platforms, SaaS, dashboards, automation |
+| `/social` | Social Media Marketing | Growth and content system campaigns |
+| `/design` | Brand & Visual Design | Logos, packaging, creative direction |
+| `/process` | C.L.O.S.E. Method | Five-step process, deliverables, FAQs |
+| `/resources` | Content Hub | Guides, templates, webinars |
+| `/faq` | General FAQ | Services · Process · Technical · Design |
+| `/contact` | Lead intake | Form → Resend integration |
+| `/book` | Consult booking | Calendly embed |
+| `/support` | Live chat | OpenAI ChatKit interface |
+| `/legal` | Terms & Privacy | Single combined doc |
+| `/clients/[client]` | Client Portal | Dynamic post-auth dashboard |
+| `/[client]/signin` | Client Sign-in | Dynamic login route |
 
-## Dynamic (internal)
-- `/[client]/signin`
-- `/clients/[client]`
+## Removed
+- `/pricing` (merged into `/faq`)
+- `/services` (split into `/web`, `/dev`, `/social`, `/design`)
 
-## APIs
-- `POST /api/contact`
-- `POST /api/chatkit/session`
+## Navigation Structure
+`WORK · WEB · DEV · SOCIAL · DESIGN · PROCESS · RESOURCES · FAQ · CONTACT`
 
-## SEO
-- Canonical per page
-- JSON-LD: Organization, Service, BreadcrumbList, FAQ
-- OG/Twitter per route
+---
 
-## Notes
-- `www → root` 301
-- `/web` removed; merged into `/services`
-- `/social` removed
-- `premade-designs` relocated under `/resources`
-
-## Acceptance
-- All routes build and render without console errors
-- Nav and footer link to new structure
-- Lighthouse ≥ 90 on static pages
+**Last Updated:** 2025-10-09
+**Structure Status:** Production-ready

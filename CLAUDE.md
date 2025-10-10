@@ -6,10 +6,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is TD Studios' luxury website - a Next.js 15 application with TypeScript that showcases premium design solutions. The project is automatically synced with v0.app deployments and deployed on Vercel. It features a luxury design aesthetic with glassmorphism effects, premium branding, comprehensive analytics tracking, and AI-powered support chat via OpenAI ChatKit.
 
+## Contents
+
+- [Architecture](#architecture)
+- [Environment Variables](#environment-variables)
+- [Development Commands](#development-commands)
+- [Testing](#testing)
+- [Configuration Details](#configuration-details)
+- [Design System](#design-system)
+- [Analytics & Optimization](#analytics--optimization)
+- [Deployment & Integration](#deployment--integration)
+- [Key Dependencies & Stack](#key-dependencies--stack)
+- [API Routes](#api-routes)
+- [Authentication System](#authentication-system)
+- [Development Best Practices](#development-best-practices)
+- [Route Structure](#route-structure)
+- [Documentation Assets](#documentation-assets)
+
 ## Architecture
 
 **Framework**: Next.js 15.5.4 with App Router
 **Language**: TypeScript with strict mode enabled
+**Database**: Supabase with PostgreSQL backend for lead management and client data
 **Styling**: Tailwind CSS v3.4.17 with PostCSS integration and custom design system
 **UI Components**: Radix UI primitives with shadcn/ui setup (New York style, RSC enabled)
 **Package Manager**: pnpm (v10.15.1 specified in package.json)
@@ -22,24 +40,26 @@ This is TD Studios' luxury website - a Next.js 15 application with TypeScript th
 
 - `app/` - Next.js app router pages with route-based organization
   - `api/` - API routes for backend functionality
-    - `contact/` - Contact form submission endpoint
-    - `chatkit/session/` - ChatKit session management for support chat
-  - `services/` - Unified services page with tabbed layout (Design | Development | Web Experience)
-    - `_components/` - Service-specific tab components
-  - `work/` - Portfolio showcase and case studies (renamed from portfolio)
-  - `pricing/` - Pricing tiers (Starter, Pro, Elite) with FAQ
-  - `process/` - 5-step project methodology with deliverables
+    - `contact/` - Contact form submission endpoint (POST, uses Resend)
+    - `chatkit/session/` - ChatKit session management for support chat (POST, uses OpenAI)
+    - `intake/` - Lead intake and qualification endpoint (POST, uses Supabase)
+  - `work/` - Portfolio showcase with projects and metrics
+  - `web/` - Web Experience service page (website design, marketing, builds)
+  - `dev/` - Development service page (platforms, SaaS, dashboards, automation)
+  - `social/` - Social Media Marketing service page (growth and content campaigns)
+  - `design/` - Brand & Visual Design service page (logos, packaging, creative direction)
+  - `process/` - C.L.O.S.E. Method (5-step project methodology with deliverables)
+  - `faq/` - General FAQ page (Services, Process, Technical, Design)
   - `book/` - Calendly consultation booking page
-  - `legal/` - Terms of Service and Privacy Policy
-  - `contact/` - Contact page with form functionality
+  - `legal/` - Terms of Service and Privacy Policy (combined document)
+  - `contact/` - Contact page with lead intake form functionality
   - `support/` - Support page with ChatKit integration for live chat
-  - `resources/` - Resource downloads and content hub
-    - `premade-designs/` - Premade design offerings catalog (relocated)
-  - `clients/[client]/` - Dynamic client portal pages
+  - `resources/` - Resource hub (guides, templates, webinars)
+  - `clients/[client]/` - Dynamic client portal pages (post-authentication)
   - `[client]/signin/` - Dynamic client sign-in pages
   - `globals.css` - Global styles with Tailwind configuration and mobile optimizations
   - `layout.tsx` - Root layout with StickyHeader, Footer, analytics, and mobile viewport fixes
-  - `page.tsx` - Homepage with service grid and hero content
+  - `page.tsx` - Homepage with hero, service grid, and CTA
 
 - `components/` - Reusable React components with consistent patterns
   - `sticky-header.tsx` - Sticky navigation header (replaces nav.tsx)
@@ -77,6 +97,18 @@ The app uses a consistent luxury design layout with:
 - **Theme Support**: Dark/light mode capability with theme provider
 - **Mobile-First Design**: Responsive patterns with mobile menu and touch-friendly interactions
 - **Mobile Viewport Fixes**: Inline script in layout.tsx handles iOS Safari viewport height issues and background optimization
+
+## Environment Variables
+
+Required environment variables (see `.env.local.example`):
+- `RESEND_API_KEY` - Resend API key for contact form emails
+- `CONTACT_TO_EMAIL` - Email address for contact form submissions
+- `OPENAI_API_KEY` - OpenAI API key for ChatKit agent integration
+- `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` - Supabase backend configuration
+- `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` - Supabase frontend configuration
+- `NEXT_PUBLIC_BUILD_TIME` - Build timestamp (auto-injected during build)
+- `JWT_SECRET` - JWT secret for session management (minimum 32 characters)
+- `CLIENT_{CLIENTSLUG}_PASSCODE` - Client-specific passcodes for portal access (e.g., `CLIENT_THEBODYBOUTIQUE_PASSCODE`)
 
 ## Development Commands
 
@@ -141,11 +173,13 @@ pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 ### Next.js Configuration (`next.config.mjs`)
 - ESLint errors ignored during builds for deployment compatibility
 - TypeScript build errors ignored for v0.app integration
-- **Image domains**: Configured for `i.imgur.com` and `via.placeholder.com`
+- **Image domains**: Configured for `i.imgur.com`, `via.placeholder.com`, `cdn.platform.openai.com`, and `tdstudiosny.com`
+- **Image optimization**: Modern AVIF and WebP formats with responsive device sizes
 - **Domain redirects**: www.tdstudiosny.com → tdstudiosny.com (permanent, 301)
 
 ### TypeScript Configuration (`tsconfig.json`)
-- Strict mode enabled with ES6 target
+- Strict mode enabled with ES2017 target
+- Additional strict checks: `noUncheckedIndexedAccess`, `noImplicitReturns`, `noFallthroughCasesInSwitch`
 - Path mapping: `@/*` points to project root
 - Next.js plugin integration for app router support
 - Isolated modules for better build performance
@@ -219,10 +253,23 @@ pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 - **CI Pipeline**: Use `pnpm ci:verify` for comprehensive validation before commits
 
 ### Git Workflow & Security
-- **Husky Git Hooks**: Automated security and workflow enforcement
-  - **Pre-commit hook**: Runs secretlint on staged files to prevent committing secrets
-  - **Pre-push hook**: Blocks direct pushes to `main` branch (requires feature branch + PR workflow)
-- **Secret Detection**: secretlint configured with recommended rules to catch API keys, tokens, credentials
+- **Husky Git Hooks**: Automated security and workflow enforcement (installed automatically via postinstall script)
+  - **Pre-commit hook**: Scans staged files for secrets before commit
+    ```bash
+    if ! git diff --cached --name-only --diff-filter=ACM | xargs -I{} -r secretlint "{}"; then
+      echo "🚫 Secretlint found potential secrets in staged files."
+      exit 1
+    fi
+    ```
+  - **Pre-push hook**: Enforces feature branch workflow and runs comprehensive secret scan
+    ```bash
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+    [ "$branch" = "main" ] && { echo "🚫 Direct pushes to main are blocked. Use feature branch + PR."; exit 1; }
+    if [ -z "$CI" ]; then
+      pnpm -s scan:secrets >/dev/null || { echo "🚫 Pre-push secret scan failed."; exit 1; }
+    fi
+    ```
+- **Secret Detection**: secretlint configured with `@secretlint/secretlint-rule-preset-recommend` to catch API keys, tokens, credentials
 - **Branch Protection**: Feature branch workflow enforced - all changes to main must go through PRs
 
 ## Key Dependencies & Stack
@@ -240,37 +287,44 @@ pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 - `clsx` + `tailwind-merge`: Conditional className handling via `cn` utility
 
 ### Enhanced Functionality
-- `react-hook-form`: ^7.60.0 - Form state management with validation
-- `zod`: 3.25.67 - Runtime type validation for form schemas
-- `@hookform/resolvers`: ^3.10.0 - Resolver integration for react-hook-form with Zod
-- `sonner`: ^1.7.4 - Toast notification system
-- `cmdk`: Command palette and search functionality
-- `date-fns`: Date manipulation and formatting
-- `embla-carousel-react`: Carousel component for content presentation
-- `recharts`: Data visualization for analytics dashboards
-- `react-resizable-panels`: Resizable layout components
-- `react-calendly`: ^4.4.0 - Calendly integration for booking consultations
-- `vaul`: ^0.9.9 - Drawer component for mobile interactions
-- `input-otp`: OTP input component for authentication flows
-- `@openai/chatkit-react`: ChatKit integration for AI-powered support chat
-- `openai`: OpenAI API client for AI functionality
-- `resend`: Email service for contact form submissions
+- **Forms & Validation**
+  - `react-hook-form`: ^7.60.0 - Form state management with validation
+  - `zod`: 3.25.67 - Runtime type validation for form schemas
+  - `@hookform/resolvers`: ^3.10.0 - Resolver integration for react-hook-form with Zod
+- **Backend Services**
+  - `@supabase/supabase-js`: ^2.74.0 - Supabase client for database operations
+  - `openai`: ^6.2.0 - OpenAI API client for AI functionality
+  - `resend`: ^6.1.2 - Email service for contact form submissions
+  - `jose`: ^6.1.0 - JWT creation and verification for client portal authentication
+- **UI Enhancements**
+  - `sonner`: ^1.7.4 - Toast notification system
+  - `cmdk`: Command palette and search functionality
+  - `embla-carousel-react`: Carousel component for content presentation
+  - `recharts`: Data visualization for analytics dashboards
+  - `react-resizable-panels`: Resizable layout components
+  - `vaul`: ^0.9.9 - Drawer component for mobile interactions
+  - `input-otp`: OTP input component for authentication flows
+- **Third-Party Integrations**
+  - `react-calendly`: ^4.4.0 - Calendly integration for booking consultations
+  - `@openai/chatkit-react`: ChatKit integration for AI-powered support chat
+- **Utilities**
+  - `date-fns`: Date manipulation and formatting
 
 ### Development & Quality
 - `@vercel/analytics`: Performance and user behavior tracking
 - `next-themes`: Theme management system
 - `geist`: Premium font family (Sans and Mono variants)
 - `lucide-react`: Consistent icon library with 1000+ icons
-- `vitest`: Fast unit test framework with jsdom environment
-- `@playwright/test`: End-to-end testing framework for mobile and responsive testing
+- `vitest`: ^3.2.4 - Fast unit test framework with jsdom environment
+- `@playwright/test`: ^1.55.1 - End-to-end testing framework for mobile and responsive testing
 - `@testing-library/react` + `@testing-library/jest-dom`: React component testing utilities
-- `jest`: JavaScript testing framework for additional test scenarios
-- `lighthouse`: Performance auditing and optimization tool
-- `secretlint`: Secret detection and prevention (with recommended rule preset)
-- `husky`: Git hooks for automated workflow enforcement
-- `tw-animate-css`: Additional Tailwind animation utilities
-- `tsx`: TypeScript execution for scripts
-- `start-server-and-test`: Utility for coordinating server startup with test execution
+- `jest`: ^30.2.0 - JavaScript testing framework for additional test scenarios
+- `lighthouse`: ^12.8.2 - Performance auditing and optimization tool
+- `secretlint` + `@secretlint/secretlint-rule-preset-recommend`: ^11.2.4 - Secret detection and prevention with recommended rule preset
+- `husky`: Git hooks for automated workflow enforcement (installed via postinstall script, not in package.json as devDependency due to postinstall pattern)
+- `tw-animate-css`: 1.3.3 - Additional Tailwind animation utilities
+- `tsx`: ^4.20.6 - TypeScript execution for scripts
+- `start-server-and-test`: ^2.1.2 - Utility for coordinating server startup with test execution
 
 ## UX Research & Optimization Context
 
@@ -279,6 +333,42 @@ The project includes comprehensive UX research documentation:
 - **User Journey Mapping**: Conversion funnel analysis and optimization opportunities
 - **Luxury Brand Standards**: Premium positioning and credibility indicators
 - **Performance Optimization**: Technical UX improvements and loading experience
+
+## API Routes
+
+The application provides the following API endpoints:
+
+### POST /api/contact
+- **Purpose**: Contact form submission endpoint
+- **Integration**: Resend email service
+- **Request**: Form data with name, email, message
+- **Response**: Success/error status with email delivery confirmation
+
+### POST /api/chatkit/session
+- **Purpose**: ChatKit session management for support chat
+- **Integration**: OpenAI ChatKit agent
+- **Request**: Session creation or continuation data
+- **Response**: Session token and configuration for ChatKit client
+
+### POST /api/intake
+- **Purpose**: Lead intake and qualification endpoint
+- **Integration**: Supabase database
+- **Request**: Lead information and qualification data
+- **Response**: Lead ID and qualification status
+- **Usage**: Stores qualified leads in Supabase for follow-up and CRM integration
+
+## Authentication System
+
+The application implements JWT-based authentication for client portals:
+
+### Client Portal Access
+- **Authentication Method**: JWT tokens with `jose` library for signing and verification
+- **Passcode System**: Each client has a unique passcode stored as environment variable (`CLIENT_{CLIENTSLUG}_PASSCODE`)
+- **Session Management**: JWT tokens signed with `JWT_SECRET` (minimum 32 characters required)
+- **Dynamic Routes**:
+  - Sign-in pages: `/[client]/signin` - Client-specific authentication
+  - Portal pages: `/clients/[client]` - Protected client dashboard (requires valid JWT)
+- **Security**: Token-based sessions prevent unauthorized access to client-specific data
 
 ## Development Best Practices
 
@@ -307,23 +397,43 @@ The project includes comprehensive UX research documentation:
 See [ROUTES.md](./ROUTES.md) for complete routing documentation.
 
 ### Primary Routes
-- `/` - Homepage with service grid and hero content
-- `/work` - Portfolio and case studies (renamed from /portfolio)
-- `/services` - Unified services page with tabs for Design, Development, and Web Experience
-- `/pricing` - Pricing tiers (Starter, Pro, Elite) with FAQ and JSON-LD
-- `/process` - 5-step project methodology with deliverables and timeline
-- `/book` - Calendly consultation booking page
-- `/legal` - Terms of Service and Privacy Policy
-- `/contact` - Contact form with email integration
-- `/support` - ChatKit AI-powered support chat
-- `/resources` - Resource hub
-  - `/resources/premade-designs` - Premade design catalog (relocated from /premade-designs)
+- `/` - Landing page with hero, "What We Do", and CTA
+- `/work` - Portfolio showcase with projects and metrics
+- `/web` - Web Experience (website design, marketing, and builds)
+- `/dev` - Development (platforms, SaaS, dashboards, automation)
+- `/social` - Social Media Marketing (growth and content campaigns)
+- `/design` - Brand & Visual Design (logos, packaging, creative direction)
+- `/process` - C.L.O.S.E. Method (5-step process, deliverables, FAQs)
+- `/resources` - Content hub (guides, templates, webinars)
+- `/faq` - General FAQ (Services, Process, Technical, Design)
+- `/contact` - Lead intake form with Resend integration
+- `/book` - Calendly consultation booking embed
+- `/support` - OpenAI ChatKit live chat interface
+- `/legal` - Terms of Service and Privacy Policy (combined document)
 
 ### Dynamic Routes
 - `/[client]/signin` - Dynamic client sign-in pages
-- `/clients/[client]` - Dynamic client portal pages
+- `/clients/[client]` - Dynamic client portal (post-authentication dashboard)
 
 ### Navigation Structure
-- **Primary Nav**: Work · Services · Pricing · Process · Resources · Contact
+- **Primary Nav**: WORK · WEB · DEV · SOCIAL · DESIGN · PROCESS · RESOURCES · FAQ · CONTACT
 - **Footer Links**: Support · Legal · Book
 - **SEO**: All pages include canonical URLs, OpenGraph, Twitter Card metadata, and JSON-LD structured data
+
+### Removed Routes
+- `/pricing` - Merged into `/faq`
+- `/services` - Split into `/web`, `/dev`, `/social`, `/design`
+
+## Documentation Assets
+
+### Architecture Map
+- **File**: [docs/architecture-map.json](./docs/architecture-map.json)
+- **Purpose**: Comprehensive reverse-engineered architecture documentation with evidence-based analysis
+- **Contents**:
+  - Complete tech stack mapping (Vercel, Cloudflare, Supabase, OpenAI ChatKit, Resend, etc.)
+  - DNS/TLS/HTTP configuration details with verification commands
+  - Integration points with deployment workflows and third-party services
+  - Critical action items for missing infrastructure (GA4/GTM, error monitoring, security headers)
+  - Enhancement suggestions for payment processing, visual regression testing, feature flags
+- **Usage**: Reference when onboarding new developers, planning infrastructure changes, or auditing security posture
+- **Last Updated**: 2025-10-10 (automated analysis via Claude Code)

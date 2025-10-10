@@ -1,0 +1,142 @@
+{
+  "reasoning": "Analysis conducted through systematic evidence collection: (1) Inspected local repository files including .vercel/project.json, next.config.mjs, package.json, app/layout.tsx, and API route configurations. (2) Fetched live site at https://tdstudiosny.com and confirmed Next.js deployment with Vercel edge headers. (3) DNS lookup via dig revealed Cloudflare nameservers (kayden/donna.ns.cloudflare.com) with A record 76.76.21.21 and Google Workspace MX records. (4) HTTP headers confirmed 308 redirects from HTTP→HTTPS and www→non-www variants. (5) TLS certificate inspection showed Let's Encrypt R10 issuer with validity Aug 17 2025 - Nov 15 2025. (6) Analyzed codebase for analytics integrations: found Vercel Analytics (@vercel/analytics/next) in app/layout.tsx line 78, custom gtag tracking functions in lib/analytics.ts but NO actual GA4/GTM measurement IDs in code or live HTML. (7) Confirmed OpenAI ChatKit integration via CDN script (cdn.platform.openai.com) loaded in layout.tsx line 70. (8) Verified robots.txt blocks /api/, /clients/, /signin, /_next/, /static/ and sitemap.xml contains 24 URLs with priorities 0.5-1.0.",
+  "project_summary": "TD Studios (tdstudiosny.com) is a luxury design/development agency website built with Next.js 15.5.4 App Router and TypeScript in strict mode. The site showcases portfolio work, service offerings (Web, Dev, Social, Design), and includes client-specific JWT-authenticated portals. Architecture: Vercel-hosted Next.js deployment with Cloudflare DNS/CDN, Supabase PostgreSQL backend for lead management, Resend for transactional emails, OpenAI ChatKit for support chat, and comprehensive custom analytics tracking infrastructure (currently instrumented but no active GA4/GTM ID deployed to production). Site implements glassmorphism luxury design system with mobile-first responsive patterns, A/B testing framework, and secure client portal authentication via jose JWT tokens.",
+  "project_links": [
+    {
+      "service": "Vercel (Hosting & Deployment)",
+      "url": "https://vercel.com (Project ID: prj_zkcupIV2WaELXjNLGgCgMBvRlgET, Org: team_0cl7wVSctAieZKXqKR2eyB02)",
+      "description": "Primary hosting platform. Evidence: HTTP/2 response headers show 'server: Vercel', x-vercel-cache: HIT, x-vercel-id traces. Repository contains .vercel/project.json with projectId and orgId. Deployment triggers on git push to main branch."
+    },
+    {
+      "service": "Cloudflare (DNS & CDN)",
+      "url": "https://www.cloudflare.com",
+      "description": "DNS management and CDN layer. Evidence: dig query shows NS records 'kayden.ns.cloudflare.com' and 'donna.ns.cloudflare.com'. A record points to 76.76.21.21. Likely provides SSL/TLS termination before Vercel edge."
+    },
+    {
+      "service": "Let's Encrypt (TLS Certificate Authority)",
+      "url": "https://letsencrypt.org",
+      "description": "Automated SSL/TLS certificate provisioning. Evidence: openssl inspection shows 'Issuer: C=US, O=Let's Encrypt, CN=R10'. Certificate valid Aug 17 2025 - Nov 15 2025 for CN=tdstudiosny.com with DNS SAN. Managed via Vercel's automatic certificate renewal."
+    },
+    {
+      "service": "Google Workspace (Email)",
+      "url": "https://workspace.google.com",
+      "description": "Email hosting for @tdstudiosny.com domain. Evidence: MX records show '1 aspmx.l.google.com', '5 alt1.aspmx.l.google.com', '5 alt2.aspmx.l.google.com', '10 alt3.aspmx.l.google.com', '10 alt4.aspmx.l.google.com'."
+    },
+    {
+      "service": "Vercel Analytics",
+      "url": "https://vercel.com/analytics",
+      "description": "First-party web analytics and performance monitoring. Evidence: package.json shows '@vercel/analytics': '1.5.0', app/layout.tsx line 78 renders <Analytics /> component. Privacy-focused, GDPR-compliant alternative to GA4."
+    },
+    {
+      "service": "OpenAI ChatKit",
+      "url": "https://cdn.platform.openai.com/deployments/chatkit/",
+      "description": "AI-powered support chat interface. Evidence: app/layout.tsx line 70 loads external script 'https://cdn.platform.openai.com/deployments/chatkit/chatkit.js' with strategy='afterInteractive'. API route /api/chatkit/session (app/api/chatkit/session/route.ts) manages session tokens using OPENAI_API_KEY."
+    },
+    {
+      "service": "Supabase (Database & Backend)",
+      "url": "https://supabase.com",
+      "description": "PostgreSQL database for lead management and client data. Evidence: package.json shows '@supabase/supabase-js': '^2.74.0'. Environment variables SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (backend), NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY (frontend). API route /api/intake stores qualified leads."
+    },
+    {
+      "service": "Resend (Transactional Email)",
+      "url": "https://resend.com",
+      "description": "Email delivery service for contact form submissions. Evidence: package.json shows 'resend': '^6.1.2'. API route /api/contact (app/api/contact/route.ts) uses RESEND_API_KEY to send emails to CONTACT_TO_EMAIL (tyler@tdstudiosny.com per .env.local.example)."
+    },
+    {
+      "service": "GitHub (Source Control)",
+      "url": "https://github.com (inferred - no public repo URL found)",
+      "description": "Version control system. Evidence: README.md mentions repository syncs from v0.app deployments to GitHub, then auto-deploys to Vercel. Git status shows active branch 'fix/final-disable-auth' with multiple uncommitted changes."
+    },
+    {
+      "service": "v0.app (AI Development Platform)",
+      "url": "https://v0.app/chat/projects/MgSVoHLfRb7",
+      "description": "AI-assisted development environment with automatic sync. Evidence: README.md and CLAUDE.md reference v0.app project link. Workflow: v0.app → GitHub → Vercel. Project likely created/maintained via v0 interface with manual edits synced back."
+    },
+    {
+      "service": "Calendly (Booking Integration)",
+      "url": "https://calendly.com",
+      "description": "Consultation booking embed. Evidence: package.json shows 'react-calendly': '^4.4.0', component at components/calendly-embed.tsx, used on /book page for scheduling client consultations."
+    },
+    {
+      "service": "crt.sh (Certificate Transparency Log)",
+      "url": "https://crt.sh/?q=tdstudiosny.com",
+      "description": "Public CT log showing historical certificates for tdstudiosny.com and subdomains. Evidence: WebFetch of crt.sh revealed multiple Let's Encrypt and Google Trust Services certificates for *.tdstudiosny.com, pay.tdstudiosny.com, link.tdstudiosny.com, etc."
+    }
+  ],
+  "todo_list": [
+    {
+      "task": "Configure Google Analytics 4 or Google Tag Manager",
+      "context": "Analytics tracking code is instrumented (lib/analytics.ts with trackPageView, trackButtonClick, trackFormSubmission functions) but NO GA4 measurement ID (G-XXXXXXXX) or GTM container ID (GTM-XXXXXXX) found in codebase or live HTML. The gtag() function is declared but never initialized. Evidence: Grep search for '(G-[A-Z0-9]+|GTM-[A-Z0-9]+|UA-[0-9-]+)' returned only Imgur artifacts in /public images (not TD Studios tracking). Live HTML fetch confirmed no analytics.js or gtag.js scripts loaded. This is a critical gap - comprehensive event tracking infrastructure exists but is not connected to any analytics platform."
+    },
+    {
+      "task": "Implement error monitoring (Sentry, LogRocket, or similar)",
+      "context": "No observability/error tracking detected. Evidence: Grep search for '(sentry|dsn|logrocket)' found only TODO items in TODO.md line 121 ('Install Sentry or similar') and docs/LAUNCH_CHECKLIST.md line 615 ('Consider adding Sentry or similar'). Production applications should have error monitoring for debugging client-side JavaScript errors, API failures, and performance issues."
+    },
+    {
+      "task": "Add Meta Pixel for Facebook/Instagram advertising",
+      "context": "No social media advertising pixels detected. Evidence: Grep search for '(facebook|meta|pixel|fbq)' found only client data references (lib/clients-data.ts has optional 'facebook' field for client social links) but NO fbq() Facebook Pixel tracking code. Given TD Studios offers social media marketing services (/social page), lack of Meta Pixel suggests limited conversion tracking for paid social campaigns."
+    },
+    {
+      "task": "Verify DNS HTTPS records for improved security",
+      "context": "Standard DNS records confirmed but no HTTPS/SVCB records detected. Evidence: dig query for A/AAAA/CNAME/MX/TXT/NS returned expected records (A: 76.76.21.21, NS: Cloudflare, MX: Google Workspace) but modern HTTPS resource records (RFC 9460) could enhance security and performance by advertising supported protocols and connection parameters."
+    },
+    {
+      "task": "Configure Content Security Policy (CSP) headers",
+      "context": "No CSP header detected in HTTP response. Evidence: curl -sI https://tdstudiosny.com shows standard Vercel headers (HSTS, cache-control, etag) but no 'content-security-policy' header. Current OpenAI ChatKit integration (external CDN script from cdn.platform.openai.com) would need to be whitelisted. CSP is critical for mitigating XSS attacks, especially with client portals and JWT authentication."
+    },
+    {
+      "task": "Implement comprehensive sitemap.xml with images and videos",
+      "context": "Basic sitemap exists with 24 URLs but lacks image/video extensions. Evidence: app/sitemap.ts generates URLs for static pages and dynamic /work/[client] pages from clients-data.ts, but does not include <image:image> or <video:video> tags per Sitemap protocol. Portfolio pages likely contain hero images and showcase media that should be indexed."
+    },
+    {
+      "task": "Add security.txt for vulnerability disclosure",
+      "context": "No security.txt file detected at /.well-known/security.txt or /security.txt. Evidence: Standard practice for professional services firms to provide security contact per RFC 9116. Given JWT-based authentication for client portals, a security disclosure policy would be prudent."
+    },
+    {
+      "task": "Configure DMARC policy for email security",
+      "context": "MX records show Google Workspace email but no DMARC TXT record detected. Evidence: dig TXT query returned no '_dmarc.tdstudiosny.com' record. DMARC prevents email spoofing/phishing using @tdstudiosny.com domain. Recommended for professional services firms sending client communications."
+    },
+    {
+      "task": "Audit and optimize Next.js bundle size",
+      "context": "Large dependency footprint may impact performance. Evidence: package.json shows 20+ @radix-ui/* packages, multiple UI libraries (sonner, vaul, cmdk, embla-carousel, recharts), and heavy dependencies (openai, @supabase/supabase-js). Live page response shows 35911 bytes HTML. Lighthouse audit via 'pnpm lh:routes' command exists but results not in evidence - should verify First Contentful Paint and Largest Contentful Paint metrics."
+    },
+    {
+      "task": "Document API rate limiting and abuse prevention",
+      "context": "Public API endpoints lack documented rate limiting. Evidence: API routes /api/contact (Resend email), /api/chatkit/session (OpenAI), /api/intake (Supabase) have no visible rate limiting middleware in route handlers. Contact form could be abused for spam, ChatKit for token consumption, intake for database flooding. Consider implementing rate limiting via Vercel Edge Config or upstash/ratelimit."
+    },
+    {
+      "task": "Implement proper 404 and error pages",
+      "context": "Default Next.js error handling may not align with luxury brand aesthetic. Evidence: No app/not-found.tsx or app/error.tsx detected in codebase structure. Glassmorphism design system should extend to error states for consistent user experience."
+    },
+    {
+      "task": "Configure robots meta tags for dynamic client portal pages",
+      "context": "Robots.txt blocks /clients/ and /signin but dynamic routes should have noindex meta tags. Evidence: app/robots.ts disallows '/clients/', '/signin' but dynamic route pages /[client]/signin and /clients/[client] should include <meta name='robots' content='noindex,nofollow'> to prevent accidental indexing of authenticated content."
+    }
+  ],
+  "add_ons": [
+    {
+      "suggestion": "Implement Lighthouse CI for automated performance monitoring",
+      "justification": "Package.json shows 'lighthouse': '^12.8.2' and script 'lh:routes' exists, but should integrate into CI/CD pipeline. Expected impact: Catch performance regressions before production deployment, ensure Core Web Vitals targets met (LCP <2.5s, FID <100ms, CLS <0.1)."
+    },
+    {
+      "suggestion": "Add Playwright visual regression testing",
+      "justification": "Existing Playwright setup (tests/mobile-layout.spec.ts tests hero centering, touch targets) but no visual regression tests. Glassmorphism effects and luxury brand aesthetic are sensitive to CSS changes. Expected impact: Prevent unintended design changes, especially on client portal pages."
+    },
+    {
+      "suggestion": "Integrate Stripe or similar for payment processing",
+      "justification": "Client portal infrastructure exists (JWT auth via jose library, dynamic /clients/[client] routes, Supabase backend) but no payment integration. Value: Enable online deposits for projects, subscription billing for retainer clients, integrate with /pricing tiers (Starter/Pro/Elite mentioned in CLAUDE.md but page removed - merged into /faq)."
+    },
+    {
+      "suggestion": "Add Hotjar or Microsoft Clarity for heatmaps",
+      "justification": "Custom analytics (lib/analytics.ts) tracks events but lacks session replay and heatmaps. Value: Understand user interaction with glassmorphism UI patterns, optimize CTA placement, identify friction points in 5-step C.L.O.S.E. process flow documented on /process page."
+    },
+    {
+      "suggestion": "Implement Algolia or similar for site search",
+      "justification": "Portfolio grows (24 URLs in sitemap with work/[client] pages), resources page exists, but no search functionality. Value: Help visitors find relevant case studies by industry/service type, improve content discoverability."
+    },
+    {
+      "suggestion": "Configure Vercel Edge Config for feature flags",
+      "justification": "A/B testing framework exists (lib/ab-testing.ts with test configuration, traffic allocation, conversion tracking) but lacks dynamic control. Value: Toggle experiments without deployment, gradually roll out new features, instant rollback if conversion rates drop."
+    }
+  ]
+}

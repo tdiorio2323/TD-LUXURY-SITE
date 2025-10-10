@@ -1,9 +1,13 @@
 import PortfolioClientPage from './portfolio-client-page'
 import { JsonLd } from '@/components/json-ld'
+import type { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Portfolio | TD Studios NY',
-  description: 'Explore our portfolio of premium brand and website projects across industries.',
+  description: 'Explore our portfolio of luxury brand and web projects. See real results from e-commerce, creative agencies, and high-growth startups.',
+  alternates: {
+    canonical: 'https://tdstudiosny.com/work',
+  },
 }
 
 export default function PortfolioPage() {

@@ -5,16 +5,19 @@ import { JsonLd } from "@/components/json-ld"
 
 export const metadata: Metadata = {
   title: "Book a Consultation | TD Studios",
-  description: "Schedule a free consultation to discuss your project needs. We'll help you choose the right solution for your business.",
+  description: "Schedule a free 30-minute consultation with TD Studios. Discuss your web design, development, or branding project with our team. No commitment required.",
+  alternates: {
+    canonical: "https://tdstudiosny.com/book",
+  },
   openGraph: {
     title: "Book a Consultation | TD Studios",
-    description: "Schedule a free consultation to discuss your project needs.",
+    description: "Schedule a free 30-minute consultation with TD Studios. Discuss your web design, development, or branding project with our team. No commitment required.",
     url: "https://tdstudiosny.com/book",
   },
   twitter: {
     card: "summary_large_image",
     title: "Book a Consultation | TD Studios",
-    description: "Schedule a free consultation to discuss your project needs.",
+    description: "Schedule a free 30-minute consultation with TD Studios. Discuss your web design, development, or branding project with our team. No commitment required.",
   },
 }
 

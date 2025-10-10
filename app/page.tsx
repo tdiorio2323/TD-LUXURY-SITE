@@ -1,8 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
 import { Section } from "@/components/section"
 import { GlassCard } from "@/components/glass-card"
 import { JsonLd } from "@/components/json-ld"
+import { HeroVideo } from "@/components/hero-video"
 import heroImage from "@/public/main-background.webp"
 
 export default function HomePage() {
@@ -44,24 +44,17 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <JsonLd data={websiteSchema} />
       <main id="main-content" className="flex flex-col">
-      {/* Hero Section with CSS Animations */}
+      {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-        {/* Background Image with Priority Loading */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src={heroImage}
-            alt="TD Studios Hero Background"
-            fill
-            priority
-            placeholder="blur"
-            sizes="100vw"
-            style={{ objectFit: 'cover' }}
-            className="opacity-70"
-          />
-        </div>
+        {/* Background Video with Fallback Image */}
+        <HeroVideo
+          videoSrc="/hero-video.mp4"
+          posterSrc="/main-background.webp"
+          fallbackImageSrc={heroImage}
+        />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 heroGradient backdrop-blur-3xl" />
+        <div className="absolute inset-0 heroGradient backdrop-blur-xl" />
 
         {/* Hero Content with CSS Animation */}
         <div className="relative z-10 text-center px-6 animate-fade-in-up">

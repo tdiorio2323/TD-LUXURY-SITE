@@ -6,6 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is TD Studios' luxury website - a Next.js 15 application with TypeScript that showcases premium design solutions. The project is automatically synced with v0.app deployments and deployed on Vercel. It features a luxury design aesthetic with glassmorphism effects, premium branding, comprehensive analytics tracking, and AI-powered support chat via OpenAI ChatKit.
 
+**Current Phase**: Phase 3 – UX & SEO Enhancements (v2.3.0)
+**Branch**: `feature/phase3-ux-enhancements`
+**Focus**: Polish user experience, complete SEO rollout, improve performance and accessibility
+**Tracker**: See [PHASE3_TRACKER.md](./PHASE3_TRACKER.md) for detailed task breakdown and progress
+
 ## Contents
 
 - [Architecture](#architecture)
@@ -438,3 +443,16 @@ See [ROUTES.md](./ROUTES.md) for complete routing documentation.
   - Enhancement suggestions for payment processing, visual regression testing, feature flags
 - **Usage**: Reference when onboarding new developers, planning infrastructure changes, or auditing security posture
 - **Last Updated**: 2025-10-10 (automated analysis via Claude Code)
+
+### Phase 3 Tracker
+- **File**: [PHASE3_TRACKER.md](./PHASE3_TRACKER.md)
+- **Purpose**: Comprehensive task tracking for v2.3.0 release focusing on UX & SEO enhancements
+- **Categories**:
+  - UX Improvements (mobile spacing, typography, button targets, glassmorphism)
+  - SEO Enhancements (canonical URLs, SEOHead component, sitemap updates)
+  - Performance Optimization (video loading, lazy loading, image optimization, Lighthouse CI)
+  - Accessibility (contrast, ARIA labels, keyboard navigation, screen reader support)
+  - Animation & Interactions (scroll animations, page transitions, micro-interactions)
+  - Responsive Design QA (desktop, tablet, mobile, cross-browser testing)
+- **Progress**: 29 tasks total (11 P1 Critical, 11 P2 High, 7 P3 Medium)
+- **Last Updated**: 2025-10-10

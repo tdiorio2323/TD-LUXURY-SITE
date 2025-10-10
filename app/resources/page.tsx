@@ -1,7 +1,26 @@
 import Image from "next/image"
+import { Metadata } from "next"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { BookOpen, Download, Video, Users, Lightbulb, TrendingUp } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Resources | TD Studios",
+  description: "Free design guides, case studies, templates, and webinars. Learn luxury brand psychology, color theory, typography, and conversion optimization strategies.",
+  alternates: {
+    canonical: "https://tdstudiosny.com/resources",
+  },
+  openGraph: {
+    title: "Resources | TD Studios",
+    description: "Free design guides, case studies, templates, and webinars. Learn luxury brand psychology, color theory, typography, and conversion optimization strategies.",
+    url: "https://tdstudiosny.com/resources",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources | TD Studios",
+    description: "Free design guides, case studies, templates, and webinars. Learn luxury brand psychology, color theory, typography, and conversion optimization strategies.",
+  },
+}
 
 // Type definitions for different resource types
 interface BaseResource {

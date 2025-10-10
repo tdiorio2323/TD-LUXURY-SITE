@@ -82,15 +82,27 @@ exports[`Nav > renders stable snapshot 1`] = `
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/services"
+            href="/web"
           >
-            SERVICES
+            WEB
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
-            href="/pricing"
+            href="/dev"
           >
-            PRICING
+            DEV
+          </a>
+          <a
+            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
+            href="/social"
+          >
+            SOCIAL
+          </a>
+          <a
+            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
+            href="/design"
+          >
+            DESIGN
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
@@ -103,6 +115,12 @@ exports[`Nav > renders stable snapshot 1`] = `
             href="/resources"
           >
             RESOURCES
+          </a>
+          <a
+            class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"
+            href="/faq"
+          >
+            FAQ
           </a>
           <a
             class="text-lg font-medium tracking-wider transition-colors hover:text-white text-white/70"

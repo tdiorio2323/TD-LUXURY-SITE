@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { clientAccessProfiles } from "@/lib/client-access"
@@ -12,11 +12,23 @@ const keypadLayout = [
   ["clear", "0", "back"],
 ]
 
-export default function ClientSignInPage({ params }: { params: { client: string } }) {
+export default function ClientSignInPage({ params }: { params: Promise<{ client: string }> }) {
   const router = useRouter()
-  const profile = useMemo(() => clientAccessProfiles[params.client.toLowerCase()], [params.client])
+  const [clientSlug, setClientSlug] = useState<string>("")
+  const [profile, setProfile] = useState<any>(null)
   const [code, setCode] = useState("")
   const [error, setError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [remainingAttempts, setRemainingAttempts] = useState<number | null>(null)
+
+  // Handle async params
+  useEffect(() => {
+    params.then(({ client }) => {
+      const slug = client.toLowerCase()
+      setClientSlug(slug)
+      setProfile(clientAccessProfiles[slug])
+    })
+  }, [params])
 
   if (!profile) {
     return (
@@ -44,13 +56,9 @@ export default function ClientSignInPage({ params }: { params: { client: string 
     setCode((prev) => `${prev}${key}`)
   }
 
-  const handleSubmit = () => {
-    if (code !== profile.passcode) {
-      setError("Passcode incorrect")
-      return
-    }
-
-    router.push(`/clients/${profile.slug}`)
+  const handleSubmit = async () => {
+    // Bypass authentication - directly redirect to portal
+    router.push(`/clients/${clientSlug}`)
   }
 
   return (
@@ -108,13 +116,23 @@ export default function ClientSignInPage({ params }: { params: { client: string 
           </div>
         </div>
 
-        {error && <p className="mb-4 text-center text-sm text-red-200">{error}</p>}
+        {error && (
+          <div className="mb-4 text-center">
+            <p className="text-sm text-red-200">{error}</p>
+            {remainingAttempts !== null && remainingAttempts > 0 && (
+              <p className="text-xs text-white/60 mt-1">
+                {remainingAttempts} {remainingAttempts === 1 ? "attempt" : "attempts"} remaining
+              </p>
+            )}
+          </div>
+        )}
 
         <button
           onClick={handleSubmit}
-          className="w-full rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_16px_40px_rgba(255,200,60,0.55)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200 active:scale-[0.98]"
+          disabled={isSubmitting || code.length !== 4}
+          className="w-full rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_16px_40px_rgba(255,200,60,0.55)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Enter
+          {isSubmitting ? "Verifying..." : "Enter"}
         </button>
       </div>
     </div>

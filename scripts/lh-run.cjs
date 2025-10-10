@@ -7,7 +7,7 @@ const port = 3001; // Use a different port to avoid conflicts
 // Chrome flags for CI environment - properly escaped for shell execution
 const chromeFlags = [
     "--headless",
-    "--no-sandbox", 
+    "--no-sandbox",
     "--disable-dev-shm-usage",
     "--disable-gpu",
     "--disable-web-security",
@@ -25,7 +25,7 @@ const chromeFlags = [
     // Health check with retries - wait for server to start
     console.log(`Waiting for server on port ${port}...`);
     const http = require("http");
-    
+
     const waitForServer = async (retries = 30, delay = 1000) => {
         for (let i = 0; i < retries; i++) {
             try {
@@ -51,7 +51,7 @@ const chromeFlags = [
             }
         }
     };
-    
+
     await waitForServer();
 
     if (!fs.existsSync(".reports")) fs.mkdirSync(".reports");
@@ -59,18 +59,18 @@ const chromeFlags = [
     for (const route of routes) {
         const outPath = `.reports/lh${route.replace(/\//g, "_")}.json`;
         console.log(`Running Lighthouse for ${route}...`);
-        
+
         try {
             // Use Playwright's Chromium in CI, system Chrome locally
-            const chromePath = process.env.CI 
-                ? require("playwright").chromium.executablePath() 
+            const chromePath = process.env.CI
+                ? require("playwright").chromium.executablePath()
                 : undefined;
-            
-            const env = chromePath 
+
+            const env = chromePath
                 ? { ...process.env, CHROME_PATH: chromePath }
                 : process.env;
-                
-            execSync(`npx lighthouse http://localhost:${port}${route} --quiet --only-categories=performance,seo,accessibility --output=json --output-path=${outPath} --chrome-flags="${chromeFlags}"`, { 
+
+            execSync(`npx lighthouse http://localhost:${port}${route} --quiet --only-categories=performance,seo,accessibility --output=json --output-path=${outPath} --chrome-flags="${chromeFlags}"`, {
                 stdio: "inherit",
                 env
             });

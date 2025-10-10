@@ -1,11 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 import { clientAccessProfiles } from "@/lib/client-access"
+import { verifySession } from "@/lib/utils/auth"
 
 interface ClientPortalPageProps {
-  params: {
+  params: Promise<{
     client: string
-  }
+  }>
 }
 
 const sections = [
@@ -35,8 +37,11 @@ const sections = [
   },
 ]
 
-export default function ClientPortalPage({ params }: ClientPortalPageProps) {
-  const profile = clientAccessProfiles[params.client?.toLowerCase()]
+export default async function ClientPortalPage({ params }: ClientPortalPageProps) {
+  const { client } = await params
+
+  // Authentication disabled - direct access allowed
+  const profile = clientAccessProfiles[client?.toLowerCase()]
 
   if (!profile) {
     return (

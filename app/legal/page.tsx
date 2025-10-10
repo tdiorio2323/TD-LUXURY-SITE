@@ -6,16 +6,19 @@ import { JsonLd } from "@/components/json-ld"
 
 export const metadata: Metadata = {
   title: "Legal | TD Studios",
-  description: "Terms of Service and Privacy Policy for TD Studios. Learn how we protect your data and define our service agreements.",
+  description: "Terms of Service and Privacy Policy for TD Studios. Our commitment to transparency, data protection, and client rights for all design and development services.",
+  alternates: {
+    canonical: "https://tdstudiosny.com/legal",
+  },
   openGraph: {
     title: "Legal | TD Studios",
-    description: "Terms of Service and Privacy Policy for TD Studios.",
+    description: "Terms of Service and Privacy Policy for TD Studios. Our commitment to transparency, data protection, and client rights for all design and development services.",
     url: "https://tdstudiosny.com/legal",
   },
   twitter: {
     card: "summary_large_image",
     title: "Legal | TD Studios",
-    description: "Terms of Service and Privacy Policy for TD Studios.",
+    description: "Terms of Service and Privacy Policy for TD Studios. Our commitment to transparency, data protection, and client rights for all design and development services.",
   },
 }
 

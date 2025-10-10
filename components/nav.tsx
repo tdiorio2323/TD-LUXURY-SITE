@@ -8,10 +8,13 @@ import { Instagram, MessageCircle, Send, Menu, X } from "lucide-react"
 
 const navItems = [
   { name: "WORK", href: "/work" },
-  { name: "SERVICES", href: "/services" },
-  { name: "PRICING", href: "/pricing" },
+  { name: "WEB", href: "/web" },
+  { name: "DEV", href: "/dev" },
+  { name: "SOCIAL", href: "/social" },
+  { name: "DESIGN", href: "/design" },
   { name: "PROCESS", href: "/process" },
   { name: "RESOURCES", href: "/resources" },
+  { name: "FAQ", href: "/faq" },
   { name: "CONTACT", href: "/contact" },
 ]
 

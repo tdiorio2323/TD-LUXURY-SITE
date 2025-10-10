@@ -12,25 +12,39 @@ import { Suspense } from "react"
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
-  title: "TD Studios | Luxury Creative & Digital Agency",
-  description: "A luxury creative agency building flagship digital experiences. We engineer for clarity, conversion, and authority to elevate ambitious brands.",
+  metadataBase: new URL("https://tdstudiosny.com"),
+  title: {
+    default: "TD Studios | Design Your Success",
+    template: "%s | TD Studios",
+  },
+  description:
+    "TD Studios builds high-end websites and systems that turn bold visions into revenue-generating realities.",
+  alternates: {
+    canonical: "https://tdstudiosny.com",
+  },
   openGraph: {
-    title: "TD Studios | Luxury Creative & Digital Agency",
-    description: "A luxury creative agency building flagship digital experiences. We engineer for clarity, conversion, and authority to elevate ambitious brands.",
-    images: [{
-      url: "https://tdstudiosny.com/og-image-short.jpg",
-      width: 1200,
-      height: 630,
-      alt: "TD Studios - Luxury Creative & Digital Agency",
-    }],
+    title: "TD Studios",
+    description:
+      "High-end design, web, and marketing systems built for performance and control.",
     url: "https://tdstudiosny.com",
+    siteName: "TD Studios",
+    locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://tdstudiosny.com/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "TD Studios OG Image",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "TD Studios | Luxury Creative & Digital Agency",
-    description: "A luxury creative agency building flagship digital experiences. We engineer for clarity, conversion, and authority to elevate ambitious brands.",
-    images: ["https://tdstudiosny.com/twitter-image-short.jpg"],
+    title: "TD Studios | Design Your Success",
+    description:
+      "Design. Develop. Scale. TD Studios builds digital experiences for ambitious brands.",
+    images: ["https://tdstudiosny.com/og-image.webp"],
   },
 }
 
@@ -47,6 +61,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/main-background.webp"
+        />
+      </head>
       <body className={`${inter.className} bg-black text-white antialiased`}>
         <Script src='https://cdn.platform.openai.com/deployments/chatkit/chatkit.js' strategy='afterInteractive' />
         <AnalyticsProvider>

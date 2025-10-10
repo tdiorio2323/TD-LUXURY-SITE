@@ -7,16 +7,16 @@ import { JsonLd } from "@/components/json-ld"
 
 export const metadata: Metadata = {
   title: "Our Process | TD Studios",
-  description: "Our proven 5-step process for delivering premium design and development projects on time and on budget.",
+  description: "Our proven 5-step process to turn your brand vision into a polished digital experience.",
   openGraph: {
     title: "Our Process | TD Studios",
-    description: "Our proven 5-step process for delivering premium design and development projects.",
+    description: "Our proven 5-step process to turn your brand vision into a polished digital experience.",
     url: "https://tdstudiosny.com/process",
   },
   twitter: {
     card: "summary_large_image",
     title: "Our Process | TD Studios",
-    description: "Our proven 5-step process for delivering premium design and development projects.",
+    description: "Our proven 5-step process to turn your brand vision into a polished digital experience.",
   },
 }
 
@@ -99,6 +99,24 @@ const faqItems = [
 ]
 
 export default function ProcessPage() {
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "TD Studios 5-Step Design & Development Process",
+    "description": "A proven methodology that delivers exceptional results, from strategy to launch",
+    "totalTime": "P8W",
+    "step": processSteps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.description,
+      "itemListElement": step.deliverables.map((deliverable) => ({
+        "@type": "HowToTip",
+        "text": deliverable
+      }))
+    }))
+  }
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -133,6 +151,7 @@ export default function ProcessPage() {
 
   return (
     <>
+      <JsonLd data={howToSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
 

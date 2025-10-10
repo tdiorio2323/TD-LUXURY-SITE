@@ -659,6 +659,30 @@ body {
   animation: fade-in-up 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* Reduced Motion Support - WCAG 2.1 AA Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Keep essential animations for UX but reduce dramatically */
+  .animate-fade-in-up {
+    animation-duration: 0.1s !important;
+  }
+  
+  /* Disable decorative animations completely */
+  .shimmer-effect,
+  .luxuryTextShine,
+  .bounceGentle {
+    animation: none !important;
+  }
+}
+
 @layer base {
   * {
     border-color: hsl(var(--border));

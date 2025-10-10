@@ -69,6 +69,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-black text-white antialiased`}>
+        {/* Skip Navigation Link for Accessibility */}
+        <a 
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded-md z-[60] font-medium"
+        >
+          Skip to main content
+        </a>
         <Script src='https://cdn.platform.openai.com/deployments/chatkit/chatkit.js' strategy='afterInteractive' />
         <AnalyticsProvider>
           <StickyHeader />

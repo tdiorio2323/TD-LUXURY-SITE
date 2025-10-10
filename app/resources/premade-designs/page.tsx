@@ -56,6 +56,7 @@ export default function PremadeDesignsPage() {
                     src={design.thumb}
                     alt={design.title}
                     fill
+                    loading="lazy"
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                   />

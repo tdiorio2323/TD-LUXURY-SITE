@@ -269,6 +269,7 @@ export default function PortfolioClientPage() {
                           src={image}
                           alt={`${selectedProject.name} gallery ${index + 1}`}
                           fill
+                          loading="lazy"
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                         />

@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/design", priority: 0.9, changefreq: "monthly" },
     { path: "/process", priority: 0.8, changefreq: "monthly" },
     { path: "/resources", priority: 0.7, changefreq: "weekly" },
+    { path: "/resources/premade-designs", priority: 0.7, changefreq: "weekly" },
+    { path: "/services", priority: 0.9, changefreq: "monthly" },
     { path: "/faq", priority: 0.7, changefreq: "monthly" },
     { path: "/contact", priority: 0.8, changefreq: "monthly" },
     { path: "/book", priority: 0.8, changefreq: "monthly" },

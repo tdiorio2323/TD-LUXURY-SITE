@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | TD Studios",
   },
   description:
-    "TD Studios builds high-end websites and systems that turn bold visions into revenue-generating realities.",
+    "TD Studios builds high-end websites, platforms, and marketing systems for ambitious brands. Web design, development, and digital strategy that drives real results.",
   alternates: {
     canonical: "https://tdstudiosny.com",
   },

@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   return {
     title: `${client.name} — TD Studios`,
     description: client.description,
+    alternates: {
+      canonical: `https://tdstudiosny.com/work/${slug}`,
+    },
     openGraph: {
       title: `${client.name} — TD Studios`,
       description: client.description,

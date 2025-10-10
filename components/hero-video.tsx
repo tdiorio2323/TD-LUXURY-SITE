@@ -18,36 +18,49 @@ export function HeroVideo({ videoSrc, posterSrc, fallbackImageSrc }: HeroVideoPr
     const video = videoRef.current
     if (!video) return
 
+    // Force load the video immediately
+    video.load()
+
     // Check if video can play
     const handleCanPlay = () => {
       setIsVideoLoaded(true)
+      // Try to play immediately when ready
+      video.play().catch((error) => {
+        console.log("Autoplay prevented:", error)
+      })
     }
 
-    const handleError = () => {
-      console.warn("Video failed to load, using fallback image")
+    const handleLoadedData = () => {
+      setIsVideoLoaded(true)
+    }
+
+    const handleError = (e: Event) => {
+      console.warn("Video failed to load, using fallback image", e)
       setVideoError(true)
     }
 
     video.addEventListener("canplay", handleCanPlay)
+    video.addEventListener("loadeddata", handleLoadedData)
     video.addEventListener("error", handleError)
 
-    // Attempt to play video (required for iOS autoplay)
+    // Attempt immediate playback
     const playPromise = video.play()
     if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Autoplay was prevented, which is fine for background videos
-        console.log("Autoplay prevented, video will play when user interacts")
+      playPromise.catch((error) => {
+        console.log("Initial autoplay prevented:", error)
+        // Video will try again when canplay fires
       })
     }
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay)
+      video.removeEventListener("loadeddata", handleLoadedData)
       video.removeEventListener("error", handleError)
     }
   }, [])
 
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-full bg-black">
       {!videoError ? (
         <>
           {/* Video Background */}
@@ -57,10 +70,9 @@ export function HeroVideo({ videoSrc, posterSrc, fallbackImageSrc }: HeroVideoPr
             loop
             muted
             playsInline
-            preload="metadata"
-            poster={posterSrc}
-            className="absolute inset-0 w-full h-full object-cover opacity-70 transition-opacity duration-500"
-            style={{ opacity: isVideoLoaded ? 0.7 : 0 }}
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+            style={{ opacity: isVideoLoaded ? 1 : 0 }}
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
@@ -70,13 +82,12 @@ export function HeroVideo({ videoSrc, posterSrc, fallbackImageSrc }: HeroVideoPr
             <div className="absolute inset-0 w-full h-full">
               <Image
                 src={fallbackImageSrc}
-                alt="Loading TD Studios"
+                alt="TD Studios"
                 fill
                 priority
                 placeholder="blur"
                 sizes="100vw"
                 style={{ objectFit: "cover" }}
-                className="opacity-70"
               />
             </div>
           )}
@@ -91,7 +102,6 @@ export function HeroVideo({ videoSrc, posterSrc, fallbackImageSrc }: HeroVideoPr
           placeholder="blur"
           sizes="100vw"
           style={{ objectFit: "cover" }}
-          className="opacity-70"
         />
       )}
     </div>

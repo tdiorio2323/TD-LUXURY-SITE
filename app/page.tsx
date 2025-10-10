@@ -53,30 +53,32 @@ export default function HomePage() {
           fallbackImageSrc={heroImage}
         />
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 heroGradient backdrop-blur-xl" />
-
         {/* Hero Content with CSS Animation */}
-        <div className="relative z-10 text-center px-6 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-white to-gray-400">
-            Design Your Success
-          </h1>
-          <p className="mt-6 text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            High-end websites, branding, and marketing systems engineered for creators and ambitious brands.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/work"
-              className="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 text-white text-sm tracking-wide backdrop-blur-lg transition-all duration-300"
-            >
-              View Our Work
-            </Link>
-            <Link
-              href="/contact"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-white/20 to-white/10 hover:from-white/30 hover:to-white/20 border border-white/30 text-white text-sm tracking-wide backdrop-blur-lg transition-all duration-300"
-            >
-              Start a Project
-            </Link>
+        <div className="relative z-10 text-center px-6 animate-fade-in-up max-w-4xl mx-auto">
+          {/* Dark overlay backdrop for text readability */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-3xl -z-10 transform scale-110" />
+
+          <div className="py-12 px-4 md:px-8">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-2xl">
+              Design Your Success
+            </h1>
+            <p className="mt-6 text-white text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+              High-end websites, branding, and marketing systems engineered for creators and ambitious brands.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/work"
+                className="px-8 py-4 rounded-full bg-white/90 hover:bg-white text-black text-sm font-semibold tracking-wide transition-all duration-300 shadow-xl"
+              >
+                View Our Work
+              </Link>
+              <Link
+                href="/contact"
+                className="px-8 py-4 rounded-full bg-black/80 hover:bg-black border border-white/30 text-white text-sm font-semibold tracking-wide backdrop-blur-lg transition-all duration-300 shadow-xl"
+              >
+                Start a Project
+              </Link>
+            </div>
           </div>
         </div>
       </section>

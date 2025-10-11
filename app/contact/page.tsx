@@ -58,6 +58,8 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [statusMessage, setStatusMessage] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+  const [touched, setTouched] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -74,6 +76,24 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Validate all fields before submission
+    const newErrors: Record<string, string> = {}
+    Object.keys(formData).forEach(key => {
+      const error = validateField(key, formData[key as keyof typeof formData])
+      if (error) newErrors[key] = error
+    })
+
+    setFieldErrors(newErrors)
+    setTouched(Object.keys(formData).reduce((acc, key) => ({ ...acc, [key]: true }), {}))
+
+    // Don't submit if there are validation errors
+    if (Object.values(newErrors).some(error => error)) {
+      setStatus('error')
+      setStatusMessage('Please fix the errors above before submitting.')
+      return
+    }
+
     setStatus('submitting')
     setStatusMessage(null)
 
@@ -112,11 +132,63 @@ export default function ContactPage() {
     }
   }
 
+  // Real-time validation function
+  const validateField = (name: string, value: string) => {
+    switch (name) {
+      case 'fullName':
+        if (!value.trim()) return 'Full name is required'
+        if (value.length < 2) return 'Full name must be at least 2 characters'
+        if (value.length > 100) return 'Full name must be less than 100 characters'
+        break
+      case 'email':
+        if (!value.trim()) return 'Email is required'
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address'
+        break
+      case 'service':
+        if (!value.trim()) return 'Please select a service'
+        break
+      case 'details':
+        if (!contactType || contactType === 'project') {
+          if (!value.trim()) return 'Project details are required'
+          if (value.length < 10) return 'Please provide at least 10 characters of detail'
+        }
+        if (value.length > 5000) return 'Details must be less than 5000 characters'
+        break
+    }
+    return ''
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     })
+
+    // Real-time validation for touched fields
+    if (touched[name]) {
+      const error = validateField(name, value)
+      setFieldErrors(prev => ({
+        ...prev,
+        [name]: error
+      }))
+    }
+  }
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    
+    setTouched(prev => ({
+      ...prev,
+      [name]: true
+    }))
+
+    const error = validateField(name, value)
+    setFieldErrors(prev => ({
+      ...prev,
+      [name]: error
+    }))
   }
 
   return (
@@ -225,10 +297,18 @@ export default function ContactPage() {
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         required
-                        className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
+                        className={`w-full px-4 py-3 bg-neutral-900/70 border rounded-lg focus:outline-none focus:ring-2 text-white placeholder-white/60 ${
+                          fieldErrors.fullName ? 'border-red-400 focus:ring-red-400/30' : 'border-white/20 focus:ring-white/30'
+                        }`}
                         placeholder="Your full name"
+                        aria-invalid={fieldErrors.fullName ? "true" : "false"}
+                        aria-describedby={fieldErrors.fullName ? "fullName-error" : undefined}
                       />
+                      {fieldErrors.fullName && (
+                        <p id="fullName-error" className="text-red-300 text-xs mt-1">{fieldErrors.fullName}</p>
+                      )}
                     </div>
 
                     <div>
@@ -241,10 +321,18 @@ export default function ContactPage() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         required
-                        className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder-white/60"
+                        className={`w-full px-4 py-3 bg-neutral-900/70 border rounded-lg focus:outline-none focus:ring-2 text-white placeholder-white/60 ${
+                          fieldErrors.email ? 'border-red-400 focus:ring-red-400/30' : 'border-white/20 focus:ring-white/30'
+                        }`}
                         placeholder="your@email.com"
+                        aria-invalid={fieldErrors.email ? "true" : "false"}
+                        aria-describedby={fieldErrors.email ? "email-error" : undefined}
                       />
+                      {fieldErrors.email && (
+                        <p id="email-error" className="text-red-300 text-xs mt-1">{fieldErrors.email}</p>
+                      )}
                     </div>
                   </div>
 
@@ -290,8 +378,13 @@ export default function ContactPage() {
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                         required
-                        className="w-full px-4 py-3 bg-neutral-900/70 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white"
+                        className={`w-full px-4 py-3 bg-neutral-900/70 border rounded-lg focus:outline-none focus:ring-2 text-white ${
+                          fieldErrors.service ? 'border-red-400 focus:ring-red-400/30' : 'border-white/20 focus:ring-white/30'
+                        }`}
+                        aria-invalid={fieldErrors.service ? "true" : "false"}
+                        aria-describedby={fieldErrors.service ? "service-error" : undefined}
                       >
                         <option value="">Select a service</option>
                         {services.map((service) => (
@@ -300,6 +393,9 @@ export default function ContactPage() {
                           </option>
                         ))}
                       </select>
+                      {fieldErrors.service && (
+                        <p id="service-error" className="text-red-300 text-xs mt-1">{fieldErrors.service}</p>
+                      )}
                     </div>
 
                     <div>

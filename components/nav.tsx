@@ -29,7 +29,7 @@ export function Nav() {
   }
 
   return (
-    <nav className="bg-black/80 backdrop-blur-sm border-b border-white/10">
+    <nav className="bg-black/80 backdrop-blur-sm border-b border-white/10" role="banner" aria-label="Main navigation">
       {/* Desktop: Centered Logo at Top */}
       <div className="hidden md:block">
         <div className="max-w-7xl mx-auto px-6 pt-6 pb-2">

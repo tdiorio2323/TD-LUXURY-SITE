@@ -162,7 +162,7 @@ export default function FAQPage() {
           {faqCategories.map((category, categoryIndex) => (
             <Section key={categoryIndex} id={category.category.toLowerCase().replace(/\s+/g, '-')} className="mt-16">
               <div className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-8">{category.category}</h2>
+                <h1 className="text-2xl md:text-3xl font-bold mb-8">{category.category}</h1>
                 <div className="space-y-6">
                   {category.questions.map((item, index) => (
                     <GlassCard key={index} className="luxury-glass">

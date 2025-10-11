@@ -8,6 +8,9 @@ import { JsonLd } from "@/components/json-ld"
 export const metadata: Metadata = {
   title: "Our Process | TD Studios",
   description: "Our proven 5-step process to turn your brand vision into a polished digital experience.",
+  alternates: {
+    canonical: "https://tdstudiosny.com/process",
+  },
   openGraph: {
     title: "Our Process | TD Studios",
     description: "Our proven 5-step process to turn your brand vision into a polished digital experience.",

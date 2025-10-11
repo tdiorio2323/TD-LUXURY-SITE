@@ -1,7 +1,26 @@
 import Image from "next/image"
+import type { Metadata } from "next"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { PREMADE, type PremadeDesign } from "@/lib/premade-designs"
+
+export const metadata: Metadata = {
+  title: "Premade Designs | TD Studios",
+  description: "Ready-to-deploy design templates and assets for Quick Printz campaigns. Professional designs at affordable prices.",
+  alternates: {
+    canonical: "https://tdstudiosny.com/resources/premade-designs",
+  },
+  openGraph: {
+    title: "Premade Designs | TD Studios",
+    description: "Ready-to-deploy design templates and assets for Quick Printz campaigns. Professional designs at affordable prices.",
+    url: "https://tdstudiosny.com/resources/premade-designs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Premade Designs | TD Studios",
+    description: "Ready-to-deploy design templates and assets for Quick Printz campaigns. Professional designs at affordable prices.",
+  },
+}
 
 export default function PremadeDesignsPage() {
   return (
@@ -37,6 +56,7 @@ export default function PremadeDesignsPage() {
                     src={design.thumb}
                     alt={design.title}
                     fill
+                    loading="lazy"
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                   />

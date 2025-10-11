@@ -85,9 +85,9 @@ export default async function ClientPortalPage({ params }: ClientPortalPageProps
                 key={section.id}
                 className="rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)]"
               >
-                <h2 className="text-2xl font-semibold text-white mb-4 tracking-wide">{section.title}</h2>
+                <h1 className="text-2xl font-semibold text-white mb-4 tracking-wide">{section.title}</h1>
                 <p className="text-white/80 text-sm leading-relaxed mb-6">{section.description}</p>
-                <button className="inline-flex items-center justify-center rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 px-5 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-black shadow-[0_12px_32px_rgba(255,200,60,0.45)] transition-all duration-200 hover:from-yellow-400 hover:to-yellow-400 active:scale-[0.98]">
+                <button className="inline-flex items-center justify-center rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 px-5 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-black shadow-[0_12px_32px_rgba(255,200,60,0.45)] transition-all duration-200 hover:from-yellow-400 hover:to-yellow-400 active:scale-[0.98] min-h-[44px] px-4 py-3">
                   {section.cta}
                 </button>
               </section>

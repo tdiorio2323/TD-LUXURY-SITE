@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Mobile Layout Analysis', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3003');
+    await page.goto('http://localhost:3000');
   });
 
   test('Hero text centering on mobile', async ({ page }) => {

@@ -26,11 +26,11 @@ export function CalendlyWidget({ url, className = "" }: CalendlyWidgetProps) {
         <p className="text-white mb-4">Calendar failed to load.</p>
         <p className="text-white/80 text-sm">
           Please email us directly at{" "}
-          <a className="underline text-white hover:text-white/80" href="mailto:tyler@tdstudiosny.com">
+          <a className="underline text-white hover:text-white/80 min-h-[44px]" href="mailto:tyler@tdstudiosny.com">
             tyler@tdstudiosny.com
           </a>{" "}
           or call{" "}
-          <a className="underline text-white hover:text-white/80" href="tel:347-485-9935">
+          <a className="underline text-white hover:text-white/80 min-h-[44px]" href="tel:347-485-9935">
             347-485-9935
           </a>
         </p>

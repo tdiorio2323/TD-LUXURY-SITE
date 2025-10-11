@@ -6,6 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is TD Studios' luxury website - a Next.js 15 application with TypeScript that showcases premium design solutions. The project is automatically synced with v0.app deployments and deployed on Vercel. It features a luxury design aesthetic with glassmorphism effects, premium branding, comprehensive analytics tracking, and AI-powered support chat via OpenAI ChatKit.
 
+**Current Phase**: Phase 3 – UX & SEO Enhancements (v2.3.0)
+**Branch**: `feature/phase3-ux-enhancements`
+**Focus**: Polish user experience, complete SEO rollout, improve performance and accessibility
+**Tracker**: See [PHASE3_TRACKER.md](./PHASE3_TRACKER.md) for detailed task breakdown and progress
+
 ## Contents
 
 - [Architecture](#architecture)
@@ -138,6 +143,11 @@ npx playwright test tests/mobile-layout.spec.ts # Run specific test file
 
 # Performance & Auditing
 pnpm lh:routes      # Run Lighthouse audits on routes using custom script
+pnpm audit:site     # Run comprehensive audit (Lighthouse, a11y, secrets, etc.)
+pnpm audit:quick    # Quick audit with A11Y and LHCI
+pnpm audit:headers  # Security headers audit only
+pnpm audit:perf-only # Performance-only Lighthouse audit
+pnpm audit:fast     # Minimal fast audit (skip install/build, 1 LH run, limited routes)
 ```
 
 ## Testing
@@ -177,6 +187,7 @@ pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 - **Image domains**: Configured for `i.imgur.com`, `via.placeholder.com`, `cdn.platform.openai.com`, and `tdstudiosny.com`
 - **Image optimization**: Modern AVIF and WebP formats with responsive device sizes
 - **Domain redirects**: www.tdstudiosny.com → tdstudiosny.com (permanent, 301)
+- **Security headers**: Configured via `headers()` function (see Security section below)
 
 ### TypeScript Configuration (`tsconfig.json`)
 - Strict mode enabled with ES2017 target
@@ -199,6 +210,27 @@ pnpm lh:routes      # Run Lighthouse audits on routes using custom script
 - Base Color: Neutral for sophisticated palette
 - CSS Variables: Enabled for dynamic theming
 - Path Aliases: Configured for components, utils, ui, lib, and hooks
+
+### Security Headers
+Configured in `next.config.mjs` via `headers()` async function:
+- `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload` - Force HTTPS for 1 year
+- `X-Frame-Options: SAMEORIGIN` - Prevent clickjacking attacks
+- `X-Content-Type-Options: nosniff` - Prevent MIME type sniffing
+- `Referrer-Policy: strict-origin-when-cross-origin` - Control referrer information
+- `Permissions-Policy: geolocation=(), microphone=(), camera=()` - Restrict browser features
+
+**Important**: Update this configuration when adding new third-party domains or requiring additional browser permissions.
+
+### React Server Components Strategy
+- **Default**: All components in `app/` are Server Components by default
+- **Client Components**: Mark with `"use client"` directive when component needs:
+  - Browser APIs (window, document, localStorage)
+  - React hooks (useState, useEffect, useContext, etc.)
+  - Event handlers (onClick, onChange, etc.)
+  - Third-party libraries that require client-side execution
+- **Data Fetching**: Use async Server Components for data fetching; use Server Actions or API routes for mutations
+- **Organization**: Server and Client Components can be co-located; import Client Components into Server Components as needed
+- **Performance**: Minimize client bundle by keeping interactivity boundaries small
 
 ## Design System
 
@@ -371,6 +403,17 @@ The application implements JWT-based authentication for client portals:
   - Portal pages: `/clients/[client]` - Protected client dashboard (requires valid JWT)
 - **Security**: Token-based sessions prevent unauthorized access to client-specific data
 
+## Error Handling
+
+### Error Boundaries
+- **Global Error Boundary**: `app/error.tsx` - Catches unhandled errors across the application
+- **404 Not Found**: `app/not-found.tsx` - Custom 404 page with branded styling
+- **Route-Level Errors**: Additional error boundaries can be added at route level for localized error handling
+- **Logging Strategy**:
+  - Display user-friendly error messages in UI
+  - Log detailed error information to analytics/monitoring service (when configured)
+  - Avoid exposing sensitive error details to end users
+
 ## Development Best Practices
 
 ### TypeScript Patterns
@@ -392,6 +435,15 @@ The application implements JWT-based authentication for client portals:
 - **Responsive Design**: Mobile-first breakpoint strategy
 - **Design Tokens**: CSS custom properties for theme consistency
 - **Glass Effects**: Consistent backdrop blur and transparency patterns
+
+### File and Folder Naming Conventions
+- **Components**: PascalCase for files (e.g., `GlassCard.tsx`) or kebab-case (e.g., `glass-card.tsx`)
+- **Hooks**: camelCase with `use` prefix (e.g., `useAnalytics.ts`)
+- **Utilities**: camelCase (e.g., `formatDate.ts`, `utils.ts`)
+- **Feature Directories**: kebab-case (e.g., `user-profile/`, `client-portal/`)
+- **API Routes**: kebab-case (e.g., `api/contact/route.ts`)
+- **Test Files**: `*.test.ts` or `*.spec.ts` co-located with source files
+- **Avoid**: Mixing default and named exports in shared libraries (prefer named exports for better tree-shaking)
 
 ## Route Structure
 
@@ -438,3 +490,17 @@ See [ROUTES.md](./ROUTES.md) for complete routing documentation.
   - Enhancement suggestions for payment processing, visual regression testing, feature flags
 - **Usage**: Reference when onboarding new developers, planning infrastructure changes, or auditing security posture
 - **Last Updated**: 2025-10-10 (automated analysis via Claude Code)
+
+### Phase 3 Tracker
+- **File**: [PHASE3_TRACKER.md](./PHASE3_TRACKER.md)
+- **Purpose**: Comprehensive task tracking for v2.3.0 release focusing on UX & SEO enhancements
+- **Categories**:
+  - UX Improvements (mobile spacing, typography, button targets, glassmorphism)
+  - SEO Enhancements (canonical URLs, SEOHead component, sitemap updates)
+  - Performance Optimization (video loading, lazy loading, image optimization, Lighthouse CI)
+  - Accessibility (contrast, ARIA labels, keyboard navigation, screen reader support)
+  - Animation & Interactions (scroll animations, page transitions, micro-interactions)
+  - Responsive Design QA (desktop, tablet, mobile, cross-browser testing)
+- **Progress**: 29 tasks total (11 P1 Critical, 11 P2 High, 7 P3 Medium)
+- **Status**: 5 tasks completed (SEOHead component, hero video optimization, lazy loading, image optimization, Lighthouse CI)
+- **Last Updated**: 2025-10-11

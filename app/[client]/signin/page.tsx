@@ -130,7 +130,7 @@ export default function ClientSignInPage({ params }: { params: Promise<{ client:
         <button
           onClick={handleSubmit}
           disabled={isSubmitting || code.length !== 4}
-          className="w-full rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_16px_40px_rgba(255,200,60,0.55)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-full border border-yellow-300/60 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-black font-semibold tracking-[0.4em] uppercase py-3 shadow-[0_16px_40px_rgba(255,200,60,0.55)] hover:from-yellow-400 hover:to-yellow-400 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] px-4 py-3"
         >
           {isSubmitting ? "Verifying..." : "Enter"}
         </button>

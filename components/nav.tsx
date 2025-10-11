@@ -102,7 +102,7 @@ export function Nav() {
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMobileMenuOpen}
-            className="md:hidden p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target"
+            className="md:hidden p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target min-h-[44px] px-4 py-3"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-white" aria-hidden="true" />

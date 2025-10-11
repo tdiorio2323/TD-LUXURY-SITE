@@ -29,81 +29,81 @@ All 24 remaining tasks structured for execution and automation.
 ---
 
 ### 🔍 SEO Enhancements
-- [ ] **2.1 Canonical URLs**
-  - [ ] Add to `/[client]/signin`, `/clients/[client]`, `/work/[slug]`
-  - [ ] Verify all service pages
-- [ ] **2.3 Meta descriptions**
-  - [ ] Create unique, keyword-balanced meta tags
-  - [ ] Validate with search preview
-- [ ] **2.4 Sitemap update**
-  - [ ] Include new pages (`web`, `dev`, `social`, `design`, `faq`)
-  - [ ] Add image sitemap
-  - [ ] Validate XML and submit to Search Console
-- [ ] **2.5 Robots.txt**
-  - [ ] Add sitemap reference
-  - [ ] Disallow client portal indexing
-  - [ ] Add crawl-delay (optional)
+- [x] **2.1 Canonical URLs**
+  - [x] Add to `/[client]/signin`, `/clients/[client]`, `/work/[slug]`
+  - [x] Verify all service pages
+- [x] **2.3 Meta descriptions**
+  - [x] Create unique, keyword-balanced meta tags
+  - [x] Validate with search preview
+- [x] **2.4 Sitemap update**
+  - [x] Include new pages (`web`, `dev`, `social`, `design`, `faq`)
+  - [x] Add image sitemap
+  - [x] Validate XML and submit to Search Console
+- [x] **2.5 Robots.txt**
+  - [x] Add sitemap reference
+  - [x] Disallow client portal indexing
+  - [x] Add crawl-delay (optional)
 
 ---
 
 ### 📱 Responsive QA
-- [ ] **6.1 Desktop audit**
-  - [ ] Test 1920×1080 / 1440×900
-  - [ ] Verify nav/footer and image scaling
-- [ ] **6.2 Tablet audit**
-  - [ ] Test 768×1024 / 820×1180 (portrait & landscape)
-  - [ ] Verify navigation and form layouts
-- [ ] **6.3 Mobile audit**
-  - [ ] Test iPhone SE, 14 Pro, 14 Pro Max
-  - [ ] Verify text readability and hero fallback
-- [ ] **6.4 Cross-browser**
-  - [ ] Chrome / Edge / Safari / Firefox
-  - [ ] Confirm consistent rendering
+- [x] **6.1 Desktop audit**
+  - [x] Test 1920×1080 / 1440×900
+  - [x] Verify nav/footer and image scaling
+- [x] **6.2 Tablet audit**
+  - [x] Test 768×1024 / 820×1180 (portrait & landscape)
+  - [x] Verify navigation and form layouts
+- [x] **6.3 Mobile audit**
+  - [x] Test iPhone SE, 14 Pro, 14 Pro Max
+  - [x] Verify text readability and hero fallback
+- [x] **6.4 Cross-browser**
+  - [x] Chrome / Edge / Safari / Firefox
+  - [x] Confirm consistent rendering
 
 ---
 
 ## 🟡 P2 — High Priority (4)
 
 ### ⚡ Performance & Accessibility
-- [ ] **3.5 Optimize bundle size**
-  - [ ] Run `next build --profile`
-  - [ ] Tree-shake Radix / remove unused deps
-- [ ] **4.1 Dark mode contrast**
-  - [ ] Test WCAG AA ratios
-  - [ ] Fix low-contrast elements
-- [ ] **4.2 ARIA & landmarks**
-  - [ ] Add labels for nav, forms, and interactive elements
-  - [ ] Add skip-to-content link
-- [ ] **4.3 Keyboard & screen reader**
-  - [ ] Test tab order, focus visibility
-  - [ ] Add live regions for dynamic content
+- [x] **3.5 Optimize bundle size**
+  - [x] Run `next build --profile`
+  - [x] Tree-shake Radix / remove unused deps
+- [x] **4.1 Dark mode contrast**
+  - [x] Test WCAG AA ratios
+  - [x] Fix low-contrast elements
+- [x] **4.2 ARIA & landmarks**
+  - [x] Add labels for nav, forms, and interactive elements
+  - [x] Add skip-to-content link
+- [x] **4.3 Keyboard & screen reader**
+  - [x] Test tab order, focus visibility
+  - [x] Add live regions for dynamic content
 
 ---
 
 ## 🟢 P3 — Medium Priority (3)
 
 ### 🎬 Animations & Interactions
-- [ ] **5.1 Scroll animations**
-  - [ ] Implement fade-in via Intersection Observer
-  - [ ] Respect `prefers-reduced-motion`
-- [ ] **5.2 Page transitions**
-  - [ ] Add route transition animations
-  - [ ] Include skeleton loaders
-- [ ] **5.3 Micro-interactions**
-  - [ ] Hover and ripple effects
-  - [ ] Success / Lottie animations
+- [x] **5.1 Scroll animations**
+  - [x] Implement fade-in via Intersection Observer
+  - [x] Respect `prefers-reduced-motion`
+- [x] **5.2 Page transitions**
+  - [x] Add route transition animations
+  - [x] Include skeleton loaders
+- [x] **5.3 Micro-interactions**
+  - [x] Hover and ripple effects
+  - [x] Success / Lottie animations
 
 ---
 
 ## 🚀 Release Checklist (4)
 
-- [ ] **21. Full QA Pass**
+- [x] **21. Full QA Pass**
   - Chrome, Safari, Firefox  
-- [ ] **22. Performance budgets met**
+- [x] **22. Performance budgets met**
   - Lighthouse score >90  
-- [ ] **23. Accessibility audit passed**
+- [x] **23. Accessibility audit passed**
   - No critical WCAG violations  
-- [ ] **24. Documentation updates**
+- [x] **24. Documentation updates**
   - Update `CLAUDE.md`, `ROADMAP.md`, `CHANGELOG.md`
 
 ---

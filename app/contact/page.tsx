@@ -1,5 +1,6 @@
-import MobileCta from "@/components/MobileCta";
+
 "use client"
+import MobileCta from "@/components/MobileCta";
 
 import type React from "react"
 import Image from "next/image"

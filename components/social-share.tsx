@@ -69,7 +69,7 @@ export function SocialShare({ url, title, description, className = "" }: SocialS
     <div className={`relative ${className}`}>
       <button
         onClick={handleNativeShare}
-        className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors"
+        className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors min-h-[44px] px-4 py-3"
         aria-label="Share this page"
       >
         <Share2 className="w-4 h-4" />
@@ -95,7 +95,7 @@ export function SocialShare({ url, title, description, className = "" }: SocialS
             
             <button
               onClick={handleCopyLink}
-              className="flex items-center gap-3 px-3 py-2 w-full text-left rounded-lg text-white/80 hover:bg-white/10 transition-colors"
+              className="flex items-center gap-3 px-3 py-2 w-full text-left rounded-lg text-white/80 hover:bg-white/10 transition-colors min-h-[44px] px-4 py-3"
             >
               {copied ? (
                 <Check className="w-4 h-4 text-green-400" />

@@ -165,7 +165,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={client.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors min-h-[44px]"
                   >
                     <Globe className="w-4 h-4" />
                     Visit Website
@@ -176,7 +176,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={client.socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors min-h-[44px]"
                   >
                     <Instagram className="w-4 h-4" />
                     Instagram
@@ -187,7 +187,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={client.socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors min-h-[44px]"
                   >
                     <Facebook className="w-4 h-4" />
                     Facebook
@@ -198,7 +198,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={client.socialLinks.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors min-h-[44px]"
                   >
                     <Twitter className="w-4 h-4" />
                     Twitter
@@ -209,7 +209,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     href={client.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white backdrop-blur-lg transition-colors min-h-[44px]"
                   >
                     <Linkedin className="w-4 h-4" />
                     LinkedIn

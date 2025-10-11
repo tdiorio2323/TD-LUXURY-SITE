@@ -1,5 +1,6 @@
-import ShareButton from "@/components/ShareButton";
+
 "use client"
+import ShareButton from "@/components/ShareButton";
 
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"

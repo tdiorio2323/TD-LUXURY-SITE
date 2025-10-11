@@ -69,7 +69,13 @@ export default function RootLayout({
           href="/main-background.webp"
         />
       </head>
-      <body className={`${inter.className} bg-black text-white antialiased`}>
+  <body className={`${inter.className} bg-black text-white antialiased`}>
+        <a
+          href="#main"
+          className="skip-link absolute left-4 top-4 z-[9999] px-4 py-2 bg-white text-black rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:shadow-lg sr-only focus-visible:not-sr-only min-h-[44px]"
+        >
+          Skip to content
+        </a>
         {/** Sitewide Organization JSON-LD Schema */}
         <JsonLd data={{
           "@context":"https://schema.org",
@@ -83,15 +89,15 @@ export default function RootLayout({
         }} />
         {/* Skip Navigation Link for Accessibility */}
         <a 
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded-md z-[60] font-medium"
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white text-black px-4 py-2 rounded-md z-[60] font-medium min-h-[44px]"
         >
-          Skip to main content
+          Skip to content
         </a>
         <Script src='https://cdn.platform.openai.com/deployments/chatkit/chatkit.js' strategy='afterInteractive' />
         <AnalyticsProvider>
           <StickyHeader />
-          <main>
+          <main id="main" role="main">
             <Suspense fallback={<div className="text-white p-8">Loading...</div>}>{children}</Suspense>
           </main>
           <Footer />

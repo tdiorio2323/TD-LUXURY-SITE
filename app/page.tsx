@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Section } from "@/components/section"
 import { GlassCard } from "@/components/glass-card"
-import JsonLd from "@/components/JsonLd"
+import { JsonLd } from "@/components/json-ld"
 import { HeroVideo } from "@/components/hero-video"
 import heroImage from "@/public/main-background.webp"
 

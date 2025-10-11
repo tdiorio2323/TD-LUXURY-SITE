@@ -7,7 +7,7 @@ import Link from "next/link"
 import { Design } from "./_components/Design"
 import { Development } from "./_components/Development"
 import { WebExperience } from "./_components/WebExperience"
-import JsonLd from "@/components/JsonLd"
+import { JsonLd } from "@/components/json-ld"
 
 type Tab = "design" | "dev" | "web"
 

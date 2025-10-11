@@ -8,7 +8,7 @@ import { useState, useEffect } from "react"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
 import { CalendlyWidget } from "@/components/calendly-widget"
-import JsonLd from "@/components/JsonLd"
+import { JsonLd } from "@/components/json-ld"
 import { Mail, Clock, MapPin } from "lucide-react"
 
 const services = [

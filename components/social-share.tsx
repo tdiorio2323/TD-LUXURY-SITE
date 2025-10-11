@@ -85,7 +85,7 @@ export function SocialShare({ url, title, description, className = "" }: SocialS
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg text-white/80 transition-colors ${link.color}`}
+                className={`flex items-center gap-3 px-3 py-2 rounded-lg text-white/80 transition-colors ${link.color} min-h-[44px]`}
                 onClick={() => setIsOpen(false)}
               >
                 <link.icon className="w-4 h-4" />

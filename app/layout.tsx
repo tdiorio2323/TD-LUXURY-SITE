@@ -12,42 +12,13 @@ import { Suspense } from "react"
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://tdstudiosny.com"),
-  title: {
-    default: "TD Studios | Design Your Success",
-    template: "%s | TD Studios",
-  },
-  description:
-    "TD Studios builds high-end websites, platforms, and marketing systems for ambitious brands. Web design, development, and digital strategy that drives real results.",
-  alternates: {
-    canonical: "https://tdstudiosny.com",
-  },
-  openGraph: {
-    title: "TD Studios",
-    description:
-      "High-end design, web, and marketing systems built for performance and control.",
-    url: "https://tdstudiosny.com",
-    siteName: "TD Studios",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "https://tdstudiosny.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "TD Studios OG Image",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TD Studios | Design Your Success",
-    description:
-      "Design. Develop. Scale. TD Studios builds digital experiences for ambitious brands.",
-    images: ["https://tdstudiosny.com/og-image.webp"],
-  },
-}
+export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"),
+  title: { default: "TD Studios", template: "%s · TD Studios" },
+  description: "Design, automation, and platform builds.",
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#0b0b0c" }],
+  alternates: { canonical: "/" },
+};
 
 export const viewport = {
   width: 'device-width',
@@ -70,12 +41,6 @@ export default function RootLayout({
         />
       </head>
   <body className={`${inter.className} bg-black text-white antialiased`}>
-        <a
-          href="#main"
-          className="skip-link absolute left-4 top-4 z-[9999] px-4 py-2 bg-white text-black rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:shadow-lg sr-only focus-visible:not-sr-only min-h-[44px]"
-        >
-          Skip to content
-        </a>
         {/** Sitewide Organization JSON-LD Schema */}
         <JsonLd data={{
           "@context":"https://schema.org",

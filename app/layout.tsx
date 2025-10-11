@@ -16,7 +16,6 @@ export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"),
   title: { default: "TD Studios", template: "%s · TD Studios" },
   description: "Design, automation, and platform builds.",
-  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#0b0b0c" }],
   alternates: { canonical: "/" },
 };
 
@@ -24,6 +23,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#0b0b0c" }],
 }
 
 export default function RootLayout({

@@ -77,7 +77,7 @@ export function FrostedButton({
       onClick={handleClick}
       className={`${baseClasses} ${className} ${disabledClasses}`}
       disabled={disabled || loading}
-      aria-busy={loading ? "true" : "false"}
+      aria-busy={loading}
     >
       {buttonContent}
     </button>

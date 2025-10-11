@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { clients, type Client } from "@/lib/clients-data"
 import { GlassCard } from "@/components/glass-card"
 import { FrostedButton } from "@/components/frosted-button"
+import { SocialShare } from "@/components/social-share"
 import { Globe, Instagram, Facebook, Twitter, Linkedin, ArrowLeft } from "lucide-react"
 
 interface ProjectPageProps {
@@ -119,14 +120,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
 
           <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-            {/* Back Button */}
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 mb-8 text-white/80 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Portfolio
-            </Link>
+            {/* Navigation and Share */}
+            <div className="flex items-center justify-between mb-8">
+              <Link
+                href="/work"
+                className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Portfolio
+              </Link>
+              
+              <SocialShare
+                url={`https://tdstudiosny.com/work/${client.slug}`}
+                title={`${client.name} - TD Studios Portfolio`}
+                description={client.description}
+              />
+            </div>
 
             {/* Client Logo */}
             <div className="flex justify-center mb-8">

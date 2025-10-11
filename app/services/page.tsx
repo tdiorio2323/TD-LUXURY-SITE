@@ -1,3 +1,4 @@
+import ShareButton from "@/components/ShareButton";
 "use client"
 
 import { useSearchParams } from "next/navigation"
@@ -5,7 +6,7 @@ import Link from "next/link"
 import { Design } from "./_components/Design"
 import { Development } from "./_components/Development"
 import { WebExperience } from "./_components/WebExperience"
-import { JsonLd } from "@/components/json-ld"
+import JsonLd from "@/components/JsonLd"
 
 type Tab = "design" | "dev" | "web"
 
@@ -24,13 +25,47 @@ export default function ServicesPage() {
     "@type": "Service",
     "@id": "https://tdstudiosny.com/services",
     "name": "TD Studios Design & Development Services",
+    "description": "Comprehensive design and development services including branding, web development, and user experience design for premium brands.",
     "provider": {
       "@type": "Organization",
       "name": "TD Studios",
       "url": "https://tdstudiosny.com",
     },
-    "serviceType": "Web Design and Development",
-    "areaServed": "Worldwide",
+    "serviceType": ["Brand Design", "Web Development", "User Experience Design"],
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "TD Studios Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Brand Identity Design",
+            "description": "Complete visual identity systems including logos, color palettes, and brand guidelines"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Web Development",
+            "description": "Custom websites and web applications built with modern technologies"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "User Experience Design",
+            "description": "User-centered design and interface optimization for digital products"
+          }
+        }
+      ]
+    },
     "availableChannel": {
       "@type": "ServiceChannel",
       "serviceUrl": "https://tdstudiosny.com/contact",
@@ -58,6 +93,7 @@ export default function ServicesPage() {
 
   return (
     <>
+      <ShareButton />
       <JsonLd data={serviceSchema} />
       <JsonLd data={breadcrumbSchema} />
 

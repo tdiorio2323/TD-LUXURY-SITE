@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Section } from "@/components/section"
 import { GlassCard } from "@/components/glass-card"
-import { JsonLd } from "@/components/json-ld"
+import JsonLd from "@/components/JsonLd"
 import { HeroVideo } from "@/components/hero-video"
 import heroImage from "@/public/main-background.webp"
 
@@ -10,21 +10,58 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "TD Studios",
+    "alternateName": "TD Studios NY",
     "url": "https://tdstudiosny.com",
     "logo": "https://tdstudiosny.com/logo.png",
     "description": "High-end websites, branding, and marketing systems engineered for creators and ambitious brands.",
+    "foundingDate": "2023",
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "US"
+      "addressCountry": "US",
+      "addressRegion": "NY"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Support",
-      "url": "https://tdstudiosny.com/contact"
+      "url": "https://tdstudiosny.com/contact",
+      "email": "hello@tdstudiosny.com"
     },
-    "sameAs": [
-      "https://tdstudiosny.com"
-    ]
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Worldwide"
+    },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Web Design & Development",
+          "description": "Custom websites and web applications"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Brand Identity Design",
+          "description": "Complete brand identity and visual design systems"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Social Media Marketing",
+          "description": "Social media strategy and content creation"
+        }
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "ratingCount": "15"
+    }
   }
 
   const websiteSchema = {

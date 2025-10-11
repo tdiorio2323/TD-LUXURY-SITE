@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import JsonLd from "@/components/JsonLd"
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from "@vercel/analytics/next"
@@ -69,6 +70,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-black text-white antialiased`}>
+        {/** Sitewide Organization JSON-LD Schema */}
+        <JsonLd data={{
+          "@context":"https://schema.org",
+          "@type":"Organization",
+          "name":"TD Studios",
+          "url":"https://tdstudiosny.com",
+          "logo":"https://tdstudiosny.com/og/td-logo.png",
+          "sameAs":[
+            "https://instagram.com/tdstudiosco"
+          ]
+        }} />
         {/* Skip Navigation Link for Accessibility */}
         <a 
           href="#main-content"

@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Section } from "@/components/section"
 import { GlassCard } from "@/components/glass-card"
 import { JsonLd } from "@/components/json-ld"
-import { HeroVideo } from "@/components/hero-video"
+import { HeroSection } from "@/components/hero-section"
 import heroImage from "@/public/main-background.webp"
 
 export default function HomePage() {
@@ -81,44 +81,8 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <JsonLd data={websiteSchema} />
       <main id="main-content" className="flex flex-col">
-      {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-        {/* Background Video with Fallback Image */}
-        <HeroVideo
-          videoSrc="/hero-video.mp4"
-          posterSrc="/main-background.webp"
-          fallbackImageSrc={heroImage}
-        />
-
-        {/* Hero Content with CSS Animation */}
-        <div className="relative z-10 text-center px-4 sm:px-6 animate-fade-in-up max-w-4xl mx-auto">
-          {/* Dark overlay backdrop for text readability */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-2xl sm:rounded-3xl -z-10 transform scale-110" />
-
-          <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white drop-shadow-2xl leading-tight">
-              Design Your Success
-            </h1>
-            <p className="mt-4 sm:mt-6 text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
-              High-end websites, branding, and marketing systems engineered for creators and ambitious brands.
-            </p>
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-              <Link
-                href="/work"
-                className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-white/90 hover:bg-white text-black text-sm font-semibold tracking-wide transition-all duration-300 shadow-xl flex items-center justify-center"
-              >
-                View Our Work
-              </Link>
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-black/80 hover:bg-black border border-white/30 text-white text-sm font-semibold tracking-wide backdrop-blur-lg transition-all duration-300 shadow-xl flex items-center justify-center"
-              >
-                Start a Project
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Fade-on-Scroll Effect */}
+      <HeroSection heroImage={heroImage} />
 
       {/* What We Do */}
       <Section>

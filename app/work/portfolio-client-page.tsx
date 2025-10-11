@@ -164,7 +164,7 @@ export default function PortfolioClientPage() {
                         href={selectedProject.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors min-h-[44px]"
                       >
                         <Globe className="w-4 h-4" />
                         Website
@@ -175,7 +175,7 @@ export default function PortfolioClientPage() {
                         href={selectedProject.socialLinks.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors min-h-[44px]"
                       >
                         <Instagram className="w-4 h-4" />
                         Instagram
@@ -186,7 +186,7 @@ export default function PortfolioClientPage() {
                         href={selectedProject.socialLinks.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors min-h-[44px]"
                       >
                         <Facebook className="w-4 h-4" />
                         Facebook
@@ -197,7 +197,7 @@ export default function PortfolioClientPage() {
                         href={selectedProject.socialLinks.twitter}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors min-h-[44px]"
                       >
                         <Twitter className="w-4 h-4" />
                         Twitter
@@ -208,7 +208,7 @@ export default function PortfolioClientPage() {
                         href={selectedProject.socialLinks.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-neutral-900/80 border border-white/20 rounded-lg text-white hover:bg-neutral-900/90 transition-colors min-h-[44px]"
                       >
                         <Linkedin className="w-4 h-4" />
                         LinkedIn
@@ -269,6 +269,7 @@ export default function PortfolioClientPage() {
                           src={image}
                           alt={`${selectedProject.name} gallery ${index + 1}`}
                           fill
+                          loading="lazy"
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
                         />

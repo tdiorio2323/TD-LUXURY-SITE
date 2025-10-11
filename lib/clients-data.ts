@@ -53,7 +53,16 @@ export const clients: Client[] = [
       "Weekly promo launches now take under 30 minutes"
     ],
     gallery: sharedGallery,
-    websiteUrl: "https://quickprintz.com"
+    websiteUrl: "https://quickprintz.com",
+    socialLinks: {
+      instagram: "https://instagram.com/quickprintz",
+      facebook: "https://facebook.com/quickprintz"
+    },
+    testimonial: {
+      quote: "TD Studios transformed our entire online presence. The new Shopify store and automated workflows have streamlined our operations and significantly boosted our sales.",
+      author: "Mike Rodriguez",
+      position: "Owner, Quick Printz"
+    }
   },
   {
     id: "apsco-sports",
@@ -117,7 +126,16 @@ export const clients: Client[] = [
       "Avg. proposal turnaround reduced to 6 hours",
       "Instagram saves on menu drops up 78%"
     ],
-    gallery: ["/design-portfolio-3.jpg", "/design-portfolio-1.jpg"]
+    gallery: ["/design-portfolio-3.jpg", "/design-portfolio-1.jpg"],
+    socialLinks: {
+      instagram: "https://instagram.com/chef_izzy_official",
+      linkedin: "https://linkedin.com/in/chef-izzy"
+    },
+    testimonial: {
+      quote: "The brand kit and ordering system TD Studios created elevated my culinary business to a whole new level. The design feels truly premium and the app makes booking seamless for my clients.",
+      author: "Isabella Martinez",
+      position: "Executive Chef & Owner"
+    }
   },
   {
     id: "mama-rosaria",
@@ -160,7 +178,16 @@ export const clients: Client[] = [
       "Cart abandonment dropped by 35%",
       "Regional landing pages launch in under a day"
     ],
-    gallery: sharedGallery
+    gallery: sharedGallery,
+    socialLinks: {
+      instagram: "https://instagram.com/cabana_stays",
+      facebook: "https://facebook.com/cabanastays"
+    },
+    testimonial: {
+      quote: "TD Studios' booking engine and marketing system transformed how we scale across markets. The automated workflows save us hours while maintaining our luxury brand standards.",
+      author: "Sarah Chen",
+      position: "Director of Operations, Cabana"
+    }
   },
   {
     id: "legacy-capital",

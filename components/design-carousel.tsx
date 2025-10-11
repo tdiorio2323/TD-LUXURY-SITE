@@ -117,7 +117,7 @@ export function DesignCarousel() {
 
       {/* Navigation Arrows */}
       <button
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-black/70 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target"
+        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-black/70 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target min-h-[44px] px-4 py-3"
         onClick={scrollPrev}
         aria-label="Previous image"
       >
@@ -125,7 +125,7 @@ export function DesignCarousel() {
       </button>
 
       <button
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-black/70 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target"
+        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-black/70 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target min-h-[44px] px-4 py-3"
         onClick={scrollNext}
         aria-label="Next image"
       >

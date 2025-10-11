@@ -35,28 +35,6 @@ export const trackFormSubmission = (formType: string, success: boolean = true) =
   }
 }
 
-// Track lead magnet downloads
-export const trackLeadMagnetDownload = (magnetType: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'lead_generation', {
-      event_category: 'conversion',
-      event_label: `lead_magnet_${magnetType}`,
-      value: 1,
-    })
-  }
-}
-
-// Track consultation bookings
-export const trackConsultationBooking = (consultationType: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'consultation_book', {
-      event_category: 'conversion',
-      event_label: consultationType,
-      value: 1,
-    })
-  }
-}
-
 // Track scroll depth for engagement measurement
 export const trackScrollDepth = (depth: number) => {
   if (typeof window !== 'undefined' && window.gtag) {

@@ -29,7 +29,7 @@ export function Nav() {
   }
 
   return (
-    <nav className="bg-black/80 backdrop-blur-sm border-b border-white/10">
+    <nav className="bg-black/80 backdrop-blur-sm border-b border-white/10" role="banner" aria-label="Main navigation">
       {/* Desktop: Centered Logo at Top */}
       <div className="hidden md:block">
         <div className="max-w-7xl mx-auto px-6 pt-6 pb-2">
@@ -72,7 +72,7 @@ export function Nav() {
             <a
               href="tel:347-485-9935"
               aria-label="Call TD Studios at 347-485-9935"
-              className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="p-4 min-h-[44px] min-w-[44px] bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             >
               <Send className="w-6 h-6 text-white group-hover:text-blue-500 transition-colors" aria-hidden="true" />
             </a>
@@ -81,7 +81,7 @@ export function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Message TD Studios on WhatsApp"
-              className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-green-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500/50"
+              className="p-4 min-h-[44px] min-w-[44px] bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-green-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500/50"
             >
               <MessageCircle className="w-6 h-6 text-white group-hover:text-green-500 transition-colors" aria-hidden="true" />
             </a>
@@ -90,7 +90,7 @@ export function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow TD Studios on Instagram"
-              className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-white/30"
+              className="p-4 min-h-[44px] min-w-[44px] bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-white/30"
             >
               <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" aria-hidden="true" />
             </a>
@@ -102,7 +102,7 @@ export function Nav() {
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             aria-expanded={isMobileMenuOpen}
-            className="md:hidden p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target"
+            className="md:hidden p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target min-h-[44px] px-4 py-3"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-white" aria-hidden="true" />
@@ -138,7 +138,7 @@ export function Nav() {
                 href="tel:347-485-9935"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Call TD Studios at 347-485-9935"
-                className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                className="p-4 min-h-[44px] min-w-[44px] bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-blue-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500/50 mobile-touch-target-button flex items-center justify-center"
               >
                 <Send className="w-6 h-6 text-white group-hover:text-blue-500 transition-colors" aria-hidden="true" />
               </a>
@@ -148,7 +148,7 @@ export function Nav() {
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Message TD Studios on WhatsApp"
-                className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-green-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500/50"
+                className="p-4 min-h-[44px] min-w-[44px] bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-green-500/20 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-green-500/50 mobile-touch-target-button flex items-center justify-center"
               >
                 <MessageCircle className="w-6 h-6 text-white group-hover:text-green-500 transition-colors" aria-hidden="true" />
               </a>
@@ -158,7 +158,7 @@ export function Nav() {
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Follow TD Studios on Instagram"
-                className="p-4 bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-white/30"
+                className="p-4 min-h-[44px] min-w-[44px] bg-neutral-900/70 backdrop-blur-sm rounded-lg hover:bg-neutral-900/80 transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-white/30 mobile-touch-target-button flex items-center justify-center"
               >
                 <Instagram className="w-6 h-6 text-white group-hover:scale-110 transition-transform" aria-hidden="true" />
               </a>

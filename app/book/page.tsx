@@ -63,7 +63,7 @@ export default function BookPage() {
           <div className="mt-12 text-center">
             <p className="text-white/70 text-sm">
               Prefer to email? Reach us at{" "}
-              <a href="mailto:hello@tdstudiosny.com" className="text-white underline hover:text-white/80">
+              <a href="mailto:hello@tdstudiosny.com" className="text-white underline hover:text-white/80 min-h-[44px]">
                 hello@tdstudiosny.com
               </a>
             </p>
